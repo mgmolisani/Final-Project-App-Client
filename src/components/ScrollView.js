@@ -58,7 +58,8 @@ export default class ScrollView
                          overflowX: 'hidden',
                          position: 'relative'
                      }}
-                     onWheel={this.onWheelHandler}>
+                     onWheel={this.onWheelHandler}
+                     onTouchMove={this.onWheelHandler}>
                     <div ref={node => this.contentRef = node}
                          style={{
                              position: 'relative',
