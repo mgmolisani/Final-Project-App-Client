@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {fetchInstagramImagesForUser} from "./actions/instagramActions";
 import {connect} from "react-redux";
+import {fetchInstagramImagesForUser} from "../actions/instagramActions";
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {
@@ -10,13 +10,8 @@ function mapDispatchToProps(dispatch, ownProps) {
     }
 }
 
-class App
+class InstagramPhotoList
     extends Component {
-
-    constructor(props) {
-        super(props);
-        this.scrollX = 0;
-    }
 
     componentDidMount() {
         this.props.findAllInstagramImagesForUser()
@@ -24,11 +19,7 @@ class App
 
     render() {
         return (
-            <div className="App">
-                <div style={{cursor: this.props.isFetching ? 'wait' : 'default'}}>
-                    GET ATTTT MEEEEEE
-                </div>
-
+            <div className='row flex-nowrap'>
                 {this.props.images.map(imageUrl => {
                         return (
                             <div>
@@ -45,4 +36,4 @@ class App
 export default connect(
     state => (state),
     mapDispatchToProps
-)(App);
+)(InstagramPhotoList);
