@@ -4,11 +4,9 @@ import {Provider} from "react-redux";
 import rootReducer from "./reducers/appReducer";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
-import InstagramPhotoPickerGrid from "./containers/InstagramPhotoPickerGrid";
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import ScrollView from "./components/ScrollView";
-import NotScrollView from "./components/NotScrollView";
 import InstagramPhotoList from "./components/InstagramPhotoList";
 
 
@@ -19,10 +17,9 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <div>
-            <ScrollView>
+            <ScrollView visible={true}>
                 <InstagramPhotoList/>
             </ScrollView>
-            <InstagramPhotoPickerGrid/>
         </div>
     </Provider>,
     document.getElementById('root'));

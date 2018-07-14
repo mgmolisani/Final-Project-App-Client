@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ScrollBarTrack from "./ScrollBarTrack";
 
 export default class ScrollView
     extends Component {
@@ -6,46 +7,95 @@ export default class ScrollView
     constructor(props) {
         super(props);
         this.state = {
-            scrollX: 0,
-            scrollBarThumbWidth: 0,
-            scrollLeft: 0
+            contentPercent: 1,
+            scrollPercent: 0,
+            maxContentScroll: 0
         };
 
         this.scrollBoxRef = null;
-        this.contentRef = null;
-        this.scrollBarRef = null;
-        this.scrollBarTrackRef = null;
-        this.scrollBarThumbRef = null;
+        this.contentBoxRef = null;
 
         this.onWheelHandler = this.onWheelHandler.bind(this);
+        this.updateScrollableArea = this.updateScrollableArea.bind(this);
     }
 
-    onWheelHandler(event) {
-        if (this.contentRef && this.scrollBoxRef) {
-            const deltaX = -event.deltaX;
-            let scrollLeft = this.state.scrollLeft + deltaX;
-            let maxScrollLeft = this.contentRef.scrollWidth - this.scrollBoxRef.offsetWidth;
-            if (scrollLeft < 0) {
-                scrollLeft = 0;
-            } else if (scrollLeft > maxScrollLeft) {
-                scrollLeft = maxScrollLeft;
-            }
-            this.setState({scrollLeft});
+    componentDidMount() {
+        window.addEventListener('resize', this.updateScrollableArea)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateScrollableArea);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const maxContentScroll = this.contentBoxRef.scrollWidth - this.scrollBoxRef.offsetWidth;
+        if (maxContentScroll !== prevState.maxContentScroll) {
+            this.setState({maxContentScroll: this.contentBoxRef.scrollWidth - this.scrollBoxRef.offsetWidth});
+            this.updateScrollableArea()
         }
     }
 
-    getScrollPercentage() {
-        return this.state.scrollLeft / (this.contentRef.scrollWidth - this.scrollBoxRef.offsetWidth);
+    refsAreSet() {
+        return this.scrollBoxRef && this.contentBoxRef;
     }
 
-    setScrollState() {
-        if (this.scrollBoxRef && this.contentRef && this.scrollBarTrackRef) {
+    onWheelHandler(event) {
+        if (this.contentBoxRef && this.scrollBoxRef) {
+            const deltaX = -event.deltaX;
+            const maxScroll = this.state.maxContentScroll;
+
+            let scroll = this.state.scrollPercent * maxScroll + deltaX;
+
+            if (scroll < 0) {
+                scroll = 0;
+            } else if (scroll > maxScroll) {
+                scroll = maxScroll;
+            }
+
+            this.setState({scrollPercent: scroll / maxScroll || 0});
+        }
+    }
+
+    updateScrollableArea() {
+        if (this.refsAreSet()) {
             this.setState({
-                scrollBarThumbWidth:
-                this.scrollBoxRef.offsetWidth
-                / this.contentRef.scrollWidth
-                * this.scrollBarTrackRef.offsetWidth
+                contentPercent: this.scrollBoxRef.offsetWidth / this.contentBoxRef.scrollWidth
             });
+        }
+    }
+
+    renderScrollBar() {
+        if (this.props.visible
+            && this.scrollBoxRef
+            && this.contentBoxRef
+            && this.scrollBoxRef.offsetWidth < this.contentBoxRef.scrollWidth) {
+            return (
+                <div ref={node => this.scrollBarRef = node}
+                     style={{
+                         backgroundColor: 'red',
+                         height: 20,
+                         display: 'flex'
+                     }}>
+                    <div style={{
+                        backgroundColor: 'blue',
+                        width: 20,
+                        height: '100%'
+                    }}/>
+                    <ScrollBarTrack percentWidth={this.state.contentPercent}
+                                    scrollPercentage={this.state.scrollPercent}/>
+                    <div style={{
+                        backgroundColor: 'blue',
+                        width: 20,
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <i className='fa fa-chevron-right'
+                           style={{color: 'white'}}/>
+                    </div>
+                </div>
+            )
         }
     }
 
@@ -58,56 +108,18 @@ export default class ScrollView
                          overflowX: 'hidden',
                          position: 'relative'
                      }}
-                     onWheel={this.onWheelHandler}
-                     onTouchMove={this.onWheelHandler}>
-                    <div ref={node => this.contentRef = node}
+                     onWheel={this.onWheelHandler}>
+                    <div ref={node => this.contentBoxRef = node}
                          style={{
                              position: 'relative',
-                             left: -this.state.scrollLeft,
+                             left: -this.state.maxContentScroll * this.state.scrollPercent,
                              overflowX: 'visible',
                              transition: 'left 0.5s',
                              transitionTimingFunction: 'ease'
                          }}>
                         {this.props.children}
                     </div>
-
-                    <div ref={node => this.scrollBarRef = node}
-                         style={{
-                             backgroundColor: 'red',
-                             height: 20,
-                             display: 'flex'
-                         }}>
-                        <div style={{
-                            backgroundColor: 'blue',
-                            width: 20,
-                            height: '100%'
-                        }}/>
-                        <div ref={node => this.scrollBarTrackRef = node}
-                             style={{
-                                 backgroundColor: 'green',
-                                 height: '100%',
-                                 width: '100%'
-                             }}>
-                            <div ref={node => this.scrollBarThumbRef = node}
-                                 style={{
-                                     backgroundColor: 'yellow',
-                                     height: '100%',
-                                     width: this.state.scrollBarThumbWidth
-                                 }}>
-                            </div>
-                        </div>
-                        <div style={{
-                            backgroundColor: 'blue',
-                            width: 20,
-                            height: '100%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
-                            <i className='fa fa-chevron-right'
-                               style={{color: 'white'}}/>
-                        </div>
-                    </div>
+                    {this.renderScrollBar()}
                 </div>
             </div>
         );

@@ -19,11 +19,13 @@ class InstagramPhotoList
 
     render() {
         return (
-            <div className='row flex-nowrap'>
+            <div className='row flex-nowrap m-0'>
                 {this.props.images.map(imageUrl => {
                         return (
-                            <div>
-                                <img src={imageUrl} height={'250px'}/>
+                            <div key={imageUrl}>
+                                <img src={imageUrl}
+                                     alt={''}
+                                     height={'250px'}/>
                             </div>
                         );
                     }
