@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fa54578-6869-4c55-824c-fbf80f052da5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/instagramActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/instagramActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InstagramPhotoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InstagramPhotoList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NotScrollView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NotScrollView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NotScrollViewStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NotScrollViewStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ScrollBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ScrollBarThumb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ScrollBarTrack.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ScrollView.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/actionConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/actionConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/appReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageDatesFilterReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageFromDateFilterReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageToDateFilterReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageSearchFilterReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageSearchFilterReducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,8 +22,8 @@
       <file leaf-file-name="imageSearchReducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="198">
+              <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="11" selection-end-column="31" />
               <folding>
                 <element signature="e#0#143#0" expanded="true" />
               </folding>
@@ -47,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/src/reducers/imageSelectionReducer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
-              <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+              <caret line="7" column="72" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -68,42 +56,57 @@
         <entry file="file://$PROJECT_DIR$/src/reducers/imageCaptionReducer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="242">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+              <caret line="11" column="1" lean-forward="true" selection-end-line="11" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imageSearchFilterReducer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="imageSearchFilterReducer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageSearchFilterReducer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
-              <caret line="7" column="39" selection-end-line="7" selection-end-column="40" />
+              <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imageDatesFilterReducer.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageDatesFilterReducer.js">
+      <file leaf-file-name="imageDatesFilterReducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            <state relative-caret-position="286">
+              <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#94#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imageToDateFilterReducer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageToDateFilterReducer.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="imageFromDateFilterReducer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageFromDateFilterReducer.js">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="instagramActions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/instagramActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-99">
+              <caret line="77" column="19" lean-forward="true" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#66#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="imageTagsFilterReducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageTagsFilterReducer.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" selection-end-line="12" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#94#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="rootReducer.js" pinned="false" current-in-tab="false">
@@ -172,6 +175,12 @@
         <option value="$PROJECT_DIR$/src/components/ImageSearchTagField.js" />
         <option value="$PROJECT_DIR$/src/reducers/imageSearchFilterReducer.js" />
         <option value="$PROJECT_DIR$/src/reducers/imageDatesFilterReducer.js" />
+        <option value="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageTagsFilterReducer.js" />
+        <option value="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageSearchFilterReducer.js" />
+        <option value="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageFromDateFilterReducer.js" />
+        <option value="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageToDateFilterReducer.js" />
+        <option value="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageDatesFilterReducer.js" />
+        <option value="$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer.js" />
       </list>
     </option>
   </component>
@@ -280,8 +289,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mmolisani\Documents\CS5610\Final Project\final-project-app-client\src\reducers\imageSearchFilterReducers\imageDatesFilterReducer" />
       <recent name="C:\Users\mmolisani\Documents\CS5610\Final Project\final-project-app-client\src\reducers\imageSearchFilterReducers" />
+      <recent name="C:\Users\mmolisani\Documents\CS5610\Final Project\final-project-app-client\src\reducers\imageSearchFilterReducers\imageDatesFilterReducer" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mmolisani\Documents\CS5610\Final Project\final-project-app-client\src\reducers" />
@@ -314,7 +323,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109662000" />
+    <option name="totallyTimeSpent" value="110475000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -655,16 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/instagramActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="77" column="19" lean-forward="true" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/InstagramPhotoSearchForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -695,23 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/imageDataReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#153#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/imageCaptionReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/rootReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -722,43 +704,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/imageCaptionReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="1" lean-forward="true" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageFromDateFilterReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="13" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageToDateFilterReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageTagsFilterReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/imageDataReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/imageSelectionReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="72" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+        <state relative-caret-position="198">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="11" selection-end-column="31" />
           <folding>
             <element signature="e#0#143#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageTagsFilterReducer.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/imageSelectionReducer.js">
+    <entry file="file://$PROJECT_DIR$/src/actions/instagramActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        <state relative-caret-position="-99">
+          <caret line="77" column="19" lean-forward="true" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageToDateFilterReducer.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageFromDateFilterReducer.js">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageSearchFilterReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="39" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/imageSearchFilterReducers/imageDatesFilterReducer/imageDatesFilterReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
