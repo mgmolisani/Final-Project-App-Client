@@ -1,3 +1,16 @@
-.test {
-    width: 80%;
+.test::-webkit-scrollbar-thumb {
+    background-color: rgb(80, 80, 80);
+}
+
+::-webkit-scrollbar {
+    height: 18px;
+    background-color: transparent
+}
+
+.test::-webkit-scrollbar-track-piece {
+    background-color: rgb(20, 20, 20);
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
 }

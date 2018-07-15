@@ -1,0 +1,21 @@
+.image-overlay-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7)
+}
+
+.image-selection {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.image-selection.selected {
+    color: green;
+}

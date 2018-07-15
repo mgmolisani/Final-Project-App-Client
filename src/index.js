@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
-import rootReducer from "./reducers/appReducer";
+import rootReducer from "./reducers/rootReducer";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css'
-import ScrollView from "./components/ScrollView";
-import InstagramPhotoList from "./components/InstagramPhotoList";
+import NotScrollView from "./components/NotScrollView";
+import InstagramPhotoSearchForm from "./containers/InstagramPhotoSearchForm";
 
 
 const store = createStore(
@@ -16,10 +15,9 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
-            <ScrollView visible={true}>
-                <InstagramPhotoList/>
-            </ScrollView>
+        <div className='container'>
+            <InstagramPhotoSearchForm/>
+            <NotScrollView/>
         </div>
     </Provider>,
     document.getElementById('root'));
