@@ -1,12 +1,14 @@
 import InstagramServiceClient from "../services/instagramService";
 import {
     ADD_SEARCH_TAG,
+    ADD_SEARCH_TAGS,
     CHANGE_SEARCH_DATE_RANGE,
     CHANGE_SEARCH_FROM_DATE_FIELD,
     CHANGE_SEARCH_TAG_FIELD,
     CHANGE_SEARCH_TO_DATE_FIELD,
     HIDE_IMAGE_CAPTION_TEXT,
-    RECEIVE_INSTAGRAM_IMAGES_FOR_USER, REMOVE_SEARCH_TAG,
+    RECEIVE_INSTAGRAM_IMAGES_FOR_USER,
+    REMOVE_SEARCH_TAG,
     REQUEST_INSTAGRAM_IMAGES_FOR_USER,
     SELECT_IMAGE,
     SHOW_IMAGE_CAPTION_TEXT,
@@ -20,8 +22,8 @@ export function fetchInstagramImagesForUser() {
         dispatch(requestInstagramImagesForUser());
         return instagramService
             .findAllImagesForUser(
-            images => dispatch(receiveInstagramImagesForUser(images))
-        );
+                images => dispatch(receiveInstagramImagesForUser(images))
+            );
     };
 }
 
@@ -65,11 +67,10 @@ export function unselectImage(imageId) {
     }
 }
 
-
-export function addSearchTag(tag) {
+export function addSearchTags(tags) {
     return {
-        type: ADD_SEARCH_TAG,
-        tag
+        type: ADD_SEARCH_TAGS,
+        tags
     }
 }
 

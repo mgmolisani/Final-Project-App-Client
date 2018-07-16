@@ -4,8 +4,6 @@ import {Button, FormGroup, Input, InputGroup, InputGroupAddon, Label} from "reac
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/index.es";
 
-"@fortawesome/free-regular-svg-icons/index.es"
-
 export default class ImageSearchTagField
     extends Component {
 
@@ -24,7 +22,11 @@ export default class ImageSearchTagField
                            value={this.props.tagField}>
                     </Input>
                     <InputGroupAddon addonType="append">
-                        <Button type={'button'}>
+                        <Button type={'button'}
+                                onClick={(event) => {
+                                    this.props.addSearchTags();
+                                    this.props.changeSearchTagField('');
+                                }}>
                             <FontAwesomeIcon icon={faPlus}/>
                         </Button>
                     </InputGroupAddon>

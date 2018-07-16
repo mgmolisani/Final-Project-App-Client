@@ -1,17 +1,18 @@
-import {HIDE_IMAGE_CAPTION_TEXT, SHOW_IMAGE_CAPTION_TEXT} from "../constants/actionConstants";
-import {ADD_SEARCH_TAG, REMOVE_SEARCH_TAG} from "../../constants/actionConstants";
 import {CHANGE_SEARCH_DATE_RANGE} from "../../constants/actionConstants";
 
-export default function imageFromDateFilterReducer(
-    state = {
-        fromDate: Date.now() - (604800 * 1000), // 1 week from today
-        toDate: Date.now()
-    }, action) {
+const initialState = {
+    fromDate: '1970-01-01',
+    toDate: '2018-07-04'
+};
+
+export default function imageFromDateFilterReducer(state = initialState, action) {
     switch (action.type) {
         case CHANGE_SEARCH_DATE_RANGE:
             return {
-                fromDate: action.fromDate,
-                toDate: action.toDate
+                fromDate: Number.parseInt(action.fromDate.replace('-', ''), 10) < Number.parseInt(state.toDate.replace('-', ''), 10) ?
+                    action.fromDate : initialState.fromDate,
+                toDate: Number.parseInt(action.toDate.replace('-', ''), 10) > Number.parseInt(state.fromDate.replace('-', ''), 10) ?
+                    action.toDate : initialState.toDate
             };
         default:
             return state;

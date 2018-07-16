@@ -5,8 +5,8 @@ import rootReducer from "./reducers/rootReducer";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import NotScrollView from "./components/NotScrollView";
 import InstagramPhotoSearchForm from "./containers/InstagramPhotoSearchForm";
+import InstagramPhotoList from "./containers/InstagramPhotoList";
 
 
 const store = createStore(
@@ -17,7 +17,8 @@ ReactDOM.render(
     <Provider store={store}>
         <div className='container'>
             <InstagramPhotoSearchForm/>
-            <NotScrollView/>
+            <InstagramPhotoList/>
         </div>
-    </Provider>,
-    document.getElementById('root'));
+    </Provider>
+,
+document.getElementById('root'));

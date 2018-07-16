@@ -4,12 +4,11 @@ import {
     CHANGE_SEARCH_TO_DATE_FIELD
 } from "../constants/actionConstants";
 
-
 export default function imageSearchReducer(
     state = {
         tagField: '',
-        fromDateField: Date.now() - (604800 * 1000), // 1 week from today
-        toDateField: Date.now()
+        fromDateField: '',
+        toDateField: ''
     }, action) {
     switch (action.type) {
         case CHANGE_SEARCH_TAG_FIELD:
