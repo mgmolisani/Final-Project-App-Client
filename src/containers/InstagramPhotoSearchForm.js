@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {
     addSearchTags,
-    changeSearchDateRange,
+    changeSearchFromDate,
     changeSearchFromDateField,
-    changeSearchTagField, changeSearchToDateField,
+    changeSearchTagField,
+    changeSearchToDate,
+    changeSearchToDateField,
     removeSearchTag
 } from "../actions/instagramActions";
 import {connect} from "react-redux";
@@ -22,8 +24,11 @@ function mapDispatchToProps(dispatch, ownProps) {
         removeSearchTag: tag => {
             dispatch(removeSearchTag(tag));
         },
-        changeSearchDateRange: (fromDate, toDate) => {
-            dispatch(changeSearchDateRange(fromDate, toDate));
+        changeSearchFromDate: fromDate => {
+            dispatch(changeSearchFromDate(fromDate));
+        },
+        changeSearchToDate: toDate => {
+            dispatch(changeSearchToDate(toDate));
         },
         changeSearchFromDateField: fromDate => {
             dispatch(changeSearchFromDateField(fromDate));
@@ -50,11 +55,10 @@ class InstagramPhotoSearchForm
                                          addSearchTags={() => this.props.addSearchTags(this.props.imageSearchFields.tagField)}/>
                     <ImageSearchDateFields fromDateField={this.props.imageSearchFields.fromDateField}
                                            toDateField={this.props.imageSearchFields.toDateField}
-                                           changeSearchDateRange={this.props.changeSearchDateRange}
+                                           changeSearchFromDate={() => this.props.changeSearchFromDate(this.props.imageSearchFields.fromDateField)}
+                                           changeSearchToDate={() => this.props.changeSearchToDate(this.props.imageSearchFields.toDateField)}
                                            changeSearchFromDateField={this.props.changeSearchFromDateField}
-                                           changeSearchToDateField={this.props.changeSearchToDateField}
-
-                                />
+                                           changeSearchToDateField={this.props.changeSearchToDateField}/>
                 </div>
             </div>
         )

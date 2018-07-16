@@ -7,6 +7,10 @@ import {faCircle} from "@fortawesome/free-regular-svg-icons/index.es";
 export default class InstagramPhoto
     extends Component {
 
+    /**
+     * Renders the overlay for caption if the showCaption is true
+     * @returns {*}
+     */
     renderImageCaptionOverlay() {
         if (this.props.showCaption && this.props.image.caption) {
             return <div className='image-overlay-container'>
@@ -17,6 +21,10 @@ export default class InstagramPhoto
         }
     }
 
+    /**
+     * Renders the top right corner selection icon (checked if selected)
+     * @returns {*}
+     */
     renderImageSelection() {
         return <div className='image-selection p-2'>
             <FontAwesomeIcon icon={this.props.selected ? faCheckCircle : faCircle}

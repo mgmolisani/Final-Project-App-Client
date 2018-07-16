@@ -16,14 +16,14 @@ export default class ImageSearchTagField
                 <InputGroup>
                     <Input id={'imageSearchTagField'}
                            type="text"
-                           onChange={(event) => {
+                           onChange={event => {
                                this.props.changeSearchTagField(event.target.value)
                            }}
                            value={this.props.tagField}>
                     </Input>
                     <InputGroupAddon addonType="append">
                         <Button type={'button'}
-                                onClick={(event) => {
+                                onClick={event => {
                                     this.props.addSearchTags();
                                     this.props.changeSearchTagField('');
                                 }}>

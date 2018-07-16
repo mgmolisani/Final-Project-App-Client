@@ -15,8 +15,12 @@ export default class ImageSearchDateFields
                         </Label>
                         <Input id={'imageSearchFromDateField'}
                                type={'date'}
-                               onChange={(event) => {
+                               onChange={event => {
+                                   console.log(event.target.value);
                                    this.props.changeSearchFromDateField(event.target.value)
+                               }}
+                               onBlur={event => {
+                                   this.props.changeSearchFromDate();
                                }}
                                value={this.props.fromDateField}>
                         </Input>
@@ -29,8 +33,11 @@ export default class ImageSearchDateFields
                         </Label>
                         <Input id={'imageSearchToDateField'}
                                type={'date'}
-                               onChange={(event) => {
+                               onChange={event => {
                                    this.props.changeSearchToDateField(event.target.value)
+                               }}
+                               onBlur={event => {
+                                   this.props.changeSearchToDate();
                                }}
                                value={this.props.toDateField}>
                         </Input>

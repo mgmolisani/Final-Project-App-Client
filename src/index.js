@@ -20,5 +20,5 @@ ReactDOM.render(
             <InstagramPhotoList/>
         </div>
     </Provider>
-,
-document.getElementById('root'));
+    ,
+    document.getElementById('root'));

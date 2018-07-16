@@ -4,6 +4,12 @@ import {
     CHANGE_SEARCH_TO_DATE_FIELD
 } from "../constants/actionConstants";
 
+/**
+ * Reducer for setting form field strings
+ * @param state
+ * @param action
+ * @returns {{tagField: string, fromDateField: string, toDateField: string}}
+ */
 export default function imageSearchReducer(
     state = {
         tagField: '',

@@ -1,9 +1,11 @@
-import {
-    RECEIVE_INSTAGRAM_IMAGES_FOR_USER,
-    REQUEST_INSTAGRAM_IMAGES_FOR_USER,
-    SHOW_IMAGE_CAPTION_TEXT
-} from "../constants/actionConstants";
+import {RECEIVE_INSTAGRAM_IMAGES_FOR_USER, REQUEST_INSTAGRAM_IMAGES_FOR_USER} from "../constants/actionConstants";
 
+/**
+ * Reducer for getting image data and showing when it has been loaded
+ * @param state
+ * @param action
+ * @returns {*}
+ */
 export default function imageDataReducer(
     state = {
         images: [],
