@@ -90,6 +90,14 @@ class InstagramPhotoList
                 </div>
                 <h3>
                     There are {this.props.selectedImages.length} photos selected.
+                    <br/>
+                    Their IDs are:
+                    <br/>
+                    {this.props.selectedImages.map(id => {
+                        return <p>
+                            {id}
+                        </p>
+                    })}
                 </h3>
                 <p>
                     A very simple API showcase. This will be a sample of how a user might select photos from their own
@@ -112,11 +120,13 @@ class InstagramPhotoList
                         appear once and the post needs to have all the tags to appear on the photo slider</li>
                     <li>Remove tags from the tags list on the right.</li>
                     <li>Change dates to only show ones between certain dates.</li>
-                    <li>Select a photo to add by clicking on it. It will add a check to it and show underneath it got
+                    <li>Select a photo to add by clicking on it. It will add a check to it (required part of this
+                        assignment) and show underneath it got
                         added to the list (only shown for this assignment interface as proof). Click again to remove it.
                     </li>
                     <li>
-                        Hovering over a photo shows its caption if it exists
+                        Hovering over a photo further queries the database (required for this assignment) to show its
+                        caption if it exists
                     </li>
                 </ul>
 
