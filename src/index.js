@@ -5,7 +5,7 @@ import rootReducer from "./reducers/rootReducer";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles/index.css';
+import './index.css';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import App from "./containers/App";
 import {composeWithDevTools} from "redux-devtools-extension";

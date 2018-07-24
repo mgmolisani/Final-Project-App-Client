@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
+.home-panel {
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+    color: black;
+    background-color: white;
+}
+
+.home-panel-icon {
+    color: rebeccapurple;
+}
+
+.home-panels-buttons .btn {
+    width: 100%;
+    color: black !important;
+    background: transparent !important;
+}
+
+.home-panels-buttons .btn:hover:not(.active) {
+    color: rebeccapurple !important;
+    background-color: rgb(190, 190, 190) !important;
+}
+
+.home-panels-buttons .btn.active {
+    color: rebeccapurple !important;
+    background-color: white !important;
+}
+
+.home-panels-buttons {
+    background-color: rgb(230, 230, 230);
+}
+
+.home-panels-content {
+    background-image: linear-gradient(90deg, rebeccapurple, mediumpurple);
+}
+
+.home-panel-container {
+    display: none;
+}
+
+.home-panel-container.active {
+    display: block;
+}
+
+* {
+    font-family: Poppins, sans-serif !important;
+}
+
+.form-control.custom {
+    height: 2.5em !important;
+    border: black 2px solid !important;
+    border-radius: 0 !important;
+}
+
+.form-control.custom:focus {
+    border-color: rebeccapurple !important;
+    box-shadow: none !important;
+}
+
+.input-group-append.custom {
+    margin-left: -2px !important;
+}
+
+.btn {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.btn-secondary {
+    background-color: black !important;;
+}
+
+.btn-secondary:hover {
+    background-color: rgb(60, 60, 60) !important;
+}
+
+.btn-secondary:active {
+    background-color: rgb(75, 75, 75) !important;
+}
+
+.location-suggestions li {
+    height: 2.5em !important;
+    padding: 0.375em 0.75em !important;
+    margin-bottom: -2px !important;
+    overflow: hidden !important;
+    white-space: nowrap;
+    text-overflow: ellipsis !important;
+    border-radius: 0 !important;
+    border-width: 2px;
+}
+
+.location-suggestions li:hover {
+    background: lightgrey;
+}
+
+.location-suggestions li:active {
+    background: grey;
+}
+
+.map-container {
+    height: calc(20em - 8px);
+    padding: 2.5em;
+    background: white url('map_background.PNG') center;
+    background-size: cover;
+}
+
