@@ -4,21 +4,26 @@ import {Provider} from "react-redux";
 import rootReducer from "./reducers/rootReducer";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import InstagramPhotoSearchForm from "./containers/InstagramPhotoSearchForm";
-import InstagramPhotoList from "./containers/InstagramPhotoList";
+import 'bootstrap/dist/css/bootstrap.css';
+import './styles/index.css';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import App from "./containers/App";
+import {composeWithDevTools} from "redux-devtools-extension";
+import {library as iconLib} from '@fortawesome/fontawesome-svg-core'
+import {fas} from '@fortawesome/free-solid-svg-icons'
 
+iconLib.add(fas);
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(thunk));
+    composeWithDevTools(
+        applyMiddleware(thunk)
+    ));
 
 ReactDOM.render(
     <Provider store={store}>
-        <div className='container'>
-            <InstagramPhotoSearchForm/>
-            <InstagramPhotoList/>
-        </div>
-    </Provider>
-    ,
+        <Router>
+            <Route path={'/'} component={App}/>
+        </Router>
+    </Provider>,
     document.getElementById('root'));
