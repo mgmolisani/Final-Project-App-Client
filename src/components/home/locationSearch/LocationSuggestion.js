@@ -10,7 +10,10 @@ export default class LocationSuggestion
         return (
             <ListGroupItem onMouseDown={() => {
                 onClick(location.description);
-            }}>
+            }}
+                           onTouchStart={() => {
+                               onClick(location.description);
+                           }}>
                 {location.description}
             </ListGroupItem>
         );
