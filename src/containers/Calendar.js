@@ -1,12 +1,29 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import moment from "moment/moment";
 import * as CalendarViewTypes from "../constants/CalendarViewTypes";
-import CalendarGrid from "../components/calendar/CalendarGrid";
-import moment from "moment";
 import CalendarList from "../components/calendar/CalendarList";
-import CalendarMonthSelection from "../components/calendar/CalendarMonthSelection";
+import CalendarGrid from "../components/calendar/CalendarGrid";
 import CalendarTypeSelection from "../components/calendar/CalendarTypeSelection";
+import CalendarMonthSelection from "../components/calendar/CalendarMonthSelection";
+import {fetchAllEventsForUser} from "../actions/calendar";
 
-export default class Calendar
+function mapStateToProps(state, ownProps) {
+    return {
+        events: state.calendar.events,
+        isFetching: state.calendar.isFetching
+    };
+}
+
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        fetchAllEventsForUser: () => {
+            dispatch(fetchAllEventsForUser())
+        }
+    }
+}
+
+class Calendar
     extends Component {
 
     constructor(props) {
@@ -17,6 +34,10 @@ export default class Calendar
         };
         this.changeActiveDate = this.changeActiveDate.bind(this);
         this.changeViewType = this.changeViewType.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchAllEventsForUser();
     }
 
     changeActiveDate(date) {
@@ -56,12 +77,12 @@ export default class Calendar
                          }}>
                         {this.state.viewType === CalendarViewTypes.GRID
                         && <CalendarGrid activeDate={this.state.activeDate}
-                                         events={this.state.events}
+                                         events={this.props.events}
                                          changeActiveDate={this.changeActiveDate}
                                          changeViewType={this.changeViewType}/>}
                         {this.state.viewType === CalendarViewTypes.LIST
                         && <CalendarList activeDate={this.state.activeDate}
-                                         events={this.state.events}
+                                         events={this.props.events}
                                          changeActiveDate={this.changeActiveDate}
                                          changeViewType={this.changeViewType}/>}
                     </div>
@@ -70,3 +91,8 @@ export default class Calendar
         );
     }
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Calendar);

@@ -116,8 +116,11 @@ body {
 .calendar-cell {
     width: calc(100% / 7);
     flex-grow: 1;
-    margin: 0 2px;
     overflow: hidden;
+}
+
+.calendar-cell + .calendar-cell {
+    margin-left: 2px;
 }
 
 .calendar-cell:hover {
