@@ -48,19 +48,17 @@ class LocationSuggestionsDropdown
     }
 
     render() {
-        if (this.props.visible) {
-            return (
-                <ListGroup className='location-suggestions'>
-                    {this.state.suggestions.map(location => {
-                        return <LocationSuggestion key={location.place_id}
-                                                   location={location}
-                                                   onClick={this.props.onSuggestionClick}/>
-                    })}
-                </ListGroup>
-            );
-        } else {
-            return null;
-        }
+        return (
+            <ListGroup className='location-suggestions'>
+                {this.state.suggestions.map(location => {
+                    return <LocationSuggestion key={location.place_id}
+                                               location={location}
+                                               onClick={() => {
+                                                   this.props.onSuggestionClick(location.description)
+                                               }}/>
+                })}
+            </ListGroup>
+        );
     }
 }
 
@@ -71,7 +69,6 @@ export default GoogleApiWrapper({
 
 LocationSuggestionsDropdown.propTypes = {
     value: PropTypes.string.isRequired,
-    visible: PropTypes.bool.isRequired,
     onSuggestionClick: PropTypes.func.isRequired
 };
 

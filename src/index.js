@@ -11,8 +11,10 @@ import App from "./containers/App";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {library as iconLib} from '@fortawesome/fontawesome-svg-core'
 import {fas} from '@fortawesome/free-solid-svg-icons'
+import {far} from '@fortawesome/free-regular-svg-icons'
 
 iconLib.add(fas);
+iconLib.add(far);
 
 const store = createStore(
     rootReducer,

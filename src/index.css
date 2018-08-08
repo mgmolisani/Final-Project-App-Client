@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
 
+html, body, #root {
+    height: 100%
+}
+
 .home-panel {
     overflow: hidden;
     padding: 15px;
@@ -44,7 +48,7 @@
     display: block;
 }
 
-* {
+body {
     font-family: Poppins, sans-serif !important;
 }
 
@@ -89,10 +93,12 @@
     white-space: nowrap;
     text-overflow: ellipsis !important;
     border-radius: 0 !important;
-    border-width: 2px;
+    border: 2px dimgrey solid !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
-.location-suggestions li:hover {
+.location-suggestions li:hover, .location-suggestions li:active {
     background: lightgrey;
 }
 
@@ -107,3 +113,29 @@
     background-size: cover;
 }
 
+.calendar-cell {
+    width: calc(100% / 7);
+    flex-grow: 1;
+    margin: 0 2px;
+    overflow: hidden;
+}
+
+.calendar-cell:hover {
+    background-color: rgb(232, 214, 255);
+}
+
+.calendar-list-day {
+    border-top: 2px solid lightgrey;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    margin-left: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(80, 80, 80, .75);
+}

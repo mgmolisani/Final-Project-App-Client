@@ -8,12 +8,8 @@ export default class LocationSuggestion
     render() {
         const {location, onClick} = this.props;
         return (
-            <ListGroupItem onMouseDown={() => {
-                onClick(location.description);
-            }}
-                           onTouchStart={() => {
-                               onClick(location.description);
-                           }}>
+            <ListGroupItem tabIndex={0}
+                           onMouseDown={onClick}>
                 {location.description}
             </ListGroupItem>
         );

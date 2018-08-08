@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import HomeSearch from "../components/home/panels/HomeSearch";
+import Calendar from "./Calendar";
 
 function mapStateToProps(state, ownProps) {
     return state;
@@ -15,9 +15,15 @@ class App
 
     render() {
         return (
-            <div>
-                {/*<HomePanels/>*/}
-                <HomeSearch/>
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                overflow: 'hidden'
+            }}>
+                <Calendar/>
             </div>
         );
     }

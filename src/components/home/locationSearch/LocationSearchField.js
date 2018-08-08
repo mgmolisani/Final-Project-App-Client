@@ -36,7 +36,7 @@ export default class LocationSearchField
 
     render() {
         return (
-            <Form className='w-50 m-auto'>
+            <Form className='w-75 m-auto'>
                 <FormGroup>
                     <InputGroup>
                         <Input className='custom'
@@ -44,12 +44,6 @@ export default class LocationSearchField
                                placeholder={'Search for events near you...'}
                                onChange={event => {
                                    this.onChange(event.target.value);
-                               }}
-                               onFocus={event => {
-                                   this.toggleSuggestions()
-                               }}
-                               onBlur={event => {
-                                   this.toggleSuggestions()
                                }}/>
                         <InputGroupAddon className='custom'
                                          addonType={'append'}>
