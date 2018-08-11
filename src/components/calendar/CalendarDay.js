@@ -13,13 +13,13 @@ export default class CalendarDay
         return (
             <div className='calendar-cell d-flex flex-column'
                  style={{
-                     backgroundColor: this.props.disabled ? 'lightgrey' : 'default'
+                     backgroundColor: this.props.disabled ? 'black' : 'default'
                  }}>
                 <h5 className='m-2'>
                     {this.props.date.date()}
                 </h5>
                 {!this.props.disabled && <CalendarEventsList date={this.props.date}
-                                                             events={this.props.events}/>}
+                                                             activities={this.props.activities}/>}
             </div>
         );
     }

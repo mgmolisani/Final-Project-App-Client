@@ -22,9 +22,15 @@ export default class CalendarGrid
     getActivitiesForDate(date) {
         return this.props.events.reduce((activities, event) => {
             activities = [...activities,
-                ...event.activities.filter(activity => {
-                    return moment(activity.start).startOf('date').isSame(date.startOf('date'));
-                })
+                ...event.activities.reduce((filtered, activity) => {
+                    if (moment(activity.start).startOf('date').isSame(date.startOf('date'))) {
+                        filtered.push({
+                            ...activity,
+                            eventId: event.id
+                        })
+                    }
+                    return filtered;
+                }, [])
             ];
             return activities;
         }, []);
@@ -55,7 +61,7 @@ export default class CalendarGrid
                     {week.map(date => {
                         return <CalendarDay key={date.format()}
                                             date={date}
-                                            events={this.getActivitiesForDate(date)}
+                                            activities={this.getActivitiesForDate(date)}
                                             disabled={date.month() !== this.props.activeDate.month()}/>
                     })}
                 </div>;

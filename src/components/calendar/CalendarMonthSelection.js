@@ -20,7 +20,7 @@ export default class CalendarMonthSelection
 
     render() {
         return (
-            <div className='p-2'>
+            <div className='p-2 d-inline-block'>
                 <h5>
                     <span className='m-2'>
                         <FontAwesomeIcon icon={'chevron-left'}

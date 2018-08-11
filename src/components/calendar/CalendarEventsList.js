@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
+import {Link, withRouter} from "react-router-dom";
 import moment from "moment";
 
-export default class CalendarEventsList
+class CalendarEventsList
     extends Component {
 
     constructor(props) {
@@ -14,23 +15,27 @@ export default class CalendarEventsList
             <div style={{
                 overflow: 'auto'
             }}>
-                {this.props.events.map(activity => {
-                    return <div style={{
-                                    marginTop: 2,
-                                    marginBottom: 2,
-                                    padding: 2,
-                                    backgroundColor: 'rgb(168, 121, 229)'
-                                }}>
+                {this.props.activities.map(activity => {
+                    return <Link className='d-block'
+                                 style={{
+                                     marginTop: 2,
+                                     marginBottom: 2,
+                                     padding: 2,
+                                     backgroundColor: 'rgb(168, 121, 229)'
+                                 }}
+                                 to={`${this.props.match.url}/event/${activity.eventId}`}>
                         {moment(activity.start).format('h:mma').slice(0, -1)}
                         <span className='ml-1'>
                             {activity.name}
                         </span>
-                    </div>
+                    </Link>
                 })}
             </div>
         );
     }
 }
+
+export default withRouter(CalendarEventsList);
 
 CalendarEventsList.propTypes = {
     date: PropTypes.object.isRequired

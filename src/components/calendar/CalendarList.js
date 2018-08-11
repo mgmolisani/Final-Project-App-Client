@@ -17,6 +17,8 @@ export default class CalendarList
         return moment(this.props.activeDate).endOf('month');
     }
 
+
+
     getActivitiesForDate(date) {
         return this.props.events.reduce((activities, event) => {
             activities = [...activities,
@@ -38,12 +40,16 @@ export default class CalendarList
             const currentDate = moment(loopDate);
             dates.push(currentDate);
         }
-        return dates.map(date => {
-            return <CalendarListDay key={date.format()}
-                                    date={date}
-                                    events={this.getActivitiesForDate(date)}
-                                    disabled={date.month() !== this.props.activeDate.month()}/>
-        });
+        return dates.reduce((validDates, date) => {
+            const activities = this.getActivitiesForDate(date);
+            if (activities.length > 0) {
+                validDates.push(<CalendarListDay key={date.format()}
+                                                 date={date}
+                                                 events={activities}
+                                                 disabled={date.month() !== this.props.activeDate.month()}/>)
+            }
+            return validDates;
+        },[]);
     }
 
     render() {

@@ -115,9 +115,12 @@ body {
 
 .calendar-cell {
     width: calc(100% / 7);
-    flex-grow: 1;
-    margin: 0 2px;
+    margin-top: 1px;
     overflow: hidden;
+}
+
+.calendar-cell + .calendar-cell {
+    margin-left: 4px;
 }
 
 .calendar-cell:hover {
@@ -138,4 +141,146 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: rgba(80, 80, 80, .75);
+}
+
+.event-sidebar-activity {
+    border-top: 2px solid grey;
+}
+
+.event-sidebar button {
+    width: 100% !important;
+}
+
+.navigation-menu-container {
+    width: 4em;
+    overflow: hidden;
+    background-color: rgb(15, 16, 16);
+    flex: 0 0 auto;
+}
+
+.profile-icon-container {
+    padding: 0.5em;
+    height: 4em;
+    width: 4em;
+}
+
+.profile-icon {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.profile-icon:hover {
+    box-shadow: 0 0 0 2px white;
+}
+
+.profile-icon img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.app-icon-container {
+    height: 4em;
+    width: 4em;
+    background-color: rgb(35, 36, 36);
+}
+
+.app-icon {
+    width: 2.5em;
+    height: 2.5em;
+    overflow: hidden;
+}
+
+.app-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.app-icon svg g{
+    fill: white;
+}
+
+.app-icon-container:hover .app-icon svg g{
+    fill: rebeccapurple;
+}
+
+.calendar-view-header {
+    height: 4em;
+    background-color: rgb(35, 36, 36);
+    flex: 0 0 auto;
+}
+
+.navigation-menu-container ul {
+    margin: 0;
+    padding: 0;
+    flex-basis: 100%;
+    list-style-type: none;
+}
+
+.navigation-menu-container li{
+    height: 4em;
+}
+
+.navigation-menu-container a, .app-icon-container a, .profile-menu-container a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-menu-container li:hover {
+    background-color: rgb(25, 26, 26);
+}
+
+.navigation-menu-item-alert {
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 1.75em;
+    height: 1.75em;
+    position: absolute;
+    right: -0.25em;
+    top: -0.25em;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: darkred;
+}
+
+.profile-menu-container {
+    display: flex;
+    height: 4em;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+}
+
+.profile-menu-container ul {
+    margin: 0;
+    padding: 0;
+    flex-basis: 100%;
+    list-style-type: none;
+    white-space: nowrap;
+}
+
+.profile-menu-container li {
+    display: inline-block;
+    height: 100%;
+}
+
+.profile-menu-container li a.active {
+    background-color: red;
+}
+
+.profile-content-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-content-wrapper {
+    flex-basis: 100%;
+    overflow: auto;
 }
