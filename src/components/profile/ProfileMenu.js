@@ -32,7 +32,7 @@ class ProfileMenu
         const {url} = this.props.match;
         const {user} = this.state;
         return (
-            <div className='profile-menu-container'>
+            <div className='profile menu-container'>
                 <ul>
                     <ProfileMenuItem to={`${url}`}
                                      exact>

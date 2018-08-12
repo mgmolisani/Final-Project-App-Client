@@ -10,6 +10,8 @@ import PageNotFoundView from "./PageNotFoundView";
 import HomeView from "./HomeView";
 import NewEventView from "./NewEventView";
 import CalendarView from "./CalendarView";
+import LoginView from "./LoginView";
+import RegisterView from "./RegisterView";
 
 function mapStateToProps(state, ownProps) {
     return state;
@@ -48,6 +50,10 @@ class App
                            component={NewEventView}/>
                     <Route path={'/profile/:userId'}
                            component={ProfileView}/>
+                    <Route path={'/login'}
+                           component={LoginView}/>
+                    <Route path={'/register'}
+                           component={RegisterView}/>
                     <Route component={PageNotFoundView}/>
                 </Switch>
             </div>

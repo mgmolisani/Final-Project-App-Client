@@ -223,7 +223,7 @@ body {
     height: 4em;
 }
 
-.navigation-menu-container a, .app-icon-container a, .profile-menu-container a {
+.navigation-menu-container a, .app-icon-container a, .menu-container a {
     height: 100%;
     width: 100%;
     display: flex;
@@ -251,14 +251,14 @@ body {
     background: darkred;
 }
 
-.profile-menu-container {
+.menu-container {
     display: flex;
     height: 4em;
     flex: 0 0 auto;
     flex-wrap: nowrap;
 }
 
-.profile-menu-container ul {
+.menu-container ul {
     margin: 0;
     padding: 0;
     flex-basis: 100%;
@@ -266,12 +266,12 @@ body {
     white-space: nowrap;
 }
 
-.profile-menu-container li {
+.menu-container li {
     display: inline-block;
     height: 100%;
 }
 
-.profile-menu-container li a.active {
+.menu-container li a.active {
     background-color: red;
 }
 
@@ -283,4 +283,8 @@ body {
 .profile-content-wrapper {
     flex-basis: 100%;
     overflow: auto;
+}
+
+.login.menu-container li{
+    float: right;
 }

@@ -45,6 +45,10 @@ export const events = [
         id: 1,
         name: 'Birthday',
         description: 'It\'s Mike\'s birthday!',
+        location: {
+            latitude: 0,
+            longitude: 0
+        },
         activities: activitiesForEvent1,
         images: [
             'https://picsum.photos/200/300'
@@ -56,6 +60,10 @@ export const events = [
         name: 'Birthday2',
         description: 'It\'s Mike\'s birthday!',
         activities: [],
+        location: {
+            latitude: 12,
+            longitude: -12
+        },
         images: [
             'https://picsum.photos/200/300'
         ],
@@ -69,7 +77,7 @@ export const users = [
             username: 'MikeMo',
             firstName: 'Mike',
             lastName: 'Molisani',
-            role: 'private',
+            role: 'Private',
             address: {
                 latitude: 123,
                 longitude: -72

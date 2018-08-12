@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import ContentView from "./ContentView";
+import RegisterMenu from "../components/login/RegisterMenu";
+import RegisterForm from "../components/login/RegisterForm";
 
 export default class RegisterView
     extends Component {
@@ -10,9 +12,12 @@ export default class RegisterView
 
     render() {
         return (
-            <div>
-                RegisterView has successfully been created.
-            </div>
+            <ContentView>
+                <div className='d-flex flex-column w-100'>
+                    <RegisterMenu/>
+                    <RegisterForm/>
+                </div>
+            </ContentView>
         );
     }
 }
