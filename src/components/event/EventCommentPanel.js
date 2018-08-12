@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import EventCommentList from "./EventCommentList";
 
 export default class EventCommentPanel
     extends Component {
@@ -17,19 +18,7 @@ export default class EventCommentPanel
     render() {
         return (
             <div>
-                {this.props.comments.map(comment => {
-                    return <div key={comment.date}
-                                className='p-3'>
-                        {comment.content}
-                    </div>
-                })}
-                <textarea className='w-100' style={{
-                    resize: 'none'
-                }}
-                rows={4}
-                placeholder={'Enter a comment...'}
-                value={this.state.value}
-                onChange={event => this.onChange(event.target.value)}/>
+                <EventCommentList eventId={this.props.eventId}/>
             </div>
         );
     }

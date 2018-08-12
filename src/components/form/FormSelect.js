@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
+import FormLabel from "./FormLabel";
 
 export default class FormSelect
     extends Component {
@@ -11,10 +12,8 @@ export default class FormSelect
     render() {
         const {label: inputLabel, value, options, onChange} = this.props;
         return (
-            <div>
-                <label>
-                    {inputLabel}
-                </label>
+            <div className='form-input-container'>
+                <FormLabel label={inputLabel}/>
                 <select value={value}
                         onChange={onChange}>
                     {options.map(option => {

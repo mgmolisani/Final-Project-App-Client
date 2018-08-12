@@ -55,6 +55,7 @@ export default class EventView
                              right: 0,
                              userSelect: 'none'
                          }}>
+                        <EventCommentPanel eventId={this.state.event.id}/>
                         <div style={{
                             flexBasis: '70%'
                         }}>
@@ -75,7 +76,6 @@ export default class EventView
                         </div>
                     </div>
                 </div>
-                <EventCommentPanel comments={this.state.event.comments}/>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ContentView from "./ContentView";
 import ProfileMenu from "../components/profile/ProfileMenu";
-import {Route, Switch} from "react-router-dom";
+import {Switch} from "react-router-dom";
 import ProfileOverviewView from "./profile/ProfileOverviewView";
 import ProfileRecentActivityView from "./profile/ProfileRecentActivityView";
 import ProfileEventlistsView from "./profile/ProfileEventlistsView";
@@ -43,11 +43,13 @@ export default class ProfileView
                 <div className='d-flex flex-column w-100'>
                     <ProfileMenu/>
                     <Switch>
-                        <Route path={`${url}`}
-                               exact
-                               component={ProfileOverviewView}/>
-                        <Route path={`${url}/recent`}
-                               component={ProfileRecentActivityView}/>
+                        <ProfileRoute path={`${url}`}
+                                      exact
+                                      component={ProfileOverviewView}
+                                      userId={userId}/>
+                        <ProfileRoute path={`${url}/recent`}
+                                      component={ProfileRecentActivityView}
+                                      userId={userId}/>
                         <ProfileRoute path={`${url}/eventlists`}
                                       component={ProfileEventlistsView}
                                       userId={userId}/>

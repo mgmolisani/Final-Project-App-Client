@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import ContentView from "./ContentView";
 import NavigationMenu from "./NavigationMenu";
 import {Route, Switch} from "react-router-dom";
 import EventListGridView from "./EventListGridView";

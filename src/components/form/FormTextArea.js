@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import FormInput from "./FormInput";
+import FormLabel from "./FormLabel";
 
 export default class FormTextArea
     extends Component {
@@ -12,10 +13,8 @@ export default class FormTextArea
     render() {
         const {label: inputLabel, value, placeholder, rows, resize, onChange} = this.props;
         return (
-            <div>
-                <label>
-                    {inputLabel}
-                </label>
+            <div className='form-input-container'>
+                <FormLabel label={inputLabel}/>
                 <textarea value={value}
                           placeholder={placeholder}
                           rows={rows}

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import FormInput from "../form/FormInput";
-import NewEventLocationInput from "./NewEventLocationInput";
 import FormTextArea from "../form/FormTextArea";
+import NewEventActivityList from "./NewEventActivityList";
 
 export default class NewEventForm
     extends Component {
@@ -10,34 +9,51 @@ export default class NewEventForm
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            description: '',
+            inputFields: {
+                name: '',
+                description: '',
+                address: ''
+            },
+            activities: [],
+            images: []
         };
-        this.updateName = this.updateName.bind(this);
-        this.updateDescription = this.updateDescription.bind(this);
+        this.updateInputField = this.updateInputField.bind(this);
+        this.updateActivities = this.updateActivities.bind(this);
     }
 
-    updateName(name) {
-        this.setState({name});
+    updateInputField(input) {
+        this.setState({
+            inputFields: {
+                ...this.state.inputFields,
+                ...input
+            }
+        });
     }
 
-    updateDescription(description) {
-        this.setState({description});
+    updateActivities(activities) {
+        this.setState({activities});
     }
 
     render() {
-        const {name, description} = this.state;
+        const {inputFields, activities} = this.state;
         return (
             <div>
-                <FormInput label={'Name'}
-                           value={name}
-                           onChange={event => this.updateName(event.target.value)}/>
-                <FormTextArea label={'Description'}
-                              value={description}
-                              rows={4}
-                              resize
-                              onChange={event => this.updateDescription(event.target.value)}/>
-                <NewEventLocationInput/>
+                <form>
+                    <FormInput label={'Name'}
+                               value={inputFields.name}
+                               onChange={event => this.updateInputField({name: event.target.value})}/>
+                    <FormTextArea label={'Description'}
+                                  value={inputFields.description}
+                                  rows={4}
+                                  resize
+                                  onChange={event => this.updateInputField({description: event.target.value})}/>
+                    <FormInput label={'Address'}
+                               value={inputFields.address}
+                               onChange={event => this.updateInputField({address: event.target.value})}/>
+                </form>
+                <NewEventActivityList activities={activities}
+                                      updateActivities={this.updateActivities}
+                                      copyOfEvent={inputFields}/>
             </div>
         );
     }

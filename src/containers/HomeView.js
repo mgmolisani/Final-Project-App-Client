@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ContentView from "./ContentView";
 
 export default class HomeView
     extends Component {
@@ -9,9 +10,9 @@ export default class HomeView
 
     render() {
         return (
-            <div>
+            <ContentView>
                 HomeView has successfully been created.
-            </div>
+            </ContentView>
         );
     }
 }

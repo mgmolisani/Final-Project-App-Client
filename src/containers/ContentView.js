@@ -13,8 +13,10 @@ export default class ContentView
 
     render() {
         return (
-            <div className='d-flex h-100 w-100'>
+            <div className='content-wrapper'>
+                <div className='content-container'>
                 {this.props.children}
+                </div>
             </div>
         );
     }

@@ -25,18 +25,21 @@ export const activitiesForEvent1 = [
 export const comments = [
     {
         id: 1,
+        postedBy: 1,
         content: 'Let\'s play!',
         date: [2018, 7, 12, 15, 25]
     },
     {
         id: 2,
+        postedBy: 2,
         content: 'Let\'s eat!',
-        date: [2018, 7, 12, 17, 25]
+        date: [2018, 7, 12, 19, 25]
     },
     {
         id: 3,
+        postedBy: 1,
         content: 'Let\'s party!',
-        date: [2018, 7, 12, 19, 25]
+        date: [2018, 7, 12, 17, 25]
     }
 ];
 
@@ -45,10 +48,8 @@ export const events = [
         id: 1,
         name: 'Birthday',
         description: 'It\'s Mike\'s birthday!',
-        location: {
-            latitude: 0,
-            longitude: 0
-        },
+        hosts: [1],
+        location: '72',
         activities: activitiesForEvent1,
         images: [
             'https://picsum.photos/200/300'
@@ -59,11 +60,9 @@ export const events = [
         id: 2,
         name: 'Birthday2',
         description: 'It\'s Mike\'s birthday!',
+        host: [2],
         activities: [],
-        location: {
-            latitude: 12,
-            longitude: -12
-        },
+        location: '76',
         images: [
             'https://picsum.photos/200/300'
         ],
@@ -78,11 +77,8 @@ export const users = [
             firstName: 'Mike',
             lastName: 'Molisani',
             role: 'Private',
-            address: {
-                latitude: 123,
-                longitude: -72
-            },
-            phoneNumber: 1234567890,
+            address: '72 All',
+            phoneNumber: '1234567890',
             dateOfBirth: [1994, 6, 30],
             email: 'mgmolisani@gmail.com',
             connections: {
@@ -96,7 +92,29 @@ export const users = [
                 follows: [5, 6, 7]
             },
             avatar: 'https://picsum.photos/200/300'
-        }
+        },
+    {
+        id: 2,
+        username: 'Joe',
+        firstName: 'joeb',
+        lastName: 'me',
+        role: 'Private',
+        address: '72 All',
+        phoneNumber: '234567890',
+        dateOfBirth: [1994, 6, 30],
+        email: 'mgmolisani@gmail.com',
+        connections: {
+            followers: [1, 1, 1, 1, 1, 1, 1],
+            following: [1, 1, 1, 1, 1]
+        },
+        createdEventsEventlistId: 1,
+        followedEventsEventlistId: 2,
+        eventlists: {
+            owns: [1, 2, 3, 4],
+            follows: [5, 6, 7]
+        },
+        avatar: 'https://picsum.photos/200/300'
+    }
     ]
 ;
 

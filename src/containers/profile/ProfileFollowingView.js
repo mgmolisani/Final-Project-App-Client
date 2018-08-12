@@ -15,7 +15,6 @@ export default class ProfileFollowingView
 
     fetchFollowingForUser() {
         const {userId} = this.props;
-        console.log(userId);
         const following = DummyData.users[userId - 1].connections.following.map(followingId => {
             return DummyData.users[followingId - 1];
         });
