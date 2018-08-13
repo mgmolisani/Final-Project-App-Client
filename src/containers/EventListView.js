@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import EventView from "./EventView";
 import {Route} from "react-router-dom";
 
 export default class EventListView
     extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

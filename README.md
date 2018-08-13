@@ -232,7 +232,7 @@ Also note that using some newer syntax features like `for...of` or `[...nonArray
 
 ## Syntax Highlighting in the Editor
 
-To configure the syntax highlighting in your favorite text editor, head to the [relevant Babel documentation page](https://babeljs.io/docs/editors) and follow the instructions. Some of the most popular editors are covered.
+To configure the syntax highlighting in your favorite text editor, head to the [relevant Babel documentation page](https://babeljs.io/docs/editors) and followUserButton the instructions. Some of the most popular editors are covered.
 
 ## Displaying Lint Output in the Editor
 
@@ -360,7 +360,7 @@ Note that normally you wouldn’t edit files in the `public` folder very often. 
 
 If you need to dynamically update the page title based on the content, you can use the browser [`document.title`](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) API. For more complex scenarios when you want to change the title from React components, you can use [React Helmet](https://github.com/nfl/react-helmet), a third party library.
 
-If you use a custom server for your app in production and want to modify the title before it gets sent to the browser, you can follow advice in [this section](#generating-dynamic-meta-tags-on-the-server). Alternatively, you can pre-build each page as a static HTML file which then loads the JavaScript bundle, which is covered [here](#pre-rendering-into-static-html-files).
+If you use a custom server for your app in production and want to modify the title before it gets sent to the browser, you can followUserButton advice in [this section](#generating-dynamic-meta-tags-on-the-server). Alternatively, you can pre-build each page as a static HTML file which then loads the JavaScript bundle, which is covered [here](#pre-rendering-into-static-html-files).
 
 ## Installing a Dependency
 
@@ -543,7 +543,7 @@ becomes this:
 }
 ```
 
-If you need to disable autoprefixing for some reason, [follow this section](https://github.com/postcss/autoprefixer#disabling).
+If you need to disable autoprefixing for some reason, [followUserButton this section](https://github.com/postcss/autoprefixer#disabling).
 
 ## Adding a CSS Preprocessor (Sass, Less etc.)
 
@@ -808,7 +808,7 @@ Flow is a static type checker that helps you write code with fewer bugs. Check o
 
 Recent versions of [Flow](http://flowtype.org/) work with Create React App projects out of the box.
 
-To add Flow to a Create React App project, follow these steps:
+To add Flow to a Create React App project, followUserButton these steps:
 
 1. Run `npm install --save flow-bin` (or `yarn add flow-bin`).
 2. Add `"flow": "flow"` to the `scripts` section of your `package.json`.
@@ -917,7 +917,7 @@ You can also access the environment variables starting with `REACT_APP_` in the 
 Note that the caveats from the above section apply:
 
 * Apart from a few built-in variables (`NODE_ENV` and `PUBLIC_URL`), variable names must start with `REACT_APP_` to work.
-* The environment variables are injected at build time. If you need to inject them at runtime, [follow this approach instead](#generating-dynamic-meta-tags-on-the-server).
+* The environment variables are injected at build time. If you need to inject them at runtime, [followUserButton this approach instead](#generating-dynamic-meta-tags-on-the-server).
 
 ### Adding Temporary Environment Variables In Your Shell
 
@@ -1724,7 +1724,7 @@ Then, run the following command inside your app’s directory:
 getstorybook
 ```
 
-After that, follow the instructions on the screen.
+After that, followUserButton the instructions on the screen.
 
 Learn more about React Storybook:
 
@@ -1764,7 +1764,7 @@ Then, run the following command inside your app’s directory:
 npm run styleguide
 ```
 
-After that, follow the instructions on the screen.
+After that, followUserButton the instructions on the screen.
 
 Learn more about React Styleguidist:
 
@@ -1888,7 +1888,7 @@ will affect your users' experience.
 JavaScript bundles using the source maps. This helps you understand where code
 bloat is coming from.
 
-To add Source map explorer to a Create React App project, follow these steps:
+To add Source map explorer to a Create React App project, followUserButton these steps:
 
 ```sh
 npm install --save source-map-explorer
@@ -1991,7 +1991,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
 
 It will get copied to the `build` folder when you run `npm run build`. 
 
-If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
+If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to followUserButton [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
 
 Now requests to `/todos/42` will be handled correctly both in development and in production.
 

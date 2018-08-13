@@ -6,10 +6,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 export default class CalendarMonthSelection
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     moveDateBack() {
         this.props.changeDate(moment(this.props.date).subtract(1, 'months'));
     }

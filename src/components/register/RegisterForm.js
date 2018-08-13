@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import FormInput from "../form/FormInput";
 import FormSelect from "../form/FormSelect";
 import {userRoles} from "../../constants/enumerations";
-import ContentView from "../../containers/ContentView";
 
 export default class RegisterForm
     extends Component {
@@ -43,6 +42,9 @@ export default class RegisterForm
         return (
             <div className='form-wrapper'>
                 <form className='form-container'>
+                    <h4 className='text-white mt-3'>
+                        Register
+                    </h4>
                     <FormInput label={'Username'}
                                value={inputFields.username}
                                onChange={value => this.updateInputField({username: value})}/>

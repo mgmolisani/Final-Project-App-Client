@@ -157,8 +157,8 @@ body {
 
 .navigation-menu-container {
     width: 4em;
-    overflow: hidden;
     background-color: rgb(15, 16, 16);
+    overflow: hidden;
     flex: 0 0 auto;
 }
 
@@ -227,7 +227,7 @@ body {
     height: 4em;
 }
 
-.navigation-menu-container a, .app-icon-container a, .menu-container a {
+.navigation-menu-container a, .app-icon-container a {
     height: 100%;
     width: 100%;
     display: flex;
@@ -268,31 +268,38 @@ body {
 }
 
 .menu-container {
-    display: flex;
-    height: 4em;
-    flex: 0 0 auto;
-    flex-wrap: nowrap;
     background: var(--dark);
+    flex: 0 0 4em;
 }
 
-.menu-container ul {
+.menu-container .navbar{
     margin: 0;
     padding: 0;
-    flex-basis: 100%;
-    list-style-type: none;
-    white-space: nowrap;
+    height: 100%;
+    justify-content: flex-end;
 }
 
-.menu-container li {
-    display: inline-block;
-    height: 100%;
+.menu-container .navbar-toggler {
+    height: 4rem;
+    margin-right: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.menu-container li{
+    text-align: center;
+    padding: 0.5em 1.5em;
 }
 
 .menu-container a {
     color: white;
 }
 
-.menu-container li a.active {
+.menu-container a {
+    color: white;
+}
+
+.menu-container a.active {
     text-decoration: underline;
 }
 
@@ -335,7 +342,6 @@ body {
     height: 100%;
     display: flex;
     position: relative;
-    /*background: linear-gradient(45deg, #00191a 0%, #191a1a 0%, #1e1f1f 100%);*/
 }
 
 .content-container {
@@ -398,6 +404,7 @@ body {
 
 .avatar {
     border-radius: 50%;
+    box-shadow: 0 0 100px 5px #000;
     overflow: hidden;
 }
 
@@ -419,6 +426,7 @@ body {
     flex-basis: 100%;
     padding-left: 1em;
     border-left: 1px solid white;
+    white-space: nowrap;
 }
 
 .comment-content-container .username a {

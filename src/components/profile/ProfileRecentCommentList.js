@@ -7,10 +7,6 @@ import models from "../../models/models";
 export default class ProfileRecentCommentList
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     mostRecentXComments(totalComments) {
         let sortedComments = [...this.props.comments];
         sortedComments.sort((a, b) => {
@@ -25,7 +21,8 @@ export default class ProfileRecentCommentList
         return (
             <div className='profile-recent-list'>
                 {this.mostRecentXComments(3).map(comment => {
-                    return <ProfileRecentCommentListItem comment={comment}/>
+                    return <ProfileRecentCommentListItem key={comment.id}
+                                                         comment={comment}/>
                 })}
             </div>
         );

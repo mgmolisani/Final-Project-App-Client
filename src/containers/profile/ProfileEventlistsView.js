@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import ProfileContent from "../../components/profile/ProfileContent";
 import * as DummyData from "../../constants/DummyData";
-import ProfileEventlistsRow from "../../components/profile/ProfileEventlistRow";
+import ProfileEventlistsRow from "../../components/profile/ProfileEventlistList";
+import ContentView from "../ContentView";
+import {Col, Row} from "reactstrap";
+import FormLabel from "../../components/form/FormLabel";
 
 export default class ProfileEventlistsView
     extends Component {
@@ -37,12 +39,24 @@ export default class ProfileEventlistsView
 
     render() {
         return (
-            <ProfileContent>
-                <ProfileEventlistsRow title={'Created'}
-                                      eventlists={this.state.owns}/>
-                <ProfileEventlistsRow title={'Following'}
-                                      eventlists={this.state.follows}/>
-            </ProfileContent>
+            <ContentView>
+                <Row noGutters>
+                    <Col sm={12}
+                         md={6}>
+                        <div className='d-flex flex-column h-100'>
+                            <FormLabel label={'Created By User'}/>
+                            <ProfileEventlistsRow eventlists={this.state.owns}/>
+                        </div>
+                    </Col>
+                    <Col sm={12}
+                         md={6}>
+                        <div className='d-flex flex-column h-100'>
+                            <FormLabel label={'Followed By User'}/>
+                            <ProfileEventlistsRow eventlists={this.state.follows}/>
+                        </div>
+                    </Col>
+                </Row>
+            </ContentView>
         );
     }
 }

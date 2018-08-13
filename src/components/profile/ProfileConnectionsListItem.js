@@ -8,16 +8,12 @@ import {Col, Row} from "reactstrap";
 export default class ProfileConnectionsListItem
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     renderFollowButton() {
         const {user, currentUser} = this.props;
         return (
             currentUser && user.id !== currentUser.id ?
                 <button type={'button'}
-                style={{minWidth: 'fit-content'}}>
+                        style={{minWidth: 'fit-content'}}>
                     {currentUser.connections.following.includes(user.id) ?
                         'Unfollow' :
                         'Follow'
@@ -34,11 +30,11 @@ export default class ProfileConnectionsListItem
                 <div className='comment-avatar'>
                     <Avatar avatar={user.avatar}
                             username={user.username}
-                            size={'7em'}/>
+                            size={'5em'}/>
                 </div>
                 <div className='comment-content-container'>
-                    <Row noGutters>
-                        <Col xs={11}>
+                    <Row className='h-100' noGutters>
+                        <Col>
                             <h5 className='username'>
                                 <Link to={`/profile/${user.id}`}>
                                     {user.username}
@@ -48,8 +44,11 @@ export default class ProfileConnectionsListItem
                                 {`${user.connections.followers.length} Followers`}
                             </h6>
                         </Col>
-                        <Col md={1} >
-                            {this.renderFollowButton()}
+                        <Col xs={12}
+                             md={'auto'}>
+                            <div className='d-flex align-items-center h-100'>
+                                {this.renderFollowButton()}
+                            </div>
                         </Col>
                     </Row>
                 </div>

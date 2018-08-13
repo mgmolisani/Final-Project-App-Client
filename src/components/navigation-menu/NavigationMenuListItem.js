@@ -10,6 +10,7 @@ export default class NavigationMenuListItem
         return (
             <li>
                 <NavLink to={this.props.to}
+                         isActive={this.props.isActive}
                          activeClassName='active'>
                     <div className='position-relative'>
                         <FontAwesomeIcon icon={this.props.icon}

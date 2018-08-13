@@ -6,10 +6,6 @@ import NavigationMenuList from "../components/navigation-menu/NavigationMenuList
 export default class NavigationMenu
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='navigation-menu-container d-flex flex-column'>

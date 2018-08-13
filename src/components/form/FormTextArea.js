@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import FormInput from "./FormInput";
 import FormLabel from "./FormLabel";
 
 export default class FormTextArea
     extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const {label: inputLabel, value, placeholder, rows, resize, onChange} = this.props;
@@ -21,7 +16,7 @@ export default class FormTextArea
                           style={{
                               resize: resize ? 'vertical' : 'none'
                           }}
-                       onChange={onChange}/>
+                          onChange={event => onChange(event.target.value)}/>
             </div>
         );
     }

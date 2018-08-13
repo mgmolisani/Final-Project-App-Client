@@ -3,10 +3,6 @@ import React, {Component} from 'react';
 export default class EventInfo
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='d-flex flex-column h-100 p-3'>

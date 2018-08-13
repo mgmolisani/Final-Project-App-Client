@@ -5,10 +5,6 @@ import CalendarListDay from "./CalendarListDay";
 export default class CalendarList
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     getStartDate() {
         return moment(this.props.activeDate).startOf('month');
     }

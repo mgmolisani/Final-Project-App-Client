@@ -23,8 +23,7 @@ export default class EventView
 
     updateEvent(eventId) {
         const e = DummyData.events.find(event => {
-            console.log(event.id);
-            return event.id === Number.parseInt(eventId);
+            return event.id === Number.parseInt(eventId, 10);
         });
         this.setState({event: e})
     }

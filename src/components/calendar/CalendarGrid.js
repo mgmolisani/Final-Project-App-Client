@@ -5,10 +5,6 @@ import CalendarDay from "./CalendarDay";
 export default class CalendarGrid
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     getStartDate() {
         const activeDate = moment(this.props.activeDate);
         return activeDate.startOf('month').subtract(activeDate.day(), 'days');
@@ -61,7 +57,7 @@ export default class CalendarGrid
                     {week.map(date => {
                         return <CalendarDay key={date.format()}
                                             date={date}
-                                            activities={this.getActivitiesForDate(date)}
+                                            events={this.getEventsForDate(date)}
                                             disabled={date.month() !== this.props.activeDate.month()}/>
                     })}
                 </div>;

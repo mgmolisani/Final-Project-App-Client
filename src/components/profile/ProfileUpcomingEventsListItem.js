@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import models from "../../models/models";
-import {events} from "../../constants/DummyData";
 import moment from "moment/moment";
 import Avatar from "../user/Avatar";
 import {Link} from "react-router-dom";
 
 export default class ProfileUpcomingEventsListItem
     extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const {event} = this.props;

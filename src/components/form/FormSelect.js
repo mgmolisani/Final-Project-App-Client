@@ -5,17 +5,13 @@ import FormLabel from "./FormLabel";
 export default class FormSelect
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {label: inputLabel, value, options, onChange} = this.props;
         return (
             <div className='form-input-container'>
                 <FormLabel label={inputLabel}/>
                 <select value={value}
-                        onChange={onChange}>
+                        onChange={event => onChange(event.target.value)}>
                     {options.map(option => {
                         return <option>
                             {option}

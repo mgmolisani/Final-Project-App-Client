@@ -17,7 +17,7 @@ export default class EventListGridView
     }
 
     fetchEventlistsForUser() {
-        const userId = Number.parseInt(this.props.match.params.userId) || this.state.userId;
+        const userId = Number.parseInt(this.props.match.params.userId, 10) || this.state.userId;
         const u = DummyData.users.find(user => {
             return user.id === userId;
         });

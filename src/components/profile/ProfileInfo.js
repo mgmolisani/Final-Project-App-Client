@@ -18,7 +18,7 @@ class ProfileInfo
                 address: '',
                 phoneNumber: '',
                 email: '',
-                dateOfBirth: '',
+                dateOfBirth: moment().format(moment.HTML5_FMT.DATE)
             }
         };
         this.updateInputField = this.updateInputField.bind(this);
@@ -72,9 +72,9 @@ class ProfileInfo
                                value={moment(inputFields.dateOfBirth).format(moment.HTML5_FMT.DATE)}
                                type={'date'}
                                onChange={value => {
-                                   value ?
-                                       this.updateInputField({dateOfBirth: moment(value).toArray().slice(0, 3)}) :
-                                       null
+                                   if (value) {
+                                       this.updateInputField({dateOfBirth: moment(value).toArray().slice(0, 3)})
+                                   }
                                }}/>
                 </React.Fragment>
             )
@@ -93,7 +93,7 @@ class ProfileInfo
 
     renderFollowButton() {
         const {user, currentUser} = this.props;
-        if (user.id !== currentUser.id) {
+        if (currentUser && user.id !== currentUser.id) {
             return <button type={'button'}
                            onClick={() => {}}>
                 Follow

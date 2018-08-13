@@ -2,16 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import withLogin from "../utils/withLogin";
 import ProfileConnectionsListItem from "./ProfileConnectionsListItem";
-import ProfileRecentCommentList from "./ProfileRecentCommentList";
 import models from "../../models/models";
 import {users} from "../../constants/DummyData";
 
 class ProfileConnectionsList
     extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     sortedFollowersByUsername() {
         let sortedFollowers = [...users];
@@ -27,7 +22,8 @@ class ProfileConnectionsList
         return (
             <div className='profile-recent-list'>
                 {this.sortedFollowersByUsername().map(user => {
-                    return <ProfileConnectionsListItem user={user}
+                    return <ProfileConnectionsListItem key={user.id}
+                                                       user={user}
                                                        currentUser={this.props.currentUser}/>
                 })}
             </div>
@@ -37,8 +33,8 @@ class ProfileConnectionsList
 
 export default withLogin(ProfileConnectionsList);
 
-ProfileRecentCommentList.propTypes = {
-    comments: PropTypes.arrayOf(PropTypes.shape(models.user)).isRequired
+ProfileConnectionsList.propTypes = {
+    users: PropTypes.arrayOf(PropTypes.shape(models.user)).isRequired
 };
 
 ProfileConnectionsList.defaultProps = {};

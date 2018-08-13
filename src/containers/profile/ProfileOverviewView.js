@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import * as DummyData from "../../constants/DummyData";
-import ProfileContent from "../../components/profile/ProfileContent";
 import ProfileInfo from "../../components/profile/ProfileInfo";
+import ContentView from "../ContentView";
 
 export default class ProfileOverviewView
     extends Component {
@@ -41,10 +41,12 @@ export default class ProfileOverviewView
 
     render() {
         return (
-            <ProfileContent>
+            <ContentView>
+                <div className='d-flex flex-column h-100'>
                 <ProfileInfo user={this.state.user}
                              updateUser={this.updateUser}/>
-            </ProfileContent>
+                </div>
+            </ContentView>
         );
     }
 }

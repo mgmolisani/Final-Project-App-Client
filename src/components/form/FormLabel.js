@@ -4,10 +4,6 @@ import PropTypes from 'prop-types'
 export default class FormLabel
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='label-container'>

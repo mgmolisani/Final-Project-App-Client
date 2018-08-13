@@ -1,27 +1,23 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import {NavLink} from "react-router-dom";
+import {NavItem} from "reactstrap";
 
-export default class ProfileMenuItem
+export default class TopMenuItem
     extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
-            <li>
+            <NavItem>
                 <NavLink to={this.props.to}
                          exact={this.props.exact}
                          activeClassName='active'>
                     {this.props.children}
                 </NavLink>
-            </li>
+            </NavItem>
         );
     }
 }
 
-ProfileMenuItem.propTypes = {};
+TopMenuItem.propTypes = {};
 
-ProfileMenuItem.defaultProps = {};
+TopMenuItem.defaultProps = {};

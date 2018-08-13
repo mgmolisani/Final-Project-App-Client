@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import FormInput from "../form/FormInput";
 
 export default class LoginForm
@@ -26,16 +25,23 @@ export default class LoginForm
     render() {
         const {username, password} = this.state;
         return (
-            <div>
-                <FormInput label={'Username'}
-                           value={username}
-                           onChange={event => this.updateUsername(event.target.value)}/>
-                <FormInput label={'Password'}
-                           value={password}
-                           onChange={event => this.updatePassword(event.target.value)}/>
-                <button>
-                    Login
-                </button>
+            <div className='form-wrapper'>
+                <form className='form-container'>
+                    <div>
+                        <h4 className='text-white mt-3'>
+                            Login
+                        </h4>
+                        <FormInput label={'Username'}
+                                   value={username}
+                                   onChange={event => this.updateUsername(event.target.value)}/>
+                        <FormInput label={'Password'}
+                                   value={password}
+                                   onChange={event => this.updatePassword(event.target.value)}/>
+                        <button type={'button'}>
+                            Login
+                        </button>
+                    </div>
+                </form>
             </div>
         );
     }

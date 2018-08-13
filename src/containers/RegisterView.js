@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
 import ContentView from "./ContentView";
-import RegisterMenu from "../components/login/RegisterMenu";
-import RegisterForm from "../components/login/RegisterForm";
+import RegisterMenu from "../components/register/RegisterMenu";
+import RegisterForm from "../components/register/RegisterForm";
 
 export default class RegisterView
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <ContentView>
-                <div className='d-flex flex-column w-100'>
+                <div className='d-flex flex-column w-100 h-100'
+                     style={{
+                         overflow: 'hidden'
+                     }}>
                     <RegisterMenu/>
-                    <RegisterForm/>
+                    <ContentView>
+                        <div className='d-flex flex-column'>
+                            <RegisterForm/>
+                        </div>
+                    </ContentView>
                 </div>
             </ContentView>
         );

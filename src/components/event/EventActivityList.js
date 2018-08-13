@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import moment from "moment/moment";
 
 export default class EventActivityList
     extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

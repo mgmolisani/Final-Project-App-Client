@@ -6,10 +6,6 @@ import moment from "moment";
 class CalendarEventsList
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div style={{

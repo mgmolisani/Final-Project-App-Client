@@ -5,10 +5,6 @@ import {Link, withRouter} from "react-router-dom";
 class EventListCard
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     createEventlistImage() {
         const {eventlist} = this.props;
         const event = DummyData.events.find(event => {

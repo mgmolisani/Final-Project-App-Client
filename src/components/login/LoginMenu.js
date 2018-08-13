@@ -1,26 +1,17 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
-import LoginMenuItem from "./LoginMenuItem";
+import TopMenuItem from "../top-menu/TopMenuItem";
+import TopMenu from "../top-menu/TopMenu";
 
 export default class LoginMenu
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-            <div className='login menu-container'>
-                <ul>
-                    <LoginMenuItem to={'/register'}
-                                     exact>
-                        <div className='px-4'>
-                            Register
-                        </div>
-                    </LoginMenuItem>
-                </ul>
-            </div>
+            <TopMenu expand={'xs'}>
+                <TopMenuItem to={'/register'}>
+                    Register
+                </TopMenuItem>
+            </TopMenu>
         );
     }
 }

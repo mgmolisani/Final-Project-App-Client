@@ -6,10 +6,6 @@ import * as CalendarViewTypes from "../../constants/CalendarViewTypes";
 export default class CalendarTypeSelection
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <ButtonGroup>

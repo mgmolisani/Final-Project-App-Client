@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import ProfileMenuItem from "./ProfileMenuItem";
 import {withRouter} from "react-router-dom";
 import * as DummyData from "../../constants/DummyData";
+import TopMenuItem from "../top-menu/TopMenuItem";
+import TopMenu from "../top-menu/TopMenu";
 
 class ProfileMenu
     extends Component {
@@ -32,36 +33,24 @@ class ProfileMenu
         const {url} = this.props.match;
         const {user} = this.state;
         return (
-            <div className='profile menu-container'>
-                <ul>
-                    <ProfileMenuItem to={`${url}`}
-                                     exact>
-                        <div className='px-4'>
-                            Overview
-                        </div>
-                    </ProfileMenuItem>
-                    <ProfileMenuItem to={`${url}/recent`}>
-                        <div className='px-4'>
-                            Recent Activity
-                        </div>
-                    </ProfileMenuItem>
-                    <ProfileMenuItem to={`${url}/eventlists`}>
-                        <div className='px-4'>
-                            Event Lists
-                        </div>
-                    </ProfileMenuItem>
-                    <ProfileMenuItem to={`${url}/followers`}>
-                        <div className='px-4'>
-                            {`Followers${user ? ` (${user.connections.followers.length})` : ''}`}
-                        </div>
-                    </ProfileMenuItem>
-                    <ProfileMenuItem to={`${url}/following`}>
-                        <div className='px-4'>
-                            {`Following${user ? ` (${user.connections.following.length})` : ''}`}
-                        </div>
-                    </ProfileMenuItem>
-                </ul>
-            </div>
+            <TopMenu>
+                <TopMenuItem to={`${url}`}
+                             exact>
+                    Overview
+                </TopMenuItem>
+                <TopMenuItem to={`${url}/recent`}>
+                    Recent Activity
+                </TopMenuItem>
+                <TopMenuItem to={`${url}/eventlists`}>
+                    Event Lists
+                </TopMenuItem>
+                <TopMenuItem to={`${url}/followers`}>
+                    {`Followers${user ? ` (${user.connections.followers.length})` : ''}`}
+                </TopMenuItem>
+                <TopMenuItem to={`${url}/following`}>
+                    {`Following${user ? ` (${user.connections.following.length})` : ''}`}
+                </TopMenuItem>
+            </TopMenu>
         );
     }
 }

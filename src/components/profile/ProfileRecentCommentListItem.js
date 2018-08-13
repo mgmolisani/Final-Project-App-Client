@@ -9,10 +9,6 @@ import {Link} from "react-router-dom";
 export default class ProfileRecentCommentListItem
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {/*forEvent, */content, date} = this.props.comment;
         const forEvent = events[0];

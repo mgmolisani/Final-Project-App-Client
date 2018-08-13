@@ -5,10 +5,6 @@ import CalendarEventsList from "./CalendarEventsList";
 export default class CalendarDay
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='calendar-cell d-flex flex-column'

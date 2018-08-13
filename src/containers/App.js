@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
 import NavigationMenu from "./NavigationMenu";
 import {Route, Switch} from "react-router-dom";
 import EventListGridView from "./EventListGridView";
@@ -7,20 +6,12 @@ import ProfileView from "./ProfileView";
 import SearchView from "./SearchView";
 import PageNotFoundView from "./PageNotFoundView";
 import HomeView from "./HomeView";
-import NewEventView from "./NewEventView";
+import CreateView from "./CreateView";
 import CalendarView from "./CalendarView";
 import LoginView from "./LoginView";
 import RegisterView from "./RegisterView";
 
-function mapStateToProps(state, ownProps) {
-    return state;
-}
-
-function mapDispatchToProps(dispatch, ownProps) {
-    return {}
-}
-
-class App
+export default class App
     extends Component {
 
     render() {
@@ -46,7 +37,7 @@ class App
                     <Route path={'/search'}
                            component={SearchView}/>
                     <Route path={'/new'}
-                           component={NewEventView}/>
+                           component={CreateView}/>
                     <Route path={'/profile/:userId'}
                            component={ProfileView}/>
                     <Route path={'/login'}
@@ -59,8 +50,3 @@ class App
         );
     }
 }
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App);

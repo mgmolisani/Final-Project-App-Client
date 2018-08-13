@@ -5,10 +5,6 @@ import withLogin from "../utils/withLogin";
 class ProfileIcon
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='profile-icon-container'>

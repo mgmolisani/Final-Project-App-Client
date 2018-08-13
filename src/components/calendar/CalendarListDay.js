@@ -4,10 +4,6 @@ import CalendarListDayEventsList from "./CalendarListDayEventsList";
 export default class CalendarListDay
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='calendar-list-day d-flex flex-nowrap'>

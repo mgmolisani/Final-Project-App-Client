@@ -4,10 +4,6 @@ import moment from "moment/moment";
 export default class CalendarListDayEventsList
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>

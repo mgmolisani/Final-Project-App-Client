@@ -6,10 +6,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 export default class EventMenu
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <ButtonGroup className='d-flex'>

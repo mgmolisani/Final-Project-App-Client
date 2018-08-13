@@ -9,10 +9,6 @@ import moment from "moment";
 export default class EventCommentListItem
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {/*postedBy, */content, date} = this.props.comment;
         const postedBy = users[0];
