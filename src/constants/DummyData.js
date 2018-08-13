@@ -26,19 +26,19 @@ export const comments = [
     {
         id: 1,
         postedBy: 1,
-        content: 'Let\'s play!',
+        content: 'Let\'s play some shit!',
         date: [2018, 7, 12, 15, 25]
     },
     {
         id: 2,
         postedBy: 2,
-        content: 'Let\'s eat!',
+        content: 'Let\'s eat some shit!',
         date: [2018, 7, 12, 19, 25]
     },
     {
         id: 3,
         postedBy: 1,
-        content: 'Let\'s party!',
+        content: 'Let\'s party some shit!',
         date: [2018, 7, 12, 17, 25]
     }
 ];
@@ -49,24 +49,32 @@ export const events = [
         name: 'Birthday',
         description: 'It\'s Mike\'s birthday!',
         hosts: [1],
-        location: '72',
-        activities: activitiesForEvent1,
+        private: false,
+        invited: [],
+        followedBy: [],
+        address: '72',
         images: [
             'https://picsum.photos/200/300'
         ],
-        comments: comments
+        comments: comments,
+        start: [2018, 7, 12, 19, 25],
+        end: [2018, 7, 12, 21, 25]
     },
     {
         id: 2,
-        name: 'Birthday2',
-        description: 'It\'s Mike\'s birthday!',
-        host: [2],
-        activities: [],
-        location: '76',
+        name: 'B0rthday',
+        description: 'It\'s Dan\'s birthday!',
+        hosts: [1],
+        private: true,
+        invited: [],
+        followedBy: [],
+        address: '72',
         images: [
             'https://picsum.photos/200/300'
         ],
-        comments: []
+        comments: comments,
+        start: [2018, 7, 12, 19, 25],
+        end: [2018, 7, 12, 21, 25]
     }
 ];
 

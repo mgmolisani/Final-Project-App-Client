@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import * as DummyData from "../../constants/DummyData";
 import ProfileConnectionsList from "../../components/profile/ProfileConnectionsList";
-import ProfileContent from "../../components/profile/ProfileContent";
+import ContentView from "../ContentView";
+import FormLabel from "../../components/form/FormLabel";
 
 export default class ProfileFollowersView
     extends Component {
@@ -33,9 +34,12 @@ export default class ProfileFollowersView
 
     render() {
         return (
-            <ProfileContent>
-                <ProfileConnectionsList users={this.state.followers}/>
-            </ProfileContent>
+            <ContentView>
+                <div className='d-flex flex-column h-100'>
+                    <FormLabel label={'Followers'}/>
+                    <ProfileConnectionsList users={this.state.followers}/>
+                </div>
+            </ContentView>
         );
     }
 }

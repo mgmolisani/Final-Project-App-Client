@@ -41,8 +41,8 @@ export default class RegisterForm
     render() {
         const {inputFields, passwordVisible} = this.state;
         return (
-            <div className='login-form-wrapper'>
-                <form className='login-form-container'>
+            <div className='form-wrapper'>
+                <form className='form-container'>
                     <FormInput label={'Username'}
                                value={inputFields.username}
                                onChange={value => this.updateInputField({username: value})}/>

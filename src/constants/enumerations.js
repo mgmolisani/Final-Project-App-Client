@@ -1,9 +1,10 @@
 export const connectionTypes = {
-    FOLLOW: 'FOLLOW',
-    UNFOLLOW: 'UNFOLLOW'
+    FOLLOW: 'Follow',
+    UNFOLLOW: 'Unfollow'
 };
 
 export const userRoles = {
     PRIVATE: 'Private',
-    PUBLIC: 'Public'
+    PUBLIC: 'Public',
+    ADMIN: 'Administrator'
 };

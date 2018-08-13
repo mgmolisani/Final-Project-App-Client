@@ -40,7 +40,10 @@ export default class ProfileView
         const {userId} = params;
         return (
             <ContentView>
-                <div className='d-flex flex-column w-100'>
+                <div className='d-flex flex-column w-100 h-100'
+                style={{
+                    overflow: 'hidden'
+                }}>
                     <ProfileMenu/>
                     <Switch>
                         <ProfileRoute path={`${url}`}

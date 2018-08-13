@@ -11,9 +11,9 @@ export default class ProfileUpcomingEventsList
 
     render() {
         return (
-            <div>
-                {this.props.activities.map(activity => {
-                    return <ProfileUpcomingEventsListItem activity={activity}/>
+            <div className='profile-recent-list'>
+                {this.props.events.map(event => {
+                    return <ProfileUpcomingEventsListItem event={event}/>
                 })}
             </div>
         );

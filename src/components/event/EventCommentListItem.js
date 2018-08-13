@@ -18,20 +18,20 @@ export default class EventCommentListItem
         const postedBy = users[0];
 
         return (
-            <div className='event-comment-container'>
-                <div className='event-comment-avatar'>
+            <div className='comment-container'>
+                <div className='comment-avatar'>
                     <Avatar avatar={postedBy.avatar}
                             username={postedBy.username}
                             size={'4em'}/>
                 </div>
-                <div className='event-comment-content-container'>
+                <div className='comment-content-container'>
                     <h5 className='username'>
                         <Link to={`/profile/${postedBy.id}`}>
                             {postedBy.username}
                         </Link>
                     </h5>
                     <h6 className='timestamp'>
-                        {moment(date).format('llll')}
+                        {moment(date).format('L LT')}
                     </h6>
                     <p className='content'>
                         {content}
