@@ -7,23 +7,23 @@ export default class CalendarListDayEventsList
     render() {
         return (
             <div>
-                {this.props.events.map(activity => {
-                    return <div key={activity.name}
+                {this.props.events.map(event => {
+                    return <div key={event.id}
                                 className='p-3'>
                         <div className='d-flex justify-content-between'>
                             <h5>
-                                {activity.name}
+                                {event.name}
                             </h5>
                             <h5>
-                                {moment(activity.start).format('h:mma').slice(0, -1)}
+                                {moment(event.start).format('h:mma').slice(0, -1)}
                             </h5>
                         </div>
                         <div className='d-flex justify-content-between'>
                             <div>
-                                {activity.description}
+                                {event.description}
                             </div>
                             <div>
-                                {moment(activity.end).format('h:mma').slice(0, -1)}
+                                {moment(event.end).format('h:mma').slice(0, -1)}
                             </div>
                         </div>
                     </div>

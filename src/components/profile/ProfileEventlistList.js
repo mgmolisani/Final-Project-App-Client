@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import ProfileEventlistListItem from "./ProfileEventlistListItem";
-import models from "../../containers/EventView";
 import withLogin from "../utils/withLogin";
 
 class ProfileEventlistList
@@ -12,7 +10,7 @@ class ProfileEventlistList
         return (
             <div className='profile-recent-list'>
                 {eventlists.map(eventlist => {
-                    return <ProfileEventlistListItem key={eventlist.id}
+                    return <ProfileEventlistListItem key={eventlist._id}
                                                      eventlist={eventlist}
                                                      currentUser={currentUser}/>
                 })}
@@ -23,8 +21,6 @@ class ProfileEventlistList
 
 export default withLogin(ProfileEventlistList);
 
-ProfileEventlistList.propTypes = {
-    eventlists: PropTypes.arrayOf(PropTypes.shape(models.event)).isRequired
-};
+ProfileEventlistList.propTypes = {};
 
 ProfileEventlistList.defaultProps = {};

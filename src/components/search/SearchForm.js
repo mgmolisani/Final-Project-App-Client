@@ -21,19 +21,17 @@ class SearchForm
 
     render() {
         return (
-            <div className='form-wrapper'>
-                <form className='form-container'>
-                    <h4 className='text-white mt-3'>
-                        Search
-                    </h4>
-                    <FormInput label={'Enter your search . . .'}
-                               value={this.state.search}
-                               onChange={value => this.updateInputField(value)}/>
-                    <Link to={`${this.props.location.pathname}?${queryString.stringify(this.state)}`}>
-                        Search
-                    </Link>
-                </form>
-            </div>
+            <React.Fragment>
+                <h4 className='text-white mt-3'>
+                    Search
+                </h4>
+                <FormInput label={'Search for events around you . . .'}
+                           value={this.state.search}
+                           onChange={value => this.updateInputField(value)}/>
+                <Link to={`${this.props.location.pathname}?${queryString.stringify(this.state)}`}>
+                    Search
+                </Link>
+            </React.Fragment>
         );
     }
 }

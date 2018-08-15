@@ -14,16 +14,8 @@ export default class CalendarList
     }
 
 
-
     getActivitiesForDate(date) {
-        return this.props.events.reduce((activities, event) => {
-            activities = [...activities,
-                ...event.activities.filter(activity => {
-                    return moment(activity.start).startOf('date').isSame(date.startOf('date'));
-                })
-            ];
-            return activities;
-        }, []);
+        return this.props.events;
     }
 
     renderDates() {
@@ -45,7 +37,7 @@ export default class CalendarList
                                                  disabled={date.month() !== this.props.activeDate.month()}/>)
             }
             return validDates;
-        },[]);
+        }, []);
     }
 
     render() {

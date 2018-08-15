@@ -8,23 +8,23 @@ class NavigationMenuList
     render() {
         return (
             <ul className='text-secondary text-center'>
-                <NavigationMenuListItem to={'/calendar'}
-                                        icon={['far', 'calendar']}
-                                        alerts={3}/>
-                <NavigationMenuListItem to={'/eventlist'}
-                                        icon={'list'}
-                                        alerts={0}/>
                 <NavigationMenuListItem to={'/search/user'}
                                         isActive={(match, location) => {
                                             return location.pathname.startsWith('/search');
                                         }}
                                         icon={'search'}
                                         alerts={0}/>
-                <NavigationMenuListItem to={'/new/event'}
+                <NavigationMenuListItem to={'/calendar'}
+                                        icon={['far', 'calendar']}
+                                        alerts={0}/>
+                <NavigationMenuListItem to={'/create/event'}
                                         isActive={(match, location) => {
-                                            return location.pathname.startsWith('/new');
+                                            return location.pathname.startsWith('/create');
                                         }}
                                         icon={'plus'}
+                                        alerts={0}/>
+                <NavigationMenuListItem to={'/admin'}
+                                        icon={'database'}
                                         alerts={0}/>
             </ul>
         );

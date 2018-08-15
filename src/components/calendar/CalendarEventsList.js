@@ -11,18 +11,19 @@ class CalendarEventsList
             <div style={{
                 overflow: 'auto'
             }}>
-                {this.props.activities.map(activity => {
-                    return <Link className='d-block'
+                {this.props.events.map(event => {
+                    return <Link key={event.id}
+                                 className='d-block'
                                  style={{
                                      marginTop: 2,
                                      marginBottom: 2,
                                      padding: 2,
                                      backgroundColor: 'rgb(168, 121, 229)'
                                  }}
-                                 to={`${this.props.match.url}/event/${activity.eventId}`}>
-                        {moment(activity.start).format('h:mma').slice(0, -1)}
+                                 to={`${this.props.match.url}/event/${event.id}`}>
+                        {moment(event.start).format('h:mma').slice(0, -1)}
                         <span className='ml-1'>
-                            {activity.name}
+                            {event.name}
                         </span>
                     </Link>
                 })}

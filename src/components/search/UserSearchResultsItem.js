@@ -8,7 +8,7 @@ export default class UserSearchResultsItem
     extends Component {
 
     render() {
-        const {user, currentUser} = this.props;
+        const {user} = this.props;
         return (
             <div className='comment-container'>
                 <div className='comment-avatar'>
@@ -20,19 +20,18 @@ export default class UserSearchResultsItem
                     <Row className='h-100' noGutters>
                         <Col>
                             <h5 className='username'>
-                                <Link to={`/profile/${user.id}`}>
+                                <Link to={`/profile/${user._id}`}>
                                     {user.username}
                                 </Link>
                             </h5>
                             <h6 className='timestamp'>
-                                {`${user.connections.followers.length} Followers`}
+                                {`${user.eventlists.owns.length} Event Lists`}
                             </h6>
                         </Col>
                         <Col xs={12}
                              md={'auto'}>
                             <div className='d-flex align-items-center h-100'>
-                                <FollowUserButton user={user}
-                                                  currentUser={currentUser}/>
+                                <FollowUserButton user={user}/>
                             </div>
                         </Col>
                     </Row>

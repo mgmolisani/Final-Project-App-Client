@@ -1,27 +1,11 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import models from "../../models/models";
 import Avatar from "../user/Avatar";
 import {Link} from "react-router-dom";
 import {Col, Row} from "reactstrap";
+import FollowUserButton from "../buttons/FollowUserButton";
 
 export default class ProfileConnectionsListItem
     extends Component {
-
-    renderFollowButton() {
-        const {user, currentUser} = this.props;
-        return (
-            currentUser && user.id !== currentUser.id ?
-                <button type={'button'}
-                        style={{minWidth: 'fit-content'}}>
-                    {currentUser.connections.following.includes(user.id) ?
-                        'Unfollow' :
-                        'Follow'
-                    }
-                </button> :
-                null
-        )
-    }
 
     render() {
         const {user} = this.props;
@@ -36,18 +20,18 @@ export default class ProfileConnectionsListItem
                     <Row className='h-100' noGutters>
                         <Col>
                             <h5 className='username'>
-                                <Link to={`/profile/${user.id}`}>
+                                <Link to={`/profile/${user._id}`}>
                                     {user.username}
                                 </Link>
                             </h5>
                             <h6 className='timestamp'>
-                                {`${user.connections.followers.length} Followers`}
+                                {user.eventlists.owns.length} Event Lists
                             </h6>
                         </Col>
                         <Col xs={12}
                              md={'auto'}>
                             <div className='d-flex align-items-center h-100'>
-                                {this.renderFollowButton()}
+                                <FollowUserButton user={user}/>
                             </div>
                         </Col>
                     </Row>
@@ -57,9 +41,6 @@ export default class ProfileConnectionsListItem
     }
 }
 
-ProfileConnectionsListItem.propTypes = {
-    user: PropTypes.shape(models.user).isRequired,
-    currentUser: PropTypes.shape(models.user).isRequired
-};
+ProfileConnectionsListItem.propTypes = {};
 
 ProfileConnectionsListItem.defaultProps = {};

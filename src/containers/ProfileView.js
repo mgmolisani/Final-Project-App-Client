@@ -9,6 +9,7 @@ import ProfileFollowersView from "./profile/ProfileFollowersView";
 import ProfileFollowingView from "./profile/ProfileFollowingView";
 import * as DummyData from "../constants/DummyData";
 import ProfileRoute from "../components/utils/ProfileRoute";
+import NavigationMenu from "./NavigationMenu";
 
 export default class ProfileView
     extends Component {
@@ -39,32 +40,43 @@ export default class ProfileView
         const {url, params} = this.props.match;
         const {userId} = params;
         return (
-            <ContentView>
-                <div className='d-flex flex-column w-100 h-100'
-                style={{
-                    overflow: 'hidden'
-                }}>
-                    <ProfileMenu/>
-                    <Switch>
-                        <ProfileRoute path={`${url}`}
-                                      exact
-                                      component={ProfileOverviewView}
-                                      userId={userId}/>
-                        <ProfileRoute path={`${url}/recent`}
-                                      component={ProfileRecentActivityView}
-                                      userId={userId}/>
-                        <ProfileRoute path={`${url}/eventlists`}
-                                      component={ProfileEventlistsView}
-                                      userId={userId}/>
-                        <ProfileRoute path={`${url}/followers`}
-                                      component={ProfileFollowersView}
-                                      userId={userId}/>
-                        <ProfileRoute path={`${url}/following`}
-                                      component={ProfileFollowingView}
-                                      userId={userId}/>
-                    </Switch>
-                </div>
-            </ContentView>
+            <div className='d-flex'
+                 style={{
+                     position: 'absolute',
+                     top: 0,
+                     bottom: 0,
+                     left: 0,
+                     right: 0,
+                     overflow: 'hidden'
+                 }}>
+                <NavigationMenu/>
+                <ContentView>
+                    <div className='d-flex flex-column w-100 h-100'
+                         style={{
+                             overflow: 'hidden'
+                         }}>
+                        <ProfileMenu/>
+                        <Switch>
+                            <ProfileRoute path={`${url}`}
+                                          exact
+                                          component={ProfileOverviewView}
+                                          userId={userId}/>
+                            <ProfileRoute path={`${url}/recent`}
+                                          component={ProfileRecentActivityView}
+                                          userId={userId}/>
+                            <ProfileRoute path={`${url}/eventlists`}
+                                          component={ProfileEventlistsView}
+                                          userId={userId}/>
+                            <ProfileRoute path={`${url}/followers`}
+                                          component={ProfileFollowersView}
+                                          userId={userId}/>
+                            <ProfileRoute path={`${url}/following`}
+                                          component={ProfileFollowingView}
+                                          userId={userId}/>
+                        </Switch>
+                    </div>
+                </ContentView>
+            </div>
         );
     }
 }

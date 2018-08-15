@@ -8,7 +8,7 @@ export default class ProfileUpcomingEventsList
         return (
             <div className='profile-recent-list'>
                 {this.props.events.map(event => {
-                    return <ProfileUpcomingEventsListItem key={event.id}
+                    return <ProfileUpcomingEventsListItem key={event._id}
                                                           event={event}/>
                 })}
             </div>

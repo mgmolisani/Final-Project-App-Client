@@ -26,7 +26,9 @@ export const events = [
     {
         id: 1,
         name: 'Birthday',
-        description: 'It\'s Mike\'s birthday!',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sem augue, rhoncus tincidunt vestibulum non, accumsan et nulla. Donec vel nibh in orci blandit efficitur quis vel purus. Maecenas varius velit leo, quis mattis velit placerat at. Suspendisse a sapien quam. In eget commodo dolor, sit amet dignissim lorem. Curabitur et laoreet magna. Proin malesuada tincidunt tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec nulla metus, viverra nec porta vitae, bibendum sit amet leo.\n' +
+        '\n' +
+        'Maecenas tempor euismod posuere. Nam nec feugiat nibh, non ultricies lorem. Aliquam at tellus ut turpis rutrum faucibus vel eget diam. Nunc quis sodales felis, id suscipit orci. Curabitur eu gravida metus, non tincidunt tortor. Quisque suscipit nisl diam, id interdum sem lacinia id. Sed et tempus dolor. Integer blandit maximus semper. Pellentesque ut volutpat tortor. In lacinia iaculis nunc, vitae fringilla nibh egestas egestas. Curabitur luctus a quam vitae porttitor. Mauris eget bibendum enim, nec ornare enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
         host: 1,
         private: false,
         invited: [],
@@ -42,8 +44,10 @@ export const events = [
     {
         id: 2,
         name: 'B0rthday',
-        description: 'It\'s Dan\'s birthday!',
-        hosts: 2,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sem augue, rhoncus tincidunt vestibulum non, accumsan et nulla. Donec vel nibh in orci blandit efficitur quis vel purus. Maecenas varius velit leo, quis mattis velit placerat at. Suspendisse a sapien quam. In eget commodo dolor, sit amet dignissim lorem. Curabitur et laoreet magna. Proin malesuada tincidunt tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec nulla metus, viverra nec porta vitae, bibendum sit amet leo.\n' +
+        '\n' +
+        'Maecenas tempor euismod posuere. Nam nec feugiat nibh, non ultricies lorem. Aliquam at tellus ut turpis rutrum faucibus vel eget diam. Nunc quis sodales felis, id suscipit orci. Curabitur eu gravida metus, non tincidunt tortor. Quisque suscipit nisl diam, id interdum sem lacinia id. Sed et tempus dolor. Integer blandit maximus semper. Pellentesque ut volutpat tortor. In lacinia iaculis nunc, vitae fringilla nibh egestas egestas. Curabitur luctus a quam vitae porttitor. Mauris eget bibendum enim, nec ornare enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+        host: 2,
         private: true,
         invited: [],
         followedBy: [],
@@ -79,7 +83,8 @@ export const users = [
                 follows: [5, 6, 7]
             },
             avatar: 'https://picsum.photos/200/300',
-            comments: [1, 2, 3]
+            comments: [1, 2, 3],
+            invites: [1, 2]
         },
         {
             id: 2,
@@ -102,7 +107,8 @@ export const users = [
                 owns: [1, 2, 3, 4],
                 follows: [5, 6, 7]
             },
-            avatar: 'https://picsum.photos/200/300'
+            avatar: 'https://picsum.photos/200/300',
+            invites: [1]
         }
     ]
 ;

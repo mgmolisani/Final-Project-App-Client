@@ -3,7 +3,7 @@ import withLogin from "../utils/withLogin";
 import FormLabel from "../form/FormLabel";
 import EventSearchResultsItem from "./EventSearchResultsItem";
 
-class EventSearchResults
+export default class EventSearchResults
     extends Component {
 
     render() {
@@ -12,17 +12,14 @@ class EventSearchResults
                 <FormLabel label={'Event Search Results'}/>
                 <div className='profile-recent-list'>
                     {this.props.events.map(event => {
-                        return <EventSearchResultsItem key={event.id}
-                                                       event={event}
-                                                       currentUser={this.props.currentUser}/>
+                        return <EventSearchResultsItem key={event._id}
+                                                       event={event}/>
                     })}
                 </div>
             </React.Fragment>
         );
     }
 }
-
-export default withLogin(EventSearchResults);
 
 EventSearchResults.propTypes = {};
 

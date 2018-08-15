@@ -15,21 +15,8 @@ export default class CalendarGrid
         return activeDate.endOf('month').add(6 - activeDate.day(), 'days');
     }
 
-    getActivitiesForDate(date) {
-        return this.props.events.reduce((activities, event) => {
-            activities = [...activities,
-                ...event.activities.reduce((filtered, activity) => {
-                    if (moment(activity.start).startOf('date').isSame(date.startOf('date'))) {
-                        filtered.push({
-                            ...activity,
-                            eventId: event.id
-                        })
-                    }
-                    return filtered;
-                }, [])
-            ];
-            return activities;
-        }, []);
+    getEventsForDate(date) {
+        return this.props.events;
     }
 
     renderDates() {
@@ -48,14 +35,15 @@ export default class CalendarGrid
             }
         }
         return <div className='d-flex flex-column h-100'>
-            {rows.map(week => {
-                return <div className='d-flex'
+            {rows.map((week, weekIndex) => {
+                return <div key={weekIndex}
+                            className='d-flex'
                             style={{
                                 flexBasis: '100%',
                                 borderTop: '1px solid lightgrey'
                             }}>
-                    {week.map(date => {
-                        return <CalendarDay key={date.format()}
+                    {week.map((date, dayIndex) => {
+                        return <CalendarDay key={dayIndex}
                                             date={date}
                                             events={this.getEventsForDate(date)}
                                             disabled={date.month() !== this.props.activeDate.month()}/>
@@ -68,7 +56,8 @@ export default class CalendarGrid
     static renderDatesHeader() {
         return <div className='d-flex'>
             {moment.weekdaysShort().map(day => {
-                return <div className='calendar-cell'>
+                return <div key={day}
+                            className='calendar-cell'>
                     <h4 className='text-center'>
                         {day}
                     </h4>

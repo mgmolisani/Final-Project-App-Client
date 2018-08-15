@@ -15,7 +15,7 @@ export default class CalendarDay
                     {this.props.date.date()}
                 </h5>
                 {!this.props.disabled && <CalendarEventsList date={this.props.date}
-                                                             activities={this.props.activities}/>}
+                                                             events={this.props.events}/>}
             </div>
         );
     }

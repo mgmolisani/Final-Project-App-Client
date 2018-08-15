@@ -188,12 +188,13 @@ body {
 .app-icon-container {
     height: 4em;
     width: 4em;
-    background-color: rgb(35, 36, 36);
+    padding: 0.5em;
+    background-color: var(--dark);
 }
 
 .app-icon {
-    width: 2.5em;
-    height: 2.5em;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -202,12 +203,8 @@ body {
     height: 100%;
 }
 
-.app-icon svg g{
+.app-icon svg g {
     fill: white;
-}
-
-.app-icon-container:hover .app-icon svg g{
-    fill: rebeccapurple;
 }
 
 .calendar-view-header {
@@ -223,7 +220,7 @@ body {
     list-style-type: none;
 }
 
-.navigation-menu-container li{
+.navigation-menu-container li {
     height: 4em;
 }
 
@@ -263,7 +260,7 @@ body {
     background: darkred;
 }
 
-.navigation-menu-container li:hover .navigation-menu-item-alert{
+.navigation-menu-container li:hover .navigation-menu-item-alert {
     border-color: var(--darker);
 }
 
@@ -272,7 +269,7 @@ body {
     flex: 0 0 4em;
 }
 
-.menu-container .navbar{
+.menu-container .navbar {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -286,7 +283,7 @@ body {
     outline: none;
 }
 
-.menu-container li{
+.menu-container li {
     text-align: center;
     padding: 0.5em 1.5em;
 }
@@ -313,7 +310,7 @@ body {
     overflow: auto;
 }
 
-.login.menu-container li{
+.login.menu-container li {
     float: right;
 }
 
@@ -358,6 +355,7 @@ body {
     width: 100%;
     padding: 2px 4px;
     border: 1px solid grey;
+    outline: none;
 }
 
 .form-input-container input:read-only,
@@ -404,11 +402,11 @@ body {
 
 .avatar {
     border-radius: 50%;
-    box-shadow: 0 0 100px 5px #000;
+    box-shadow: 0 0 25px -5px #000;
     overflow: hidden;
 }
 
-.avatar img{
+.avatar img {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -426,7 +424,6 @@ body {
     flex-basis: 100%;
     padding-left: 1em;
     border-left: 1px solid white;
-    white-space: nowrap;
 }
 
 .comment-content-container .username a {
@@ -437,7 +434,7 @@ body {
     color: var(--light);
 }
 
-.comment-content-container .content{
+.comment-content-container .content {
     margin: 0;
     color: white;
 }

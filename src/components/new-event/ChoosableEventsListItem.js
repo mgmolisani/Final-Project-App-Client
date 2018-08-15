@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
-import models from "../../models/models";
 import moment from "moment/moment";
 import Avatar from "../user/Avatar";
 import {Link} from "react-router-dom";
@@ -11,7 +9,6 @@ export default class ChoosableEventsListItem
 
     render() {
         const {event} = this.props;
-
         return (
             <div className='comment-container'>
                 <div className='comment-avatar'>
@@ -20,10 +17,16 @@ export default class ChoosableEventsListItem
                             size={'4em'}/>
                 </div>
                 <div className='comment-content-container'>
-                    <Row className='h-100' noGutters>
+                    <Row className='h-100 flex-md-row-reverse' noGutters>
+                        <Col xs={12}
+                             md={'auto'}>
+                            <button type={'button'}>
+                                Add
+                            </button>
+                        </Col>
                         <Col>
                             <h5 className='username'>
-                                <Link to={`/event/${event.id}`}>
+                                <Link to={`/event/${event._id}`}>
                                     {event.name}
                                 </Link>
                             </h5>
@@ -37,12 +40,6 @@ export default class ChoosableEventsListItem
                                 {event.description}
                             </p>
                         </Col>
-                        <Col xs={12}
-                             md={'auto'}>
-                            <button type={'button'}>
-                                Add
-                            </button>
-                        </Col>
                     </Row>
                 </div>
             </div>
@@ -50,8 +47,6 @@ export default class ChoosableEventsListItem
     }
 }
 
-ChoosableEventsListItem.propTypes = {
-    event: PropTypes.shape(models.event).isRequired
-};
+ChoosableEventsListItem.propTypes = {};
 
 ChoosableEventsListItem.defaultProps = {};

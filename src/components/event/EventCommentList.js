@@ -1,56 +1,24 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import EventCommentListItem from "./EventCommentListItem";
-import * as DummyData from "../../constants/DummyData";
-import moment from "moment";
+import {withRouter} from "react-router-dom";
 
-export default class EventCommentList
+class EventCommentList
     extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            comments: []
-        }
-    }
-
-    fetchCommentsForEvent() {
-        this.setState({comments: DummyData.comments});
-    }
-
-    componentDidMount() {
-        this.fetchCommentsForEvent();
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.eventId !== prevProps.eventId) {
-            this.fetchCommentsForEvent();
-        }
-    }
-
-    sortedCommentsByDate() {
-        let sortedComments = [...this.state.comments];
-        sortedComments.sort((a, b) => {
-            return moment(a.date).isBefore(moment(b.date)) ?
-                -1 :
-                1
-        });
-        return sortedComments
-    }
 
     render() {
         return (
-            <div>
-                {this.sortedCommentsByDate().map(comment => {
-                    return <EventCommentListItem comment={comment}/>
+            <div className='profile-recent-list'>
+                {this.props.comments.map(comment => {
+                    return <EventCommentListItem key={comment._id}
+                                                 comment={comment}/>
                 })}
             </div>
         );
     }
 }
 
-EventCommentList.propTypes = {
-    eventId: PropTypes.number.isRequired
-};
+export default withRouter(EventCommentList);
+
+EventCommentList.propTypes = {};
 
 EventCommentList.defaultProps = {};

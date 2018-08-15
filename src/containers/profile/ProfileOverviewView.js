@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import * as DummyData from "../../constants/DummyData";
 import ProfileInfo from "../../components/profile/ProfileInfo";
 import ContentView from "../ContentView";
+import UserService from "../../services/UserServices";
 
 export default class ProfileOverviewView
     extends Component {
@@ -10,41 +10,45 @@ export default class ProfileOverviewView
         super(props);
         this.state = {
             user: {}
-        };
+        }
+        ;
         this.updateUser = this.updateUser.bind(this);
+        this.userService = UserService.instance;
     }
 
-    fetchUserById() {
+    findUserById() {
         const {userId} = this.props;
-        const user = DummyData.users[userId - 1];
-        this.setState({user});
+        this.userService
+            .findUserById(userId)
+            .then(user => {
+                this.setState({user});
+            });
     }
 
     updateUser(user) {
-        this.setState({
-            user: {
-                ...this.state.user,
-                ...user
-            }
-        })
-    }
+        this.userService
+            .updateUser(this.props.userId, user)
+            .then(user => {
+                this.setState({user});
+            })
+    };
 
     componentDidMount() {
-        this.fetchUserById();
+        this.findUserById();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.userId !== prevProps.userId) {
-            this.fetchUserById();
+            this.findUserById();
         }
     }
 
     render() {
         return (
             <ContentView>
-                <div className='d-flex flex-column h-100'>
-                <ProfileInfo user={this.state.user}
-                             updateUser={this.updateUser}/>
+                <div className='d-flex flex-column'>
+                    <ProfileInfo user={this.state.user}
+                                 updateUser={this.updateUser}/>
                 </div>
             </ContentView>
         );

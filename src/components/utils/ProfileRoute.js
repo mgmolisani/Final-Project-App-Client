@@ -8,10 +8,10 @@ export default class ProfileRoute
         const {path, exact, component: Component, userId} = this.props;
         return (
             <Route path={path}
-            exact={exact}
-            render={() => {
-                return <Component userId={userId}/>;
-            }}/>
+                   exact={exact}
+                   render={() => {
+                       return <Component userId={userId}/>;
+                   }}/>
         );
     }
 }

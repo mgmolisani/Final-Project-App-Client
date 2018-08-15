@@ -5,10 +5,6 @@ import TopMenuItem from "../top-menu/TopMenuItem";
 export default class SearchMenu
     extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <TopMenu>

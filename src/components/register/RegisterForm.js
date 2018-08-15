@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import FormInput from "../form/FormInput";
 import FormSelect from "../form/FormSelect";
 import {userRoles} from "../../constants/enumerations";
+import UserService from "../../services/UserServices";
 
 export default class RegisterForm
     extends Component {
@@ -22,6 +23,16 @@ export default class RegisterForm
         };
         this.updateInputField = this.updateInputField.bind(this);
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
+        this.registerUser = this.registerUser.bind(this);
+        this.userService = UserService.instance;
+    }
+
+    registerUser() {
+        this.userService
+            .register(this.state.inputFields)
+            .then(user => {
+                console.log(user);
+            })
     }
 
     updateInputField(input) {
@@ -74,7 +85,8 @@ export default class RegisterForm
                                 value={inputFields.role}
                                 options={Object.values(userRoles)}
                                 onChange={value => this.updateInputField({role: value})}/>
-                    <button type={'button'}>
+                    <button type={'button'}
+                            onClick={this.registerUser}>
                         Register
                     </button>
                 </form>

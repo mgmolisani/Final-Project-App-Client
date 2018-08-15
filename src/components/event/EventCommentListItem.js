@@ -1,36 +1,48 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import {events} from "../../constants/DummyData";
+import moment from "moment/moment";
 import Avatar from "../user/Avatar";
-import models from "../../models/models";
-import {users} from "../../constants/DummyData";
-import {Link} from "react-router-dom";
-import moment from "moment";
+import CommentService from "../../services/CommentService";
 
 export default class EventCommentListItem
     extends Component {
 
-    render() {
-        const {/*postedBy, */content, date} = this.props.comment;
-        const postedBy = users[0];
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: {}
+        };
+        this.commentService = CommentService.instance;
+    }
 
+    componentDidMount() {
+        this.commentService
+            .findPosterForComment(this.props.comment._id)
+            .then(user => {
+                console.log(user);
+                this.setState({user});
+            })
+    }
+
+    render() {
+        const {comment} = this.props;
+        const {user} = this.state;
         return (
             <div className='comment-container'>
                 <div className='comment-avatar'>
-                    <Avatar avatar={postedBy.avatar}
-                            username={postedBy.username}
+                    <Avatar avatar={user.avatar}
+                            username={user.username}
                             size={'4em'}/>
                 </div>
                 <div className='comment-content-container'>
-                    <h5 className='username'>
-                        <Link to={`/profile/${postedBy.id}`}>
-                            {postedBy.username}
-                        </Link>
-                    </h5>
+                    <h6 className='username'>
+                        {user.username}
+                    </h6>
                     <h6 className='timestamp'>
-                        {moment(date).format('L LT')}
+                        {moment(comment.date).format('L LT')}
                     </h6>
                     <p className='content'>
-                        {content}
+                        {comment.content}
                     </p>
                 </div>
             </div>
@@ -38,8 +50,6 @@ export default class EventCommentListItem
     }
 }
 
-EventCommentListItem.propTypes = {
-    comment: PropTypes.shape(models.comment).isRequired
-};
+EventCommentListItem.propTypes = {};
 
 EventCommentListItem.defaultProps = {};

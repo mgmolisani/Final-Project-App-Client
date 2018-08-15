@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import UserSearchResults from "../../components/search/UserSearchResults";
 import * as queryString from "query-string";
-import {users} from "../../constants/DummyData";
+import UserService from "../../services/UserServices";
 
 export default class UserSearchResultsView
     extends Component {
@@ -10,11 +10,16 @@ export default class UserSearchResultsView
         super(props);
         this.state = {
             users: []
-        }
+        };
+        this.userService = UserService.instance;
     }
 
     findMatchingUsers(search) {
-        this.setState({users: users});
+        this.userService
+            .searchForUsers(search)
+            .then(users => {
+                this.setState({users});
+            });
     }
 
     componentDidMount() {

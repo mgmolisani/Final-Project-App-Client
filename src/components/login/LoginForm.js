@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import FormInput from "../form/FormInput";
+import UserService from "../../services/UserServices";
+import {Redirect} from "react-router-dom";
 
 export default class LoginForm
     extends Component {
@@ -7,23 +9,40 @@ export default class LoginForm
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: ''
+            inputFields: {
+                username: '',
+                password: ''
+            },
+            redirectToCalendar: false
         };
-        this.updateUsername = this.updateUsername.bind(this);
-        this.updatePassword = this.updatePassword.bind(this);
+        this.updateInputField = this.updateInputField.bind(this);
+        this.loginUser = this.loginUser.bind(this);
+        this.userService = UserService.instance;
     }
 
-    updateUsername(username) {
-        this.setState({username});
+    loginUser() {
+        this.userService
+            .login(this.state.inputFields)
+            .then(user => {
+                if (user) {
+                    this.setState({redirectToCalendar: true})
+                } else {
+                    alert('Login attempt failed. User with provided credentials not found.')
+                }
+            })
     }
 
-    updatePassword(password) {
-        this.setState({password});
+    updateInputField(input) {
+        this.setState({
+            inputFields: {
+                ...this.state.inputFields,
+                ...input
+            }
+        });
     }
 
     render() {
-        const {username, password} = this.state;
+        const {username, password} = this.state.inputFields;
         return (
             <div className='form-wrapper'>
                 <form className='form-container'>
@@ -33,13 +52,18 @@ export default class LoginForm
                         </h4>
                         <FormInput label={'Username'}
                                    value={username}
-                                   onChange={event => this.updateUsername(event.target.value)}/>
+                                   onChange={value => this.updateInputField({username: value})}/>
                         <FormInput label={'Password'}
                                    value={password}
-                                   onChange={event => this.updatePassword(event.target.value)}/>
-                        <button type={'button'}>
+                                   onChange={value => this.updateInputField({password: value})}/>
+                        <button type={'button'}
+                                onClick={this.loginUser}>
                             Login
                         </button>
+                        {this.state.redirectToCalendar ?
+                            <Redirect to={'/calendar'}
+                                      push/> :
+                            null}
                     </div>
                 </form>
             </div>

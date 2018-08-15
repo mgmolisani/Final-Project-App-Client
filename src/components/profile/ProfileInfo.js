@@ -4,6 +4,7 @@ import FormInput from "../form/FormInput";
 import moment from "moment";
 import Avatar from "../user/Avatar";
 import {Col, Row} from "reactstrap";
+import FollowUserButton from "../buttons/FollowUserButton";
 
 class ProfileInfo
     extends Component {
@@ -25,6 +26,11 @@ class ProfileInfo
         this.updateUser = this.updateUser.bind(this);
     }
 
+    updateUser() {
+        const {inputFields} = this.state;
+        this.props.updateUser(inputFields);
+    }
+
     updateInputField(input) {
         this.setState({
             inputFields: {
@@ -35,7 +41,7 @@ class ProfileInfo
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.user.id !== prevProps.user.id) {
+        if (this.props.user._id !== prevProps.user._id) {
             this.updateInputField({
                 username: this.props.user.username,
                 firstName: this.props.user.firstName,
@@ -48,15 +54,10 @@ class ProfileInfo
         }
     }
 
-    updateUser() {
-        const {inputFields} = this.state;
-        this.props.updateUser({inputFields});
-    }
-
     renderSensitive() {
         const {user, currentUser} = this.props;
         const {inputFields} = this.state;
-        if (user.id === currentUser.id) {
+        if (user._id === currentUser._id) {
             return (
                 <React.Fragment>
                     <FormInput label={'Address'}
@@ -83,7 +84,7 @@ class ProfileInfo
 
     renderUpdateButton() {
         const {user, currentUser} = this.props;
-        if (user.id === currentUser.id) {
+        if (user._id === currentUser._id) {
             return <button type={'button'}
                            onClick={() => this.updateUser()}>
                 Update User
@@ -91,20 +92,10 @@ class ProfileInfo
         }
     }
 
-    renderFollowButton() {
-        const {user, currentUser} = this.props;
-        if (currentUser && user.id !== currentUser.id) {
-            return <button type={'button'}
-                           onClick={() => {}}>
-                Follow
-            </button>
-        }
-    }
-
     render() {
         const {user, currentUser} = this.props;
         const {inputFields} = this.state;
-        const readOnly = user.id !== currentUser.id;
+        const readOnly = user._id !== currentUser._id;
         return (
             <Row noGutters>
                 <div className='form-wrapper'>
@@ -125,7 +116,7 @@ class ProfileInfo
                                 <h5 className='role'>
                                     {`${user.role} User`}
                                 </h5>
-                                {this.renderFollowButton()}
+                                <FollowUserButton user={user}/>
                             </div>
                         </Col>
                         <Col>

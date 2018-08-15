@@ -1,81 +1,80 @@
 import React, {Component} from 'react';
-import EventInfo from "../components/event/EventInfo";
-import EventMenu from "../components/event/EventMenu";
-import EventSidebarActivityList from "../components/event/EventActivityList";
-import EventCommentPanel from "../components/event/EventCommentPanel";
-import * as DummyData from "../constants/DummyData";
+import ContentView from "./ContentView";
+import EventForm from "../components/event/EventForm";
+import {users} from "../constants/DummyData";
+import EventCommentList from "../components/event/EventCommentList";
+import FormLabel from "../components/form/FormLabel";
+import InvitedGuestList from "../components/event/InvitedGuestList";
+import NavigationMenu from "./NavigationMenu";
+import EventService from "../services/EventService";
 
 export default class EventView
     extends Component {
 
     constructor(props) {
         super(props);
-        this.state ={
-            event: {
-                name: null,
-                description: null,
-                images: [],
-                activities: [],
-                comments:[]
-            }
-        }
+        this.state = {
+            event: {},
+            comments: []
+        };
+        this.eventService = EventService.instance;
     }
 
-    updateEvent(eventId) {
-        const e = DummyData.events.find(event => {
-            return event.id === Number.parseInt(eventId, 10);
-        });
-        this.setState({event: e})
+    fetchEventInfoById() {
+        const {eventId} = this.props.match.params;
+        Promise.all([
+            this.eventService
+                .findEventById(eventId),
+            this.eventService
+                .findAllCommentsForEvent(eventId)])
+            .then(values => {
+                this.setState({
+                    event: values[0],
+                    comments: values[1]
+                });
+            });
     }
 
     componentDidMount() {
-        this.updateEvent(this.props.match.params.eventId)
+        this.fetchEventInfoById();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.match.params.eventId !== prevProps.match.params.eventId) {
-            this.updateEvent(this.props.match.params.eventId)
+            this.fetchEventInfoById()
         }
     }
 
     render() {
         return (
-            <div className='h-100 text-white event-sidebar d-flex'
+            <div className='d-flex'
                  style={{
-                     backgroundColor: 'rgb(15, 16, 16)'
+                     position: 'absolute',
+                     top: 0,
+                     bottom: 0,
+                     left: 0,
+                     right: 0,
+                     overflow: 'hidden'
                  }}>
-                <div className='h-100 position-relative w-50'>
-                    <div className='d-flex flex-column'
-                         style={{
-                             position: 'absolute',
-                             top: 0,
-                             bottom: 0,
-                             left: 0,
-                             right: 0,
-                             userSelect: 'none'
-                         }}>
-                        <EventCommentPanel eventId={this.state.event.id}/>
-                        <div style={{
-                            flexBasis: '70%'
-                        }}>
-                            <EventInfo name={this.state.event.name}
-                                       description={this.state.event.description}
-                                       images={this.state.event.images}/>
-                        </div>
-                        <div style={{
-                            flexBasis: '30%',
-                            overflow: 'auto'
-                        }}>
-                            <EventSidebarActivityList activities={this.state.event.activities}/>
-                        </div>
-                        <div style={{
-                            flexBasis: 'content'
-                        }}>
-                            <EventMenu/>
+                <NavigationMenu/>
+                <ContentView>
+                    <div className='d-flex flex-column'>
+                        <div className='form-wrapper'>
+                            <form className='form-container pt-4'>
+                                <EventForm event={this.state.event}/>
+                                <FormLabel label={'Invited Guests'}/>
+                                <InvitedGuestList users={users || this.props.event.invited}/>
+                                <FormLabel label={'Comments'}/>
+                                <EventCommentList comments={this.state.comments}/>
+                            </form>
                         </div>
                     </div>
-                </div>
+                </ContentView>
             </div>
         );
     }
 }
+
+EventView.propTypes = {};
+
+EventView.defaultProps = {};

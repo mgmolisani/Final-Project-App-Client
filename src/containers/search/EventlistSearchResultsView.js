@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import * as queryString from "query-string";
-import {eventlists, events} from "../../constants/DummyData";
 import EventlistSearchResults from "../../components/search/EventlistSearchResults";
+import EventlistService from "../../services/EventlistService";
 
 export default class EventlistSearchResultsView
 
@@ -11,11 +11,16 @@ export default class EventlistSearchResultsView
         super(props);
         this.state = {
             eventlists: []
-        }
+        };
+        this.eventlistService = EventlistService.instance;
     }
 
     findMatchingEventlists(search) {
-        this.setState({eventlists: eventlists});
+        this.eventlistService
+            .searchForEventlist(search)
+            .then(eventlists => {
+                this.setState({eventlists});
+            });
     }
 
     componentDidMount() {

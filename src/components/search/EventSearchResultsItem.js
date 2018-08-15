@@ -17,7 +17,7 @@ export default class EventSearchResultsItem
                 </div>
                 <div className='comment-content-container'>
                     <h5 className='username'>
-                        <Link to={`/event/${event.id}`}>
+                        <Link to={`/event/${event._id}`}>
                             {event.name}
                         </Link>
                     </h5>

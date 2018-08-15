@@ -9,7 +9,7 @@ export default class RegisterMenu
         return (
             <TopMenu expand={'xs'}>
                 <TopMenuItem to={'/login'}>
-                        Log In
+                    Log In
                 </TopMenuItem>
             </TopMenu>
         );

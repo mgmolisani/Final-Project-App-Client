@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ContentView from "../ContentView";
-import NewEventForm from "../../components/new-event/NewEventForm";
+import EventForm from "../../components/event/EventForm";
 
 export default class NewEventView
     extends Component {
@@ -25,8 +25,13 @@ export default class NewEventView
     render() {
         return (
             <ContentView>
-                <div className='d-flex flex-column h-100'>
-                    <NewEventForm users={this.state.following}/>
+                <div className='d-flex flex-column'>
+                    <div className='form-wrapper'>
+                        <form className='form-container'>
+                            <EventForm event={this.state.event}
+                                       updateEvent={this.updateEvent}/>
+                        </form>
+                    </div>
                 </div>
             </ContentView>
         );

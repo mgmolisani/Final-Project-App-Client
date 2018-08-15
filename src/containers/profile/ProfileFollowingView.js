@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import * as DummyData from "../../constants/DummyData";
 import ProfileConnectionsList from "../../components/profile/ProfileConnectionsList";
 import FormLabel from "../../components/form/FormLabel";
 import ContentView from "../ContentView";
+import UserService from "../../services/UserServices";
 
 export default class ProfileFollowingView
     extends Component {
@@ -11,15 +11,17 @@ export default class ProfileFollowingView
         super(props);
         this.state = {
             following: []
-        }
+        };
+        this.userService = UserService.instance;
     }
 
     fetchFollowingForUser() {
         const {userId} = this.props;
-        const following = DummyData.users[userId - 1].connections.following.map(followingId => {
-            return DummyData.users[followingId - 1];
-        });
-        this.setState({following});
+        this.userService
+            .findFollowingForUser(userId)
+            .then(following => {
+                this.setState({following});
+            })
     }
 
     componentDidMount() {
@@ -35,7 +37,7 @@ export default class ProfileFollowingView
     render() {
         return (
             <ContentView>
-                <div className='d-flex flex-column h-100'>
+                <div className='d-flex flex-column'>
                     <FormLabel label={'Following'}/>
                     <ProfileConnectionsList users={this.state.following}/>
                 </div>

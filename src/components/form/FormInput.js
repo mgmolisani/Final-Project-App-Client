@@ -18,8 +18,8 @@ export default class FormInput
             <div className='form-input-container'>
                 <FormLabel label={inputLabel}/>
                 <span><input value={value}
-                       type={type}
-                       readOnly={readOnly}
+                             type={type}
+                             readOnly={readOnly}
                              onChange={event => onChange(event.target.value)}/></span>
             </div>
         );

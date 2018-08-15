@@ -6,13 +6,14 @@ export default class FormTextArea
     extends Component {
 
     render() {
-        const {label: inputLabel, value, placeholder, rows, resize, onChange} = this.props;
+        const {label: inputLabel, value, placeholder, rows, resize, readOnly, onChange} = this.props;
         return (
             <div className='form-input-container'>
                 <FormLabel label={inputLabel}/>
                 <textarea value={value}
                           placeholder={placeholder}
                           rows={rows}
+                          readOnly={readOnly}
                           style={{
                               resize: resize ? 'vertical' : 'none'
                           }}
@@ -28,6 +29,7 @@ FormTextArea.propTypes = {
     placeholder: PropTypes.string,
     rows: PropTypes.number,
     resize: PropTypes.bool,
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired
 };
 

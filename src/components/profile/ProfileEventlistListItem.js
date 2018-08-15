@@ -6,25 +6,10 @@ import Avatar from "../user/Avatar";
 import {Col, Row} from "reactstrap";
 import {Link} from "react-router-dom";
 import {events} from "../../constants/DummyData";
+import FollowEventlistButton from "../buttons/FollowEventlistButton";
 
 export default class ProfileEventlistListItem
     extends Component {
-
-    renderFollowButton() {
-        const {eventlist, currentUser} = this.props;
-        return (
-            currentUser ?
-                <button type={'button'}
-                        style={{minWidth: 'fit-content'}}>
-                    {currentUser.eventlists.owns.includes(eventlist.id) ||
-                        currentUser.eventlists.follows.includes(eventlist.id) ?
-                        'Unfollow' :
-                        'Follow'
-                    }
-                </button> :
-                null
-        )
-    }
 
     render() {
         const {eventlist} = this.props;
@@ -50,7 +35,7 @@ export default class ProfileEventlistListItem
                         <Col xs={12}
                              md={'auto'}>
                             <div className='d-flex align-items-center h-100'>
-                                {this.renderFollowButton()}
+                                <FollowEventlistButton eventlist={eventlist}/>
                             </div>
                         </Col>
                     </Row>

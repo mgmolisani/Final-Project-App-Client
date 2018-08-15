@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import ProfileUpcomingEventsList from "../../components/profile/ProfileUpcomingEventsList";
-import * as DummyData from "../../constants/DummyData";
 import ProfileRecentCommentList from "../../components/profile/ProfileRecentCommentList";
 import ContentView from "../ContentView";
 import {Col, Row} from "reactstrap";
 import FormLabel from "../../components/form/FormLabel";
+import UserService from "../../services/UserServices";
 
 export default class ProfileRecentActivityView
     extends Component {
@@ -14,26 +14,35 @@ export default class ProfileRecentActivityView
         this.state = {
             events: [],
             comments: []
-        }
+        };
+        this.userService = UserService.instance;
     }
 
-    fetchActivitesForUser() {
-        this.setState({events: DummyData.events});
+    fetchAllCommentsForUser() {
+        this.userService
+            .findAllCommentsForUser(this.props.userId)
+            .then(comments => {
+                this.setState({comments});
+            });
     }
 
-    fetchCommentsForUser() {
-        this.setState({comments: DummyData.comments});
+    fetchAllEventsForUser() {
+        this.userService
+            .findFollowedEventsForUser(this.props.userId)
+            .then(events => {
+                this.setState({events});
+            });
     }
 
     componentDidMount() {
-        this.fetchActivitesForUser();
-        this.fetchCommentsForUser();
+        this.fetchAllCommentsForUser();
+        this.fetchAllEventsForUser();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.userId !== prevProps.userId) {
-            this.fetchActivitesForUser();
-            this.fetchCommentsForUser();
+            this.fetchAllCommentsForUser();
+            this.fetchAllEventsForUser();
         }
     }
 
@@ -43,16 +52,16 @@ export default class ProfileRecentActivityView
                 <Row noGutters>
                     <Col sm={12}
                          md={6}>
-                        <div className='d-flex flex-column h-100'>
+                        <div className='d-flex flex-column'>
                             <FormLabel label={'Upcoming Events'}/>
-                                <ProfileUpcomingEventsList events={this.state.events}/>
+                            <ProfileUpcomingEventsList events={this.state.events}/>
                         </div>
                     </Col>
                     <Col sm={12}
                          md={6}>
-                        <div className='d-flex flex-column h-100'>
+                        <div className='d-flex flex-column'>
                             <FormLabel label={'Recent Comments'}/>
-                                <ProfileRecentCommentList comments={this.state.comments}/>
+                            <ProfileRecentCommentList comments={this.state.comments}/>
                         </div>
                     </Col>
                 </Row>

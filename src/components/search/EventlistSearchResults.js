@@ -12,9 +12,8 @@ class EventlistSearchResults
                 <FormLabel label={'Event List Search Results'}/>
                 <div className='profile-recent-list'>
                     {this.props.eventlists.map(eventlist => {
-                        return <EventlistSearchResultsItem key={eventlist.id}
-                                                           eventlist={eventlist}
-                                                           currentUser={this.props.currentUser}/>
+                        return <EventlistSearchResultsItem key={eventlist._id}
+                                                           eventlist={eventlist}/>
                     })}
                 </div>
             </React.Fragment>

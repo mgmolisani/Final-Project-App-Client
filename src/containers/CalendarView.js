@@ -6,9 +6,8 @@ import CalendarList from "../components/calendar/CalendarList";
 import CalendarMonthSelection from "../components/calendar/CalendarMonthSelection";
 import CalendarTypeSelection from "../components/calendar/CalendarTypeSelection";
 import * as DummyData from "../constants/DummyData";
-import EventView from "./EventView";
 import ContentView from "./ContentView";
-import {Route} from "react-router-dom";
+import NavigationMenu from "./NavigationMenu";
 
 export default class CalendarView
     extends Component {
@@ -34,54 +33,59 @@ export default class CalendarView
 
     render() {
         return (
-            <ContentView>
-                <div style={{
-                    flexBasis: '70%',
-                    height: '100%'
-                }}>
-                    <div className='h-100 position-relative text-white'
-                         style={{
-                             backgroundColor: 'rgb(25, 26, 26)'
-                         }}>
-                        <div className='d-flex flex-column'
+            <div className='d-flex'
+                 style={{
+                     position: 'absolute',
+                     top: 0,
+                     bottom: 0,
+                     left: 0,
+                     right: 0,
+                     overflow: 'hidden'
+                 }}>
+                <NavigationMenu/>
+                <ContentView>
+                    <div style={{
+                        flexBasis: '70%',
+                        height: '100%'
+                    }}>
+                        <div className='h-100 position-relative text-white'
                              style={{
-                                 position: 'absolute',
-                                 top: 0,
-                                 bottom: 0,
-                                 left: 0,
-                                 right: 0,
-                                 userSelect: 'none'
+                                 backgroundColor: 'rgb(25, 26, 26)'
                              }}>
-                            <div className='calendar-view-header d-flex align-items-center'>
-                                <CalendarMonthSelection date={this.state.activeDate}
-                                                        changeDate={this.changeActiveDate}/>
-                                <CalendarTypeSelection changeViewType={this.changeViewType}/>
-                            </div>
-                            <div className='position-relative'
+                            <div className='d-flex flex-column'
                                  style={{
-                                     flexBasis: '100%'
+                                     position: 'absolute',
+                                     top: 0,
+                                     bottom: 0,
+                                     left: 0,
+                                     right: 0,
+                                     userSelect: 'none'
                                  }}>
-                                {this.state.viewType === CalendarViewTypes.GRID
-                                && <CalendarGrid activeDate={this.state.activeDate}
-                                                 events={this.state.events}
-                                                 changeActiveDate={this.changeActiveDate}
-                                                 changeViewType={this.changeViewType}/>}
-                                {this.state.viewType === CalendarViewTypes.LIST
-                                && <CalendarList activeDate={this.state.activeDate}
-                                                 events={this.state.events}
-                                                 changeActiveDate={this.changeActiveDate}
-                                                 changeViewType={this.changeViewType}/>}
+                                <div className='calendar-view-header d-flex align-items-center'>
+                                    <CalendarMonthSelection date={this.state.activeDate}
+                                                            changeDate={this.changeActiveDate}/>
+                                    <CalendarTypeSelection changeViewType={this.changeViewType}/>
+                                </div>
+                                <div className='position-relative'
+                                     style={{
+                                         flexBasis: '100%'
+                                     }}>
+                                    {this.state.viewType === CalendarViewTypes.GRID
+                                    && <CalendarGrid activeDate={this.state.activeDate}
+                                                     events={this.state.events}
+                                                     changeActiveDate={this.changeActiveDate}
+                                                     changeViewType={this.changeViewType}/>}
+                                    {this.state.viewType === CalendarViewTypes.LIST
+                                    && <CalendarList activeDate={this.state.activeDate}
+                                                     events={this.state.events}
+                                                     changeActiveDate={this.changeActiveDate}
+                                                     changeViewType={this.changeViewType}/>}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div style={{
-                    flexBasis: '30%',
-                    height: '100%'
-                }}>
-                    <Route path={`${this.props.match.url}/event/:eventId`} component={EventView}/>
-                </div>
-            </ContentView>
+                </ContentView>
+            </div>
         );
     }
 }

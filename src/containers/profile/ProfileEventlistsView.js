@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import * as DummyData from "../../constants/DummyData";
 import ProfileEventlistsRow from "../../components/profile/ProfileEventlistList";
 import ContentView from "../ContentView";
 import {Col, Row} from "reactstrap";
 import FormLabel from "../../components/form/FormLabel";
+import UserService from "../../services/UserServices";
 
 export default class ProfileEventlistsView
     extends Component {
@@ -13,18 +13,20 @@ export default class ProfileEventlistsView
         this.state = {
             owns: [],
             follows: []
-        }
+        };
+        this.userService = UserService.instance;
     }
 
     fetchEventlistsForUser() {
         const {userId} = this.props;
-        const owns = DummyData.users[userId - 1].eventlists.owns.map(eventlistId => {
-            return DummyData.eventlists[eventlistId - 1];
-        });
-        const follows = DummyData.users[userId - 1].eventlists.follows.map(eventlistId => {
-            return DummyData.eventlists[eventlistId - 1];
-        });
-        this.setState({owns, follows});
+        this.userService
+            .findEventlistsForUser(userId)
+            .then(eventlists => {
+                this.setState({
+                    owns: eventlists.owns,
+                    follows: eventlists.follows
+                });
+            });
     }
 
     componentDidMount() {
@@ -43,14 +45,14 @@ export default class ProfileEventlistsView
                 <Row noGutters>
                     <Col sm={12}
                          md={6}>
-                        <div className='d-flex flex-column h-100'>
+                        <div className='d-flex flex-column'>
                             <FormLabel label={'Created By User'}/>
                             <ProfileEventlistsRow eventlists={this.state.owns}/>
                         </div>
                     </Col>
                     <Col sm={12}
                          md={6}>
-                        <div className='d-flex flex-column h-100'>
+                        <div className='d-flex flex-column'>
                             <FormLabel label={'Followed By User'}/>
                             <ProfileEventlistsRow eventlists={this.state.follows}/>
                         </div>

@@ -9,7 +9,7 @@ export default class EventSearchResultsItem
     extends Component {
 
     render() {
-        const {eventlist, currentUser} = this.props;
+        const {eventlist} = this.props;
         return (
             <div className='comment-container'>
                 <div className='comment-avatar'>
@@ -21,19 +21,18 @@ export default class EventSearchResultsItem
                     <Row className='h-100' noGutters>
                         <Col>
                             <h5 className='username'>
-                                <Link to={`/eventlist/${eventlist.id}`}>
+                                <Link to={`/eventlist/${eventlist._id}`}>
                                     {eventlist.name}
                                 </Link>
                             </h5>
                             <h6 className='timestamp'>
-                                {`${eventlist.followers.length} Followers`}
+                                {`${eventlist.events.length} Events`}
                             </h6>
                         </Col>
                         <Col xs={12}
                              md={'auto'}>
                             <div className='d-flex align-items-center h-100'>
-                                <FollowEventlistButton eventlist={eventlist.id}
-                                                       currentUser={currentUser}/>
+                                <FollowEventlistButton eventlist={eventlist._id}/>
                             </div>
                         </Col>
                     </Row>

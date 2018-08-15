@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import * as queryString from "query-string";
 import {events} from "../../constants/DummyData";
 import EventSearchResults from "../../components/search/EventSearchResults";
+import EventlistService from "../../services/EventlistService";
+import EventService from "../../services/EventService";
 
 export default class EventSearchResultsView
     extends Component {
@@ -10,11 +12,16 @@ export default class EventSearchResultsView
         super(props);
         this.state = {
             events: []
-        }
+        };
+        this.eventService = EventService.instance;
     }
 
     findMatchingEvents(search) {
-        this.setState({events: events});
+        this.eventService
+            .searchForEvent(search)
+            .then(events => {
+                this.setState({events});
+            });
     }
 
     componentDidMount() {
