@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
-import models from "../../models/models";
 import moment from "moment/moment";
 import Avatar from "../user/Avatar";
 import {Link} from "react-router-dom";
@@ -20,7 +18,7 @@ export default class ProfileRecentCommentListItem
                 <div className='comment-content-container'>
                     <h5 className='username'>
                         <Link to={`/event/${forEvent._id}`}>
-                            {forEvent.name}
+                            Comment on {forEvent.name}
                         </Link>
                     </h5>
                     <h6 className='timestamp'>
@@ -34,9 +32,3 @@ export default class ProfileRecentCommentListItem
         );
     }
 }
-
-ProfileRecentCommentListItem.propTypes = {
-    comment: PropTypes.shape(models.comment).isRequired
-};
-
-ProfileRecentCommentListItem.defaultProps = {};

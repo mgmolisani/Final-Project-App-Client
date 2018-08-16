@@ -21,15 +21,23 @@ export default class LoginForm
     }
 
     loginUser() {
-        this.userService
-            .login(this.state.inputFields)
-            .then(user => {
-                if (user) {
-                    this.setState({redirectToCalendar: true})
-                } else {
-                    alert('Login attempt failed. User with provided credentials not found.')
-                }
-            })
+        const {inputFields} = this.state;
+        if (!inputFields.username) {
+            alert('Username is a required field.')
+        } else if (!inputFields.password) {
+            alert('Password is a required field.')
+        } else {
+            this.userService
+                .login(this.state.inputFields)
+                .then(user => {
+                    if (user) {
+                        this.props.updateCurrentUser(user._id);
+                        this.setState({redirectToCalendar: true})
+                    } else {
+                        alert('Login attempt failed. User with provided credentials not found.')
+                    }
+                })
+        }
     }
 
     updateInputField(input) {
@@ -55,6 +63,7 @@ export default class LoginForm
                                    onChange={value => this.updateInputField({username: value})}/>
                         <FormInput label={'Password'}
                                    value={password}
+                                   type={'password'}
                                    onChange={value => this.updateInputField({password: value})}/>
                         <button type={'button'}
                                 onClick={this.loginUser}>
@@ -70,7 +79,3 @@ export default class LoginForm
         );
     }
 }
-
-LoginForm.propTypes = {};
-
-LoginForm.defaultProps = {};

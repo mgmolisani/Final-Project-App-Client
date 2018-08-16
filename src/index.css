@@ -127,12 +127,12 @@ body {
     overflow: hidden;
 }
 
-.calendar-cell + .calendar-cell {
-    margin-left: 4px;
+.calendar-cell a {
+    color: white;
 }
 
-.calendar-cell:hover {
-    background-color: rgb(232, 214, 255);
+.calendar-cell + .calendar-cell {
+    margin-left: 4px;
 }
 
 .calendar-list-day {

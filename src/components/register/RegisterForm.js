@@ -3,6 +3,8 @@ import FormInput from "../form/FormInput";
 import FormSelect from "../form/FormSelect";
 import {userRoles} from "../../constants/enumerations";
 import UserService from "../../services/UserServices";
+import {Redirect} from "react-router-dom";
+import Avatar from "../user/Avatar";
 
 export default class RegisterForm
     extends Component {
@@ -17,9 +19,11 @@ export default class RegisterForm
                 firstName: '',
                 lastName: '',
                 email: '',
-                role: userRoles.PRIVATE
+                role: userRoles.PRIVATE,
+                avatar: ''
             },
-            passwordVisible: false
+            passwordVisible: false,
+            redirectToCalendar: false
         };
         this.updateInputField = this.updateInputField.bind(this);
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
@@ -28,11 +32,23 @@ export default class RegisterForm
     }
 
     registerUser() {
-        this.userService
-            .register(this.state.inputFields)
-            .then(user => {
-                console.log(user);
-            })
+        const {inputFields} = this.state;
+        if (Object.values(inputFields).some(input => {
+            return !input;
+        })) {
+            alert('All fields are required to register.')
+        } else {
+            this.userService
+                .register(this.state.inputFields)
+                .then(user => {
+                    if (user) {
+                        this.props.updateCurrentUser(user._id);
+                        this.setState({redirectToCalendar: true})
+                    } else {
+                        alert('Register attempt failed.')
+                    }
+                })
+        }
     }
 
     updateInputField(input) {
@@ -85,10 +101,24 @@ export default class RegisterForm
                                 value={inputFields.role}
                                 options={Object.values(userRoles)}
                                 onChange={value => this.updateInputField({role: value})}/>
+                    <FormInput label={'Profile Picture'}
+                               value={inputFields.avatar}
+                               onChange={value => this.updateInputField({avatar: value})}/>
+                    {inputFields.avatar ?
+                        <div className='m-auto d-flex justify-content-center p-3'>
+                            <Avatar avatar={inputFields.avatar}
+                                    username={inputFields.username}
+                            size={'10em'}/>
+                        </div> :
+                        null}
                     <button type={'button'}
                             onClick={this.registerUser}>
                         Register
                     </button>
+                    {this.state.redirectToCalendar ?
+                        <Redirect to={'/calendar'}
+                                  push/> :
+                        null}
                 </form>
             </div>
         );

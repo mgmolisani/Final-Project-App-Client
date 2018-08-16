@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import withLogin from "../utils/withLogin";
 import FormLabel from "../form/FormLabel";
 import EventSearchResultsItem from "./EventSearchResultsItem";
 

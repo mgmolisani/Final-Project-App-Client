@@ -3,34 +3,35 @@ import ProfileConnectionsList from "../../components/profile/ProfileConnectionsL
 import FormLabel from "../../components/form/FormLabel";
 import ContentView from "../ContentView";
 import UserService from "../../services/UserServices";
+import ProfileUpcomingEventsList from "../../components/profile/ProfileUpcomingEventsList";
 
-export default class ProfileFollowingView
+export default class ProfileFollowedEventsView
     extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            following: []
+            events: []
         };
         this.userService = UserService.instance;
     }
 
-    fetchFollowingForUser() {
+    fetchFollowedEventsForUser() {
         const {userId} = this.props;
         this.userService
-            .findFollowingForUser(userId)
-            .then(following => {
-                this.setState({following});
+            .findFollowedEventsForUser(userId)
+            .then(events => {
+                this.setState({events});
             })
     }
 
     componentDidMount() {
-        this.fetchFollowingForUser();
+        this.fetchFollowedEventsForUser();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.userId !== prevProps.userId) {
-            this.fetchFollowingForUser();
+            this.fetchFollowedEventsForUser();
         }
     }
 
@@ -38,8 +39,8 @@ export default class ProfileFollowingView
         return (
             <ContentView>
                 <div className='d-flex flex-column'>
-                    <FormLabel label={'Following'}/>
-                    <ProfileConnectionsList users={this.state.following}/>
+                    <FormLabel label={'Followed Events'}/>
+                    <ProfileUpcomingEventsList events={this.state.events}/>
                 </div>
             </ContentView>
         );

@@ -14,14 +14,7 @@ export default class SearchMenu
                 <TopMenuItem to={'/search/event'}>
                     Events
                 </TopMenuItem>
-                <TopMenuItem to={'/search/eventlist'}>
-                    Event Lists
-                </TopMenuItem>
             </TopMenu>
         );
     }
 }
-
-SearchMenu.propTypes = {};
-
-SearchMenu.defaultProps = {};

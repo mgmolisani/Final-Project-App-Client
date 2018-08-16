@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import NavigationMenuListItem from "./NavigationMenuListItem";
-import withLogin from "../utils/withLogin";
 
-class NavigationMenuList
+export default class NavigationMenuList
     extends Component {
 
     render() {
@@ -17,10 +16,7 @@ class NavigationMenuList
                 <NavigationMenuListItem to={'/calendar'}
                                         icon={['far', 'calendar']}
                                         alerts={0}/>
-                <NavigationMenuListItem to={'/create/event'}
-                                        isActive={(match, location) => {
-                                            return location.pathname.startsWith('/create');
-                                        }}
+                <NavigationMenuListItem to={'/new'}
                                         icon={'plus'}
                                         alerts={0}/>
                 <NavigationMenuListItem to={'/admin'}
@@ -30,9 +26,3 @@ class NavigationMenuList
         );
     }
 }
-
-export default withLogin(NavigationMenuList)
-
-NavigationMenuList.propTypes = {};
-
-NavigationMenuList.defaultProps = {};

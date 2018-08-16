@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import withLogin from "../utils/withLogin";
 import UserService from "../../services/UserServices";
 
-class ProfileIcon
+export default class ProfileIcon
     extends Component {
 
     constructor(props) {
@@ -27,23 +26,16 @@ class ProfileIcon
                 <div className='profile-icon-container'>
                     <div className='profile-icon'>
                         <Link to={`/profile/${currentUser._id}`}>
-                            <img src={'https://picsum.photos/200/300'} alt={''}/>
+                            <img src={currentUser.avatar}
+                                 alt={currentUser.username}/>
                         </Link>
                     </div>
-                    <button type={'button'}
-                            onClick={this.logoutUser}>
-                        Logout
-                    </button>
                 </div> :
-                <Link to={`/login`}>
-                    Login
-                </Link>
+                <div className='profile-icon-container'>
+                    <Link to={`/login`}>
+                        Login
+                    </Link>
+                </div>
         );
     }
 }
-
-export default withLogin(ProfileIcon);
-
-ProfileIcon.propTypes = {};
-
-ProfileIcon.defaultProps = {};

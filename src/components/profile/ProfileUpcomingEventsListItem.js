@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
-import models from "../../models/models";
 import moment from "moment/moment";
 import Avatar from "../user/Avatar";
 import {Link} from "react-router-dom";
@@ -16,7 +14,7 @@ export default class ProfileUpcomingEventsListItem
                 <div className='comment-avatar'>
                     <Avatar avatar={event.images[0]}
                             username={event.name}
-                            size={'4em'}/>
+                            size={'10em'}/>
                 </div>
                 <div className='comment-content-container'>
                     <h5 className='username'>
@@ -38,9 +36,3 @@ export default class ProfileUpcomingEventsListItem
         );
     }
 }
-
-ProfileUpcomingEventsListItem.propTypes = {
-    event: PropTypes.shape(models.event).isRequired
-};
-
-ProfileUpcomingEventsListItem.defaultProps = {};

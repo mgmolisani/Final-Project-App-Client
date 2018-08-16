@@ -1,9 +1,54 @@
 import React, {Component} from 'react';
 import moment from "moment";
 import CalendarDay from "./CalendarDay";
+import UserService from "../../services/UserServices";
 
 export default class CalendarGrid
     extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            events: {
+                hosting: [],
+                following: [],
+                invitedTo: []
+            }
+        };
+        this.userService = UserService.instance;
+    }
+
+    fetchAllEventsForUser() {
+        this.userService
+            .findAllEventsForUser(this.props.currentUser._id)
+            .then(events => {
+                this.setState({events})
+                console.log(events);
+            })
+    }
+
+    componentDidMount() {
+        this.fetchAllEventsForUser()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentUser._id !== prevProps.currentUser._id) {
+            this.fetchAllEventsForUser();
+        }
+    }
+
+    static renderDatesHeader() {
+        return <div className='d-flex'>
+            {moment.weekdaysShort().map(day => {
+                return <div key={day}
+                            className='calendar-cell'>
+                    <h4 className='text-center'>
+                        {day}
+                    </h4>
+                </div>
+            })}
+        </div>
+    }
 
     getStartDate() {
         const activeDate = moment(this.props.activeDate);
@@ -16,7 +61,20 @@ export default class CalendarGrid
     }
 
     getEventsForDate(date) {
-        return this.props.events;
+        const {events} = this.state;
+        const eventsForDate = {
+            hosting: [],
+            following: [],
+            invitedTo: []
+        };
+        Object.keys(events).map(eventType => {
+            events[eventType].map(event => {
+                if (moment(event.date).startOf('day').isSame(date)) {
+                    eventsForDate[eventType].push(event);
+                }
+            })
+        });
+        return eventsForDate;
     }
 
     renderDates() {
@@ -49,19 +107,6 @@ export default class CalendarGrid
                                             disabled={date.month() !== this.props.activeDate.month()}/>
                     })}
                 </div>;
-            })}
-        </div>
-    }
-
-    static renderDatesHeader() {
-        return <div className='d-flex'>
-            {moment.weekdaysShort().map(day => {
-                return <div key={day}
-                            className='calendar-cell'>
-                    <h4 className='text-center'>
-                        {day}
-                    </h4>
-                </div>
             })}
         </div>
     }

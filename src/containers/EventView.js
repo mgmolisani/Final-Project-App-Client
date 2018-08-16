@@ -47,16 +47,6 @@ export default class EventView
 
     render() {
         return (
-            <div className='d-flex'
-                 style={{
-                     position: 'absolute',
-                     top: 0,
-                     bottom: 0,
-                     left: 0,
-                     right: 0,
-                     overflow: 'hidden'
-                 }}>
-                <NavigationMenu/>
                 <ContentView>
                     <div className='d-flex flex-column'>
                         <div className='form-wrapper'>
@@ -70,7 +60,6 @@ export default class EventView
                         </div>
                     </div>
                 </ContentView>
-            </div>
         );
     }
 }

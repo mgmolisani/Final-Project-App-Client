@@ -18,7 +18,6 @@ class SearchForm
         this.setState({search});
     }
 
-
     render() {
         return (
             <React.Fragment>
@@ -28,16 +27,14 @@ class SearchForm
                 <FormInput label={'Search for events around you . . .'}
                            value={this.state.search}
                            onChange={value => this.updateInputField(value)}/>
-                <Link to={`${this.props.location.pathname}?${queryString.stringify(this.state)}`}>
-                    Search
-                </Link>
+                <button>
+                    <Link to={`${this.props.location.pathname}?${queryString.stringify(this.state)}`}>
+                        Search
+                    </Link>
+                </button>
             </React.Fragment>
         );
     }
 }
 
 export default withRouter(SearchForm);
-
-SearchForm.propTypes = {};
-
-SearchForm.defaultProps = {};

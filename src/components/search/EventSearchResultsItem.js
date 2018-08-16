@@ -13,7 +13,7 @@ export default class EventSearchResultsItem
                 <div className='comment-avatar'>
                     <Avatar avatar={event.images[0]}
                             username={event.name}
-                            size={'4em'}/>
+                            size={'5em'}/>
                 </div>
                 <div className='comment-content-container'>
                     <h5 className='username'>

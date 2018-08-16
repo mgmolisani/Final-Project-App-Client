@@ -11,16 +11,57 @@ class CalendarEventsList
             <div style={{
                 overflow: 'auto'
             }}>
-                {this.props.events.map(event => {
-                    return <Link key={event.id}
+                {this.props.events.hosting.map(event => {
+                    return <Link key={event._id}
                                  className='d-block'
                                  style={{
                                      marginTop: 2,
                                      marginBottom: 2,
                                      padding: 2,
-                                     backgroundColor: 'rgb(168, 121, 229)'
+                                     backgroundColor: 'rgb(60, 60, 90)',
+                                     overflow: 'hidden',
+                                     whiteSpace: 'nowrap',
+                                     textOverflow: 'ellipsis'
                                  }}
-                                 to={`${this.props.match.url}/event/${event.id}`}>
+                                 to={`/event/${event._id}`}>
+                        {moment(event.start).format('h:mma').slice(0, -1)}
+                        <span className='ml-1'>
+                            {event.name}
+                        </span>
+                    </Link>
+                })}
+                {this.props.events.following.map(event => {
+                    return <Link key={event._id}
+                                 className='d-block'
+                                 style={{
+                                     marginTop: 2,
+                                     marginBottom: 2,
+                                     padding: '2px 4px',
+                                     backgroundColor: 'rgb(60, 90,60)',
+                                     overflow: 'hidden',
+                                     whiteSpace: 'nowrap',
+                                     textOverflow: 'ellipsis'
+                                 }}
+                                 to={`/event/${event._id}`}>
+                        {moment(event.start).format('h:mma').slice(0, -1)}
+                        <span className='ml-1'>
+                            {event.name}
+                        </span>
+                    </Link>
+                })}
+                {this.props.events.invitedTo.map(event => {
+                    return <Link key={event._id}
+                                 className='d-block'
+                                 style={{
+                                     marginTop: 2,
+                                     marginBottom: 2,
+                                     padding: 2,
+                                     backgroundColor: 'rgb(90, 60, 60)',
+                                     overflow: 'hidden',
+                                     whiteSpace: 'nowrap',
+                                     textOverflow: 'ellipsis'
+                                 }}
+                                 to={`/event/${event._id}`}>
                         {moment(event.start).format('h:mma').slice(0, -1)}
                         <span className='ml-1'>
                             {event.name}
@@ -33,9 +74,3 @@ class CalendarEventsList
 }
 
 export default withRouter(CalendarEventsList);
-
-CalendarEventsList.propTypes = {
-    date: PropTypes.object.isRequired
-};
-
-CalendarEventsList.defaultProps = {};

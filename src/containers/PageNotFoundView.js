@@ -7,16 +7,6 @@ export default class PageNotFoundView
 
     render() {
         return (
-            <div className='d-flex'
-                 style={{
-                     position: 'absolute',
-                     top: 0,
-                     bottom: 0,
-                     left: 0,
-                     right: 0,
-                     overflow: 'hidden'
-                 }}>
-                <NavigationMenu/>
                 <ContentView>
                     <div className='d-flex flex-column h-100 justify-content-center align-items-center'>
                         <h1 className='text-white'>
@@ -24,7 +14,6 @@ export default class PageNotFoundView
                         </h1>
                     </div>
                 </ContentView>
-            </div>
         );
     }
 }

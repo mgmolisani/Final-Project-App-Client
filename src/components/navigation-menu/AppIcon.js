@@ -14,7 +14,3 @@ export default class AppIcon
         );
     }
 }
-
-AppIcon.propTypes = {};
-
-AppIcon.defaultProps = {};

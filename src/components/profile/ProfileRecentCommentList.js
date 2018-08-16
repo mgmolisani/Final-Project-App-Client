@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import moment from "moment";
 import ProfileRecentCommentListItem from "./ProfileRecentCommentListItem";
-import models from "../../models/models";
 
 export default class ProfileRecentCommentList
     extends Component {
@@ -20,7 +18,7 @@ export default class ProfileRecentCommentList
     render() {
         return (
             <div className='profile-recent-list'>
-                {this.mostRecentXComments(3).map(comment => {
+                {this.mostRecentXComments(10).map(comment => {
                     return <ProfileRecentCommentListItem key={comment.id}
                                                          comment={comment}/>
                 })}
@@ -28,9 +26,3 @@ export default class ProfileRecentCommentList
         );
     }
 }
-
-ProfileRecentCommentList.propTypes = {
-    comments: PropTypes.arrayOf(PropTypes.shape(models.comment)).isRequired
-};
-
-ProfileRecentCommentList.defaultProps = {};

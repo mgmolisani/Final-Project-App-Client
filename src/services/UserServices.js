@@ -1,5 +1,6 @@
 let _singleton = Symbol();
 const USER_API_URL = "http://localhost:4200/api/user";
+const REGISTER_API_URL = "http://localhost:4200/api/user";
 const LOGIN_API_URL = "http://localhost:4200/api/login";
 const LOGOUT_API_URL = "http://localhost:4200/api/logout";
 const PROFILE_API_URL = "http://localhost:4200/api/profile";
@@ -17,7 +18,7 @@ export default class UserService {
     }
 
     register(user) {
-        return fetch(USER_API_URL, {
+        return fetch(REGISTER_API_URL, {
             method: 'POST',
             body: JSON.stringify(user),
             credentials: 'include',
@@ -104,8 +105,8 @@ export default class UserService {
             );
     }
 
-    findFollowedEventsForUser(userId) {
-        return fetch(USER_API_URL + '/' + userId + '/events')
+    findAllEventsForUser(userId) {
+        return fetch(USER_API_URL + '/' + userId + '/events/all')
             .then(function (response) {
                     if (response.ok) {
                         return response.json();
@@ -114,8 +115,8 @@ export default class UserService {
             );
     }
 
-    findEventlistsForUser(userId) {
-        return fetch(USER_API_URL + '/' + userId + '/eventlists')
+    findFollowedEventsForUser(userId) {
+        return fetch(USER_API_URL + '/' + userId + '/events/following')
             .then(function (response) {
                     if (response.ok) {
                         return response.json();
@@ -155,7 +156,7 @@ export default class UserService {
 
     followUser(followerId, followeeId) {
         return fetch(USER_API_URL + '/' + followerId + '/follow/user/' + followeeId, {
-            method: 'POST',
+            method: 'PUT',
         }).then(function (response) {
             if (response.ok) {
                 return response.json();
@@ -165,7 +166,7 @@ export default class UserService {
 
     unfollowUser(followerId, followeeId) {
         return fetch(USER_API_URL + '/' + followerId + '/unfollow/user/' + followeeId, {
-            method: 'POST',
+            method: 'PUT',
         }).then(function (response) {
             if (response.ok) {
                 return response.json();

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import withLogin from "../utils/withLogin";
 import InvitedGuessListItem from "./InvitedGuessListItem";
 
-class InvitedGuestList
+export default class InvitedGuestList
     extends Component {
 
     render() {
@@ -17,9 +16,3 @@ class InvitedGuestList
         );
     }
 }
-
-export default withLogin(InvitedGuestList);
-
-InvitedGuestList.propTypes = {};
-
-InvitedGuestList.defaultProps = {};

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {NavLink} from "react-router-dom";
 
@@ -27,14 +26,3 @@ export default class NavigationMenuListItem
         );
     }
 }
-
-NavigationMenuListItem.propTypes = {
-    to: PropTypes.string.isRequired,
-    icon: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string)
-    ]).isRequired,
-    alerts: PropTypes.number
-};
-
-NavigationMenuListItem.defaultProps = {};

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ProfileInfo from "../../components/profile/ProfileInfo";
 import ContentView from "../ContentView";
 import UserService from "../../services/UserServices";
+import {AuthenticationConsumer} from "../authentication/AuthenticationContext";
 
 export default class ProfileOverviewView
     extends Component {
@@ -10,8 +11,7 @@ export default class ProfileOverviewView
         super(props);
         this.state = {
             user: {}
-        }
-        ;
+        };
         this.updateUser = this.updateUser.bind(this);
         this.userService = UserService.instance;
     }
@@ -22,6 +22,7 @@ export default class ProfileOverviewView
             .findUserById(userId)
             .then(user => {
                 this.setState({user});
+
             });
     }
 
@@ -47,8 +48,13 @@ export default class ProfileOverviewView
         return (
             <ContentView>
                 <div className='d-flex flex-column'>
-                    <ProfileInfo user={this.state.user}
-                                 updateUser={this.updateUser}/>
+                    <AuthenticationConsumer>
+                        {context => (
+                            <ProfileInfo user={this.state.user}
+                                         currentUser={context.currentUser}
+                                         updateCurrentUser={context.updateCurrentUser}
+                                         updateUser={this.updateUser}/>)}
+                    </AuthenticationConsumer>
                 </div>
             </ContentView>
         );

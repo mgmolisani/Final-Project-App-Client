@@ -17,8 +17,8 @@ class ProfileMenu
                 <TopMenuItem to={`${url}/recent`}>
                     Recent Activity
                 </TopMenuItem>
-                <TopMenuItem to={`${url}/eventlists`}>
-                    Event Lists
+                <TopMenuItem to={`${url}/events`}>
+                    Followed Events
                 </TopMenuItem>
                 <TopMenuItem to={`${url}/followers`}>
                     Followers

@@ -1,9 +1,40 @@
 import React, {Component} from 'react';
 import moment from "moment/moment";
 import CalendarListDay from "./CalendarListDay";
+import UserService from "../../services/UserServices";
 
 export default class CalendarList
     extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            events: {
+                hosting: [],
+                following: [],
+                invitedTo: []
+            }
+        };
+        this.userService = UserService.instance;
+    }
+
+    fetchAllEventsForUser() {
+        this.userService
+            .findAllEventsForUser(this.props.currentUser)
+            .then(events => {
+                this.setState({events})
+            })
+    }
+
+    componentDidMount() {
+        this.fetchAllEventsForUser()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentUser._id !== prevProps.currentUser._id) {
+            this.fetchAllEventsForUser();
+        }
+    }
 
     getStartDate() {
         return moment(this.props.activeDate).startOf('month');

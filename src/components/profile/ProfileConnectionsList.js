@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import withLogin from "../utils/withLogin";
 import ProfileConnectionsListItem from "./ProfileConnectionsListItem";
-import {users} from "../../constants/DummyData";
 
-class ProfileConnectionsList
+export default class ProfileConnectionsList
     extends Component {
 
     sortedFollowersByUsername() {
@@ -21,16 +19,9 @@ class ProfileConnectionsList
             <div className='profile-recent-list'>
                 {this.sortedFollowersByUsername().map(user => {
                     return <ProfileConnectionsListItem key={user._id}
-                                                       user={user}
-                                                       currentUser={this.props.currentUser}/>
+                                                       user={user}/>
                 })}
             </div>
         );
     }
 }
-
-export default withLogin(ProfileConnectionsList);
-
-ProfileConnectionsList.propTypes = {};
-
-ProfileConnectionsList.defaultProps = {};

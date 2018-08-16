@@ -11,6 +11,7 @@ import {applyMiddleware, createStore} from "redux";
 import rootReducer from "./reducers/rootReducer";
 import thunk from "redux-thunk";
 import {Provider} from "react-redux";
+import {AuthenticationProvider} from "./containers/authentication/AuthenticationContext";
 
 iconLib.add(fas);
 iconLib.add(far);
@@ -22,7 +23,9 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <Route path={'/'} component={App}/>
+            <AuthenticationProvider>
+                <Route path={'/'} component={App}/>
+            </AuthenticationProvider>
         </Router>
     </Provider>,
     document.getElementById('root'));

@@ -25,7 +25,7 @@ export default class UserSearchResultsItem
                                 </Link>
                             </h5>
                             <h6 className='timestamp'>
-                                {`${user.eventlists.owns.length} Event Lists`}
+                                {`${user.events.following.length} Events`}
                             </h6>
                         </Col>
                         <Col xs={12}
@@ -40,7 +40,3 @@ export default class UserSearchResultsItem
         );
     }
 }
-
-UserSearchResultsItem.propTypes = {};
-
-UserSearchResultsItem.defaultProps = {};

@@ -20,10 +20,3 @@ export default class CalendarDay
         );
     }
 }
-
-CalendarDay.propTypes = {
-    date: PropTypes.object.isRequired,
-    disabled: PropTypes.bool.isRequired
-};
-
-CalendarDay.defaultProps = {};

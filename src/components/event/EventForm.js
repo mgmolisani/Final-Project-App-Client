@@ -2,11 +2,9 @@ import React, {Component} from 'react';
 import moment from "moment";
 import FormInput from "../form/FormInput";
 import FormTextArea from "../form/FormTextArea";
-import withLogin from "../utils/withLogin";
 import UserService from "../../services/UserServices";
-import EventlistService from "../../services/EventlistService";
 
-class EventForm
+export default class EventForm
     extends Component {
 
     constructor(props) {
@@ -23,7 +21,6 @@ class EventForm
             hostedEvents: []
         };
         this.userService = UserService.instance;
-        this.eventlistService = EventlistService.instance;
         this.updateInputField = this.updateInputField.bind(this);
         this.updateEvent = this.updateEvent.bind(this);
     }
@@ -56,7 +53,6 @@ class EventForm
     componentDidMount() {
         if (this.props.event) {
             this.mapEventToFields();
-            this.updateHostedEvents();
         }
     }
 
@@ -64,20 +60,6 @@ class EventForm
         if (this.props.event &&
             (!prevProps.event || this.props.event.id !== prevProps.event.id)) {
             this.mapEventToFields();
-        } else if (this.props.currentUser._id !== prevProps.currentUser._id) {
-            this.updateHostedEvents();
-        }
-    }
-
-    updateHostedEvents() {
-        const userId = this.props.currentUser._id;
-        if (userId) {
-            this.eventlistService
-                .findEventlistById(this.props.currentUser.eventlists.createdEvents)
-                .then(hostedEvents => {
-                    console.log(hostedEvents);
-                    this.setState({hostedEvents})
-                });
         }
     }
 
@@ -86,7 +68,7 @@ class EventForm
         const {inputFields} = this.state;
         const readOnly = !(currentUser._id && this.state.hostedEvents.includes(event._id));
         return (
-            <React.Fragment>
+            <div>
                 <h4 className='text-white mt-3'>
                     {event._id ? event.name : 'New Event'}
                 </h4>
@@ -122,23 +104,7 @@ class EventForm
                                    this.updateInputField({end: moment(value).toArray().slice(0, 6)})
                                }
                            }}/>
-                {event._id && !readOnly ?
-                    <button type={'button'}
-                            onClick={this.updateEvent}>
-                        Update Event
-                    </button> :
-                    <button type={'button'}
-                            onClick={this.updateEvent}>
-                        Create Event
-                    </button>
-                }
-            </React.Fragment>
+                </div>
         );
     }
 }
-
-export default withLogin(EventForm);
-
-EventForm.propTypes = {};
-
-EventForm.defaultProps = {};

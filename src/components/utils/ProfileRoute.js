@@ -15,7 +15,3 @@ export default class ProfileRoute
         );
     }
 }
-
-ProfileRoute.propTypes = {};
-
-ProfileRoute.defaultProps = {};

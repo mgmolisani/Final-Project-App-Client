@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import withLogin from "../utils/withLogin";
 import FormInput from "../form/FormInput";
 import moment from "moment";
 import Avatar from "../user/Avatar";
 import {Col, Row} from "reactstrap";
 import FollowUserButton from "../buttons/FollowUserButton";
+import UserService from "../../services/UserServices";
+import {Redirect} from "react-router-dom";
 
-class ProfileInfo
+export default class ProfileInfo
     extends Component {
 
     constructor(props) {
@@ -19,9 +20,12 @@ class ProfileInfo
                 address: '',
                 phoneNumber: '',
                 email: '',
-                dateOfBirth: moment().format(moment.HTML5_FMT.DATE)
-            }
+                dateOfBirth: moment().format(moment.HTML5_FMT.DATE),
+            },
+            redirectToLogin: false
         };
+        this.userService = UserService.instance;
+        this.logoutUser = this.logoutUser.bind(this);
         this.updateInputField = this.updateInputField.bind(this);
         this.updateUser = this.updateUser.bind(this);
     }
@@ -41,6 +45,9 @@ class ProfileInfo
     }
 
     componentDidUpdate(prevProps) {
+        if (this.state.redirectToLogin) {
+            this.setState({redirectToLogin: false});
+        }
         if (this.props.user._id !== prevProps.user._id) {
             this.updateInputField({
                 username: this.props.user.username,
@@ -52,6 +59,15 @@ class ProfileInfo
                 dateOfBirth: this.props.user.dateOfBirth
             });
         }
+    }
+
+    logoutUser() {
+        this.userService
+            .logout()
+            .then(() => {
+                this.props.updateCurrentUser(null);
+                this.setState({redirectToLogin: true});
+            })
     }
 
     renderSensitive() {
@@ -94,10 +110,14 @@ class ProfileInfo
 
     render() {
         const {user, currentUser} = this.props;
-        const {inputFields} = this.state;
+        const {inputFields, redirectToLogin: redirect} = this.state;
         const readOnly = user._id !== currentUser._id;
         return (
             <Row noGutters>
+                {redirect ?
+                    <Redirect to={'/login'}
+                              push/> :
+                    null}
                 <div className='form-wrapper'>
                     <div className='form-container'>
                         <Col className='p-3'
@@ -116,6 +136,10 @@ class ProfileInfo
                                 <h5 className='role'>
                                     {`${user.role} User`}
                                 </h5>
+                                <button type={'button'}
+                                        onClick={this.logoutUser}>
+                                    Logout
+                                </button>
                                 <FollowUserButton user={user}/>
                             </div>
                         </Col>
@@ -143,9 +167,3 @@ class ProfileInfo
         );
     }
 }
-
-export default withLogin(ProfileInfo);
-
-ProfileInfo.propTypes = {};
-
-ProfileInfo.defaultProps = {};

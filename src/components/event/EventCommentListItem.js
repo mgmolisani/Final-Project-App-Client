@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {events} from "../../constants/DummyData";
 import moment from "moment/moment";
 import Avatar from "../user/Avatar";
 import CommentService from "../../services/CommentService";

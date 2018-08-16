@@ -12,16 +12,6 @@ export default class CreateView
     render() {
         const {url} = this.props.match;
         return (
-            <div className='d-flex'
-                 style={{
-                     position: 'absolute',
-                     top: 0,
-                     bottom: 0,
-                     left: 0,
-                     right: 0,
-                     overflow: 'hidden'
-                 }}>
-                <NavigationMenu/>
                 <ContentView>
                     <div className='d-flex flex-column w-100 h-100'
                          style={{
@@ -29,14 +19,11 @@ export default class CreateView
                          }}>
                         <NewEventMenu/>
                         <Switch>
-                            <Route path={`${url}/eventlist`}
-                                   component={NewEventlistView}/>
                             <Route path={`${url}/event`}
                                    component={NewEventView}/>
                         </Switch>
                     </div>
                 </ContentView>
-            </div>
         );
     }
 }

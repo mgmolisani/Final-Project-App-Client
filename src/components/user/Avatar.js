@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 
 export default class Avatar
     extends Component {
@@ -18,14 +17,3 @@ export default class Avatar
         );
     }
 }
-
-Avatar.propTypes = {
-    avatar: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
-};
-
-Avatar.defaultProps = {
-    avatar: 'https://picsum.photos/200/300',
-    username: ''
-};

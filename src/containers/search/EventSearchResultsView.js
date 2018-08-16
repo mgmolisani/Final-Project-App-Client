@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import * as queryString from "query-string";
-import {events} from "../../constants/DummyData";
 import EventSearchResults from "../../components/search/EventSearchResults";
-import EventlistService from "../../services/EventlistService";
 import EventService from "../../services/EventService";
 
 export default class EventSearchResultsView
