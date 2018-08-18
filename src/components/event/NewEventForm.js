@@ -37,7 +37,7 @@ export default class NewEventForm
     verifyEvent() {
         const {inputFields, selectedImage} = this.state;
         if (Object.values(inputFields).some(input => {
-            return !input;
+            return input !== '';
         })
         || !selectedImage) {
             alert('All fields are required to register.');
