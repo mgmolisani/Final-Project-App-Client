@@ -1,5 +1,5 @@
 let _singleton = Symbol();
-const EVENT_API_URL = "http://localhost:4200/api/event";
+const EVENT_API_URL = "https://mmolisani-final-project-node.herokuapp.com/api/event";
 
 export default class EventService {
     constructor(singletonToken) {

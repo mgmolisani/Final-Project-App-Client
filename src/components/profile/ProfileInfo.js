@@ -9,9 +9,8 @@ import Avatar from "../user/Avatar";
 
 const INSTAGRAM_REDIRECT_URL = 'https://api.instagram.com/oauth/authorize/' +
     '?client_id=abe38ea0dc7746cc9f087e0cc54d97b5&' +
-    'redirect_uri=http://localhost:3000/instagram/access_token&response_type=token';
-/*
-    'redirect_uri=https://mmolisani-final-project-cs5610.herokuapp.com/instagram/access_token&response_type=token';*/
+    'redirect_uri=https://mmolisani-final-project-cs5610.herokuapp.com/instagram/access_token' +
+    '&response_type=token';
 
 export default class ProfileInfo
     extends Component {

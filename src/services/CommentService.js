@@ -1,5 +1,5 @@
 let _singleton = Symbol();
-const COMMENT_API_URL = "http://localhost:4200/api/comment";
+const COMMENT_API_URL = "https://mmolisani-final-project-node.herokuapp.com/api/comment";
 
 export default class CommentService {
     constructor(singletonToken) {

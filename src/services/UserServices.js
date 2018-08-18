@@ -1,9 +1,9 @@
 let _singleton = Symbol();
-const USER_API_URL = "http://localhost:4200/api/user";
-const REGISTER_API_URL = "http://localhost:4200/api/user";
-const LOGIN_API_URL = "http://localhost:4200/api/login";
-const LOGOUT_API_URL = "http://localhost:4200/api/logout";
-const PROFILE_API_URL = "http://localhost:4200/api/profile";
+const USER_API_URL = "https://mmolisani-final-project-node.herokuapp.com/api/user";
+const REGISTER_API_URL = "https://mmolisani-final-project-node.herokuapp.com/api/user";
+const LOGIN_API_URL = "https://mmolisani-final-project-node.herokuapp.com/api/login";
+const LOGOUT_API_URL = "https://mmolisani-final-project-node.herokuapp.com/api/logout";
+const PROFILE_API_URL = "https://mmolisani-final-project-node.herokuapp.com/api/profile";
 
 export default class UserService {
     constructor(singletonToken) {
