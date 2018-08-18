@@ -16,14 +16,14 @@ export default class InstagramRedirect
         UserService.instance
             .addInstagramTokenForUser(this.props.currentUser._id, this.props.token)
             .then(() => {
-                this.setState({redirect: true})
+                this.setState({redirect: true});
+                this.props.callback(this.props.currentUser._id);
             });
     }
 
     componentDidUpdate() {
         if (this.state.redirect) {
             this.setState({redirect: false});
-            this.props.callback();
         }
     }
 
