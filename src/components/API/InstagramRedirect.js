@@ -13,12 +13,18 @@ export default class InstagramRedirect
     }
 
     componentDidMount() {
-        console.log(this.props.currentUser);
         UserService.instance
             .addInstagramTokenForUser(this.props.currentUser._id, this.props.token)
             .then(() => {
                 this.setState({redirect: true})
             });
+    }
+
+    componentDidUpdate() {
+        if (this.state.redirect) {
+            this.setState({redirect: false});
+            this.props.callback();
+        }
     }
 
     render() {

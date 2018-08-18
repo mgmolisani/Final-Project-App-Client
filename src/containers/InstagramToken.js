@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {AuthenticationConsumer} from "./authentication/AuthenticationContext";
 import InstagramRedirect from "../components/API/InstagramRedirect";
 import * as queryString from "query-string";
+import {Redirect} from "react-router-dom";
 
 export default class InstagramToken
     extends Component {
@@ -9,10 +10,13 @@ export default class InstagramToken
     render() {
         return (
             <AuthenticationConsumer>
-                {({currentUser}) => {
+                {({currentUser, updateCurrentUser}) => {
                     if (currentUser._id) {
                         return <InstagramRedirect currentUser={currentUser}
-                                                  token={{token: queryString.parse(this.props.location.hash).access_token}}/>
+                                                  token={{token: queryString.parse(this.props.location.hash).access_token}}
+                                                  callback={updateCurrentUser}/>
+                    } else {
+                        return <Redirect to={'/login'}/>
                     }
                 }}
             </AuthenticationConsumer>

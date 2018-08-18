@@ -37,8 +37,6 @@ export default class EventCommentList
     }
 
     createComment() {
-
-        console.log(this.props.currentUser)
         this.commentService
             .createComment({
                 content: {
@@ -47,7 +45,11 @@ export default class EventCommentList
                 },
                 by: this.props.currentUser._id,
                 for: this.props.eventId
-            }).then(() => this.fetchCommentsForEvent())
+            })
+            .then(() => {
+                this.fetchCommentsForEvent();
+                this.setState({commentContent: ''});
+            })
     }
 
 
