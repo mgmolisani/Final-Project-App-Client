@@ -74,6 +74,12 @@ export default class UserService {
             );
     }
 
+    deleteUser(userId) {
+        return fetch(USER_API_URL + '/' + userId, {
+            method: 'DELETE'
+        })
+    }
+
     findFollowersForUser(userId) {
         return fetch(USER_API_URL + '/' + userId + '/followers')
             .then(function (response) {
@@ -167,6 +173,64 @@ export default class UserService {
     unfollowUser(followerId, followeeId) {
         return fetch(USER_API_URL + '/' + followerId + '/unfollow/user/' + followeeId, {
             method: 'PUT',
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+    }
+
+    addInstagramTokenForUser(userId, token) {
+        return fetch(USER_API_URL + '/' + userId + '/instagram/access_token', {
+            method: 'PUT',
+            body: JSON.stringify(token),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+    }
+
+    followEvent(userId, eventId) {
+        return fetch(USER_API_URL + '/' + userId + '/follow/event/' + eventId, {
+            method: 'PUT',
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+    }
+
+    unfollowEvent(userId, eventId) {
+        return fetch(USER_API_URL + '/' + userId + '/unfollow/event/' + eventId, {
+            method: 'PUT',
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+    }
+
+    findAllUsers() {
+        return fetch(USER_API_URL)
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+    }
+
+    findUserByCredentials(credentials) {
+        return fetch(USER_API_URL + '/check', {
+            method: 'POST',
+            body: JSON.stringify(credentials),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
         }).then(function (response) {
             if (response.ok) {
                 return response.json();

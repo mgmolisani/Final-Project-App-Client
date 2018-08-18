@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import FormLabel from "./FormLabel";
 
 export default class FormTextArea
@@ -22,15 +21,3 @@ export default class FormTextArea
         );
     }
 }
-
-FormTextArea.propTypes = {
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    placeholder: PropTypes.string,
-    rows: PropTypes.number,
-    resize: PropTypes.bool,
-    readOnly: PropTypes.bool,
-    onChange: PropTypes.func.isRequired
-};
-
-FormTextArea.defaultProps = {};

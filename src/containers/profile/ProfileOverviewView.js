@@ -31,6 +31,7 @@ export default class ProfileOverviewView
             .updateUser(this.props.userId, user)
             .then(user => {
                 this.setState({user});
+                alert('Profile has been updated.')
             })
     };
 

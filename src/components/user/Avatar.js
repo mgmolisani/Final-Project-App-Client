@@ -4,9 +4,9 @@ export default class Avatar
     extends Component {
 
     render() {
-        const {avatar, username, size} = this.props;
+        const {avatar, username, size, className} = this.props;
         return (
-            <div className='avatar'
+            <div className={`avatar ${className}`}
                  style={{
                      height: size,
                      width: size

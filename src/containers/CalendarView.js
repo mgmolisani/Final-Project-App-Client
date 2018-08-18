@@ -4,9 +4,7 @@ import CalendarGrid from "../components/calendar/CalendarGrid";
 import moment from "moment";
 import CalendarList from "../components/calendar/CalendarList";
 import CalendarMonthSelection from "../components/calendar/CalendarMonthSelection";
-import CalendarTypeSelection from "../components/calendar/CalendarTypeSelection";
 import ContentView from "./ContentView";
-import UserService from "../services/UserServices";
 import {AuthenticationConsumer} from "./authentication/AuthenticationContext";
 
 export default class CalendarView
@@ -53,7 +51,7 @@ export default class CalendarView
                             <div className='calendar-view-header d-flex align-items-center'>
                                 <CalendarMonthSelection date={this.state.activeDate}
                                                         changeDate={this.changeActiveDate}/>
-                                <CalendarTypeSelection changeViewType={this.changeViewType}/>
+                                {/*<CalendarTypeSelection changeViewType={this.changeViewType}/>*/}
                             </div>
                             <AuthenticationConsumer>
                                 {({currentUser}) => (

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ContentView from "../ContentView";
-import EventForm from "../../components/event/EventForm";
+import NewEventForm from "../../components/event/NewEventForm";
 
 export default class NewEventView
     extends Component {
@@ -28,8 +28,8 @@ export default class NewEventView
                 <div className='d-flex flex-column'>
                     <div className='form-wrapper'>
                         <form className='form-container'>
-                            <EventForm event={this.state.event}
-                                       updateEvent={this.updateEvent}/>
+                            <NewEventForm event={this.state.event}
+                                          updateEvent={this.updateEvent}/>
                         </form>
                     </div>
                 </div>

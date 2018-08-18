@@ -24,14 +24,16 @@ class SearchForm
                 <h4 className='text-white mt-3'>
                     Search
                 </h4>
-                <FormInput label={'Search for events around you . . .'}
+                <FormInput label={'Enter you search below . . .'}
                            value={this.state.search}
                            onChange={value => this.updateInputField(value)}/>
-                <button>
-                    <Link to={`${this.props.location.pathname}?${queryString.stringify(this.state)}`}>
-                        Search
-                    </Link>
-                </button>
+                <div className='d-flex justify-content-center'>
+                    <button className='btn btn-secondary my-3'>
+                        <Link to={`${this.props.location.pathname}?${queryString.stringify(this.state)}`}>
+                            Search
+                        </Link>
+                    </button>
+                </div>
             </React.Fragment>
         );
     }

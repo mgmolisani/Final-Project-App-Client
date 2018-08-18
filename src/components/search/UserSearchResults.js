@@ -9,12 +9,16 @@ export default class UserSearchResults
         return (
             <React.Fragment>
                 <FormLabel label={'User Search Results'}/>
-                <div className='profile-recent-list'>
-                    {this.props.users.map(user => {
-                        return <UserSearchResultsItem key={user._id}
-                                                      user={user}/>
-                    })}
-                </div>
+                {this.props.users.length > 0 ?
+                    <div className='profile-recent-list'>
+                        {this.props.users.map(user => {
+                            return <UserSearchResultsItem key={user._id}
+                                                          user={user}/>
+                        })}
+                    </div> :
+                    <div className='text-white'>
+                        No results found for search.
+                    </div>}
             </React.Fragment>
         );
     }

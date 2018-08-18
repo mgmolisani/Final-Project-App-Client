@@ -82,7 +82,12 @@ body {
 }
 
 .btn-secondary {
-    background-color: black !important;;
+    background-color: var(--light) !important;;
+}
+
+.btn-secondary a {
+    color: white;
+    text-decoration: none;
 }
 
 .btn-secondary:hover {
@@ -461,4 +466,12 @@ body {
 .profile-banner .role {
     color: var(--light);
     margin-bottom: 1.5em;
+}
+
+.instagram-photo-selection.selected {
+    box-shadow: 0 0 0 8px white;
+}
+
+.instagram-photo-selection:hover:not(.selected) {
+    box-shadow: 0 0 0 4px grey;
 }

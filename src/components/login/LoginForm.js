@@ -65,10 +65,13 @@ export default class LoginForm
                                    value={password}
                                    type={'password'}
                                    onChange={value => this.updateInputField({password: value})}/>
-                        <button type={'button'}
-                                onClick={this.loginUser}>
-                            Login
-                        </button>
+                        <div className='d-flex justify-content-center my-3'>
+                            <button className='btn btn-secondary'
+                                    type={'button'}
+                                    onClick={this.loginUser}>
+                                Login
+                            </button>
+                        </div>
                         {this.state.redirectToCalendar ?
                             <Redirect to={'/calendar'}
                                       push/> :

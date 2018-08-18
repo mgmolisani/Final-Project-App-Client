@@ -18,6 +18,19 @@ export default class CalendarGrid
         this.userService = UserService.instance;
     }
 
+    static renderDatesHeader() {
+        return <div className='d-flex'>
+            {moment.weekdaysShort().map(day => {
+                return <div key={day}
+                            className='calendar-cell'>
+                    <h4 className='text-center'>
+                        {day}
+                    </h4>
+                </div>
+            })}
+        </div>
+    }
+
     fetchAllEventsForUser() {
         this.userService
             .findAllEventsForUser(this.props.currentUser._id)
@@ -35,19 +48,6 @@ export default class CalendarGrid
         if (this.props.currentUser._id !== prevProps.currentUser._id) {
             this.fetchAllEventsForUser();
         }
-    }
-
-    static renderDatesHeader() {
-        return <div className='d-flex'>
-            {moment.weekdaysShort().map(day => {
-                return <div key={day}
-                            className='calendar-cell'>
-                    <h4 className='text-center'>
-                        {day}
-                    </h4>
-                </div>
-            })}
-        </div>
     }
 
     getStartDate() {
@@ -69,7 +69,7 @@ export default class CalendarGrid
         };
         Object.keys(events).map(eventType => {
             events[eventType].map(event => {
-                if (moment(event.date).startOf('day').isSame(date)) {
+                if (moment(event.start).startOf('day').isSame(date)) {
                     eventsForDate[eventType].push(event);
                 }
             })

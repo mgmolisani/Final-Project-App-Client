@@ -3,8 +3,6 @@ import ContentView from "./ContentView";
 import NewEventMenu from "../components/new-event/NewEventMenu";
 import {Route, Switch} from "react-router-dom";
 import NewEventView from "./new-event/NewEventView";
-import NewEventlistView from "./new-event/NewEventlistView";
-import NavigationMenu from "./NavigationMenu";
 
 export default class CreateView
     extends Component {
@@ -12,18 +10,18 @@ export default class CreateView
     render() {
         const {url} = this.props.match;
         return (
-                <ContentView>
-                    <div className='d-flex flex-column w-100 h-100'
-                         style={{
-                             overflow: 'hidden'
-                         }}>
-                        <NewEventMenu/>
-                        <Switch>
-                            <Route path={`${url}/event`}
-                                   component={NewEventView}/>
-                        </Switch>
-                    </div>
-                </ContentView>
+            <ContentView>
+                <div className='d-flex flex-column w-100 h-100'
+                     style={{
+                         overflow: 'hidden'
+                     }}>
+                    <NewEventMenu/>
+                    <Switch>
+                        <Route path={`${url}/event`}
+                               component={NewEventView}/>
+                    </Switch>
+                </div>
+            </ContentView>
         );
     }
 }

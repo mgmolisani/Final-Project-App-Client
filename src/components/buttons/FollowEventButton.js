@@ -15,16 +15,16 @@ class FollowUserButton
     }
 
     toggleFollowing(callback) {
-        const {user, currentUser} = this.props;
-        if (currentUser.following.includes(user._id)) {
+        const {event, currentUser} = this.props;
+        if (currentUser.events.following.includes(event._id)) {
             this.userService
-                .unfollowUser(currentUser._id, user._id)
+                .unfollowEvent(currentUser._id, event._id)
                 .then(() => {
                     this.props.updateCurrentUser(currentUser._id);
                 })
         } else {
             this.userService
-                .followUser(currentUser._id, user._id)
+                .followEvent(currentUser._id, event._id)
                 .then(() => {
                     this.props.updateCurrentUser(currentUser._id);
                 })
@@ -32,13 +32,14 @@ class FollowUserButton
     }
 
     render() {
-        const {user, currentUser} = this.props;
+        const {event, currentUser} = this.props;
         return (
-            currentUser._id && user._id !== currentUser._id ?
-                <button className='btn btn-secondary' type={'button'}
+            currentUser._id && !currentUser.events.hosting.includes(event._id) ?
+                <button className='btn btn-secondary'
+                        type={'button'}
                         style={{minWidth: 'fit-content'}}
                         onClick={this.toggleFollowing}>
-                    {currentUser.following.includes(user._id) ?
+                    {currentUser.events.following.includes(event._id) ?
                         'Unfollow' :
                         'Follow'
                     }

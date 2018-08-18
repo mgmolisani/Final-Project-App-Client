@@ -1,70 +1,49 @@
 import React, {Component} from 'react';
-import moment from "moment/moment";
-import Avatar from "../user/Avatar";
-import CommentService from "../../services/CommentService";
 import {Col, Row} from "reactstrap";
 import {Link} from "react-router-dom";
+import Avatar from "../user/Avatar";
+import UserService from "../../services/UserServices";
 
-export default class EventCommentListItem
+export default class AdminUserListItem
     extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: {}
-        };
-        this.commentService = CommentService.instance;
-        this.deleteComment = this.deleteComment.bind(this);
-    }
-
-    componentDidMount() {
-        this.commentService
-            .findPosterForComment(this.props.comment._id)
-            .then(user => {
-                this.setState({user});
-            })
-    }
-
-    deleteComment() {
-        this.commentService
-            .deleteComment(this.props.comment._id)
-            .then(() => this.props.callback())
+    deleteUser() {
+        console.log(this.props.user._id);
+        UserService.instance
+            .deleteUser(this.props.user._id)
+            .then(this.props.updateList)
     }
 
     renderDeleteButton() {
-        if (this.state.user._id === this.props.currentUser._id || this.props.currentUser.role === 'Administrator') {
+        if (this.props.user._id !== this.props.currentUser._id) {
             return <button className='btn btn-secondary'
                            type={'button'}
-                           onClick={this.deleteComment}>
+                           onClick={this.deleteUser.bind(this)}>
                 Delete
             </button>
         }
     }
 
     render() {
-        const {comment} = this.props;
-        const {user} = this.state;
+        const {user} = this.props;
         return (
             <div className='comment-container'>
                 <div className='comment-avatar'>
                     <Avatar avatar={user.avatar}
                             username={user.username}
-                            size={'4em'}/>
+                            size={'5em'}/>
                 </div>
                 <div className='comment-content-container'>
                     <Row className='h-100' noGutters>
                         <Col>
-                            <h6 className='username'>
+                            <h5 className='username'>
                                 <Link to={`/profile/${user._id}`}>
                                     {user.username}
                                 </Link>
-                            </h6>
+                            </h5>
                             <h6 className='timestamp'>
-                                {moment(comment.date).format('L LT')}
+                                {`${user.events.following.length} Events`}
                             </h6>
-                            <p className='content'>
-                                {comment.content}
-                            </p>
                         </Col>
                         <Col xs={12}
                              md={'auto'}>

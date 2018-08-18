@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
-import FormInput from "../form/FormInput";
 import moment from "moment";
-import Avatar from "../user/Avatar";
-import {Col, Row} from "reactstrap";
-import FollowUserButton from "../buttons/FollowUserButton";
 import UserService from "../../services/UserServices";
 import {Redirect} from "react-router-dom";
+import FormInput from "../form/FormInput";
+import {Col, Row} from "reactstrap";
+import FollowUserButton from "../buttons/FollowUserButton";
+import Avatar from "../user/Avatar";
+
+const INSTAGRAM_REDIRECT_URL = 'https://api.instagram.com/oauth/authorize/' +
+    '?client_id=abe38ea0dc7746cc9f087e0cc54d97b5&' +
+    'redirect_uri=http://localhost:3000/instagram/access_token&response_type=token';
+/*
+    'redirect_uri=https://mmolisani-final-project-cs5610.herokuapp.com/instagram/access_token&response_type=token';*/
 
 export default class ProfileInfo
     extends Component {
@@ -70,48 +76,66 @@ export default class ProfileInfo
             })
     }
 
-    renderSensitive() {
+    renderLinkInstagramButton() {
         const {user, currentUser} = this.props;
-        const {inputFields} = this.state;
-        if (user._id === currentUser._id) {
-            return (
-                <React.Fragment>
-                    <FormInput label={'Address'}
-                               value={inputFields.address}
-                               onChange={value => this.updateInputField({address: value})}/>
-                    <FormInput label={'Phone Number'}
-                               value={inputFields.phoneNumber}
-                               onChange={value => this.updateInputField({phoneNumber: value})}/>
-                    <FormInput label={'Email'}
-                               value={inputFields.email}
-                               onChange={value => this.updateInputField({email: value})}/>
-                    <FormInput label={'Birthday'}
-                               value={moment(inputFields.dateOfBirth).format(moment.HTML5_FMT.DATE)}
-                               type={'date'}
-                               onChange={value => {
-                                   if (value) {
-                                       this.updateInputField({dateOfBirth: moment(value).toArray().slice(0, 3)})
-                                   }
-                               }}/>
-                </React.Fragment>
-            )
+        if (user._id === currentUser._id && !currentUser.instagramAccessToken) {
+            return <button className='btn btn-secondary'
+                           type={'button'}>
+                <a href={INSTAGRAM_REDIRECT_URL}>
+                    Connect to Instagram
+                </a>
+            </button>
         }
     }
 
-    renderUpdateButton() {
-        const {user, currentUser} = this.props;
-        if (user._id === currentUser._id) {
-            return <button type={'button'}
-                           onClick={() => this.updateUser()}>
-                Update User
+    renderLogoutButton() {
+        if (this.props.currentUser._id) {
+            return <button className='btn btn-secondary mb-3'
+                           type={'button'}
+                           onClick={this.logoutUser}>
+                Logout
             </button>
         }
+    }
+
+    renderSensitive(inputFields) {
+        return (
+            <React.Fragment>
+                <FormInput label={'Address'}
+                           value={inputFields.address}
+                           onChange={value => this.updateInputField({address: value})}/>
+                <FormInput label={'Phone Number'}
+                           value={inputFields.phoneNumber}
+                           onChange={value => this.updateInputField({phoneNumber: value})}/>
+                <FormInput label={'Email'}
+                           value={inputFields.email}
+                           onChange={value => this.updateInputField({email: value})}/>
+                <FormInput label={'Birthday'}
+                           value={moment(inputFields.dateOfBirth).format(moment.HTML5_FMT.DATE)}
+                           type={'date'}
+                           onChange={value => {
+                               if (value) {
+                                   this.updateInputField({dateOfBirth: moment(value).toArray().slice(0, 3)})
+                               }
+                           }}/>
+            </React.Fragment>
+        )
+    }
+
+    renderUpdateButton() {
+        return <div className='d-flex justify-content-center my-3'>
+            <button className='btn btn-secondary'
+                    type={'button'}
+                    onClick={() => this.updateUser()}>
+                Update User
+            </button>
+        </div>
     }
 
     render() {
         const {user, currentUser} = this.props;
         const {inputFields, redirectToLogin: redirect} = this.state;
-        const readOnly = user._id !== currentUser._id;
+        const readOnly = !(user._id === currentUser._id || currentUser.role === 'Administrator');
         return (
             <Row noGutters>
                 {redirect ?
@@ -136,10 +160,8 @@ export default class ProfileInfo
                                 <h5 className='role'>
                                     {`${user.role} User`}
                                 </h5>
-                                <button type={'button'}
-                                        onClick={this.logoutUser}>
-                                    Logout
-                                </button>
+                                {this.renderLogoutButton()}
+                                {this.renderLinkInstagramButton()}
                                 <FollowUserButton user={user}/>
                             </div>
                         </Col>
@@ -157,8 +179,12 @@ export default class ProfileInfo
                                            value={inputFields.lastName}
                                            readOnly={readOnly}
                                            onChange={value => this.updateInputField({lastName: value})}/>
-                                {this.renderSensitive()}
-                                {this.renderUpdateButton()}
+                                {!readOnly ?
+                                    <React.Fragment>
+                                        {this.renderSensitive(inputFields)}
+                                        {this.renderUpdateButton()}
+                                    </React.Fragment> :
+                                    null}
                             </form>
                         </Col>
                     </div>

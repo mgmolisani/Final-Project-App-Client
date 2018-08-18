@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ProfileConnectionsList from "../../components/profile/ProfileConnectionsList";
 import FormLabel from "../../components/form/FormLabel";
 import ContentView from "../ContentView";
 import UserService from "../../services/UserServices";

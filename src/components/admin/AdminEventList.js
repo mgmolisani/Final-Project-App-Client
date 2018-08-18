@@ -1,29 +1,26 @@
 import React, {Component} from 'react';
 import FormLabel from "../form/FormLabel";
-import EventSearchResultsItem from "./EventSearchResultsItem";
+import AdminEventListItem from "./AdminEventListItem";
 
-export default class EventSearchResults
+export default class AdminEventList
     extends Component {
 
     render() {
         return (
             <React.Fragment>
-                <FormLabel label={'Event Search Results'}/>
+                <FormLabel label={'All Events'}/>
                 {this.props.events.length > 0 ?
                     <div className='profile-recent-list'>
                         {this.props.events.map(event => {
-                            return <EventSearchResultsItem key={event._id}
-                                                           event={event}/>
+                            return <AdminEventListItem key={event._id}
+                                                       event={event}
+                                                       updateList={this.props.updateList}/>
                         })}
                     </div> :
                     <div className='text-white'>
-                        No results found for search.
+                        No events have been created.
                     </div>}
             </React.Fragment>
         );
     }
 }
-
-EventSearchResults.propTypes = {};
-
-EventSearchResults.defaultProps = {};

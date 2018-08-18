@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT} from "../constants/actions";
+import {LOGIN} from "../constants/actions";
 import UserService from "../services/UserServices";
 
 const userService = UserService.instance;

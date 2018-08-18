@@ -37,15 +37,25 @@ export default class RegisterForm
             return !input;
         })) {
             alert('All fields are required to register.')
+        } else if (inputFields.password !== inputFields.verify) {
+            alert('Passwords do not match.')
         } else {
             this.userService
-                .register(this.state.inputFields)
+                .findUserByCredentials({username: inputFields.username})
                 .then(user => {
                     if (user) {
-                        this.props.updateCurrentUser(user._id);
-                        this.setState({redirectToCalendar: true})
+                        alert('Username is already taken.');
                     } else {
-                        alert('Register attempt failed.')
+                        this.userService
+                            .register(this.state.inputFields)
+                            .then(user => {
+                                if (user) {
+                                    this.props.updateCurrentUser(user._id);
+                                    this.setState({redirectToCalendar: true})
+                                } else {
+                                    alert('Register attempt failed.')
+                                }
+                            })
                     }
                 })
         }
@@ -83,10 +93,6 @@ export default class RegisterForm
                                value={inputFields.verify}
                                type={passwordVisible ? 'text' : 'password'}
                                onChange={value => this.updateInputField({verify: value})}/>
-                    <button onClick={this.togglePasswordVisibility}
-                            type={'button'}>
-                        Toggle
-                    </button>
                     <FormInput label={'First Name'}
                                value={inputFields.firstName}
                                onChange={value => this.updateInputField({firstName: value})}/>
@@ -108,13 +114,16 @@ export default class RegisterForm
                         <div className='m-auto d-flex justify-content-center p-3'>
                             <Avatar avatar={inputFields.avatar}
                                     username={inputFields.username}
-                            size={'10em'}/>
+                                    size={'10em'}/>
                         </div> :
                         null}
-                    <button type={'button'}
-                            onClick={this.registerUser}>
-                        Register
-                    </button>
+                    <div className='d-flex justify-content-center my-3'>
+                        <button className='btn btn-secondary'
+                                type={'button'}
+                                onClick={this.registerUser}>
+                            Register
+                        </button>
+                    </div>
                     {this.state.redirectToCalendar ?
                         <Redirect to={'/calendar'}
                                   push/> :

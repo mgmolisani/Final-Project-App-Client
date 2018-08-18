@@ -23,4 +23,24 @@ export default class CommentService {
                 }
             );
     }
+
+    createComment(comment) {
+        return fetch(COMMENT_API_URL, {
+            method: 'POST',
+            body: JSON.stringify(comment),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+    }
+
+    deleteComment(commentId) {
+        return fetch(COMMENT_API_URL + '/' + commentId, {
+            method: 'DELETE'
+        })
+    }
 }

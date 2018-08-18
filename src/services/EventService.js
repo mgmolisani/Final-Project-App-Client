@@ -46,4 +46,75 @@ export default class EventService {
             }
         })
     }
+
+    findAllEvents() {
+        return fetch(EVENT_API_URL)
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+    }
+
+    createEvent(event) {
+        return fetch(EVENT_API_URL, {
+            method: 'POST',
+            body: JSON.stringify(event),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+    }
+
+    deleteEvent(eventId) {
+        return fetch(EVENT_API_URL + '/' + eventId, {
+            method: 'DELETE'
+        })
+    }
+
+    findHostForEvent(eventId) {
+        return fetch(EVENT_API_URL + '/' + eventId + '/host')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+    }
+
+    findInvitedToEvent(eventId) {
+        fetch(EVENT_API_URL + '/' + eventId + '/invited')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+    }
+
+    findFollowingEvent(eventId) {
+        fetch(EVENT_API_URL + '/' + eventId + '/invited')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+    }
+
+    updateEvent(eventId, event) {
+        return fetch(EVENT_API_URL + '/' + eventId, {
+            method: 'PUT',
+            body: JSON.stringify(event),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            }
+        );
+    }
 }

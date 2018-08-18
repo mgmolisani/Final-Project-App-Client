@@ -15,11 +15,13 @@ export default class EventSearchResultsView
     }
 
     findMatchingEvents(search) {
-        this.eventService
-            .searchForEvent(search)
-            .then(events => {
-                this.setState({events});
-            });
+        if (search.search) {
+            this.eventService
+                .searchForEvent(search)
+                .then(events => {
+                    this.setState({events});
+                });
+        }
     }
 
     componentDidMount() {
@@ -28,9 +30,10 @@ export default class EventSearchResultsView
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.location.search !== prevProps.location.search) {
-            const search = queryString.parse(this.props.location.search);
-            this.findMatchingEvents(search);
+        const {search} = this.props.location;
+        if (search && search !== prevProps.location.search) {
+            const searchObject = queryString.parse(this.props.location.search);
+            this.findMatchingEvents(searchObject);
         }
     }
 

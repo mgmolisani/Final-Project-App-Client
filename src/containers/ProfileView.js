@@ -3,7 +3,6 @@ import ContentView from "./ContentView";
 import ProfileMenu from "../components/profile/ProfileMenu";
 import {Switch} from "react-router-dom";
 import ProfileOverviewView from "./profile/ProfileOverviewView";
-import ProfileRecentActivityView from "./profile/ProfileRecentActivityView";
 import ProfileFollowersView from "./profile/ProfileFollowersView";
 import ProfileFollowingView from "./profile/ProfileFollowingView";
 import ProfileRoute from "../components/utils/ProfileRoute";
@@ -27,9 +26,9 @@ export default class ProfileView
                                       exact
                                       component={ProfileOverviewView}
                                       userId={userId}/>
-                        <ProfileRoute path={`${url}/recent`}
+                        {/*<ProfileRoute path={`${url}/recent`}
                                       component={ProfileRecentActivityView}
-                                      userId={userId}/>
+                                      userId={userId}/>*/}
                         <ProfileRoute path={`${url}/events`}
                                       component={ProfileFollowedEventsView}
                                       userId={userId}/>

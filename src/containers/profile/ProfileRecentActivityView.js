@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import ContentView from "../ContentView";
 import FormLabel from "../../components/form/FormLabel";
 import UserService from "../../services/UserServices";
-import ProfileRecentCommentListItem from "../../components/profile/ProfileRecentCommentListItem";
 import ProfileRecentCommentList from "../../components/profile/ProfileRecentCommentList";
 
 export default class ProfileRecentActivityView

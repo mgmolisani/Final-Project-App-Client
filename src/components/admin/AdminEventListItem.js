@@ -3,10 +3,24 @@ import moment from "moment/moment";
 import Avatar from "../user/Avatar";
 import {Link} from "react-router-dom";
 import {Col, Row} from "reactstrap";
-import FollowEventButton from "../buttons/FollowEventButton";
+import EventService from "../../services/EventService";
 
-export default class EventSearchResultsItem
+export default class AdminEventListItem
     extends Component {
+
+    deleteEvent() {
+        EventService.instance
+            .deleteEvent(this.props.event._id)
+            .then(this.props.updateList)
+    }
+
+    renderDeleteButton() {
+        return <button className='btn btn-secondary'
+                       type={'button'}
+                       onClick={this.deleteEvent.bind(this)}>
+            Delete
+        </button>
+    }
 
     render() {
         const {event} = this.props;
@@ -38,7 +52,7 @@ export default class EventSearchResultsItem
                         <Col xs={12}
                              md={'auto'}>
                             <div className='d-flex align-items-center h-100'>
-                                <FollowEventButton event={event}/>
+                                {this.renderDeleteButton()}
                             </div>
                         </Col>
                     </Row>
@@ -47,7 +61,3 @@ export default class EventSearchResultsItem
         );
     }
 }
-
-EventSearchResultsItem.propTypes = {};
-
-EventSearchResultsItem.defaultProps = {};

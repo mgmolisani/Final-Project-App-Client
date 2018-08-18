@@ -33,7 +33,8 @@ export class AuthenticationProvider
                     this.state.updateCurrentUser(user._id)
                 }
             })
-            .catch(() => {})
+            .catch(() => {
+            })
     }
 
     render() {

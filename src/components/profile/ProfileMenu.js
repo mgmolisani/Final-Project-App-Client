@@ -13,10 +13,10 @@ class ProfileMenu
                 <TopMenuItem to={`${url}`}
                              exact>
                     Overview
-                </TopMenuItem>
+                </TopMenuItem>{/*
                 <TopMenuItem to={`${url}/recent`}>
                     Recent Activity
-                </TopMenuItem>
+                </TopMenuItem>*/}
                 <TopMenuItem to={`${url}/events`}>
                     Followed Events
                 </TopMenuItem>

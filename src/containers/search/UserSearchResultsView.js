@@ -15,11 +15,14 @@ export default class UserSearchResultsView
     }
 
     findMatchingUsers(search) {
-        this.userService
-            .searchForUsers(search)
-            .then(users => {
-                this.setState({users});
-            });
+        if (search.search) {
+            this.userService
+                .searchForUsers(search)
+                .then(users => {
+                    console.log(users);
+                    this.setState({users});
+                });
+        }
     }
 
     componentDidMount() {
@@ -40,7 +43,3 @@ export default class UserSearchResultsView
         );
     }
 }
-
-UserSearchResultsView.propTypes = {};
-
-UserSearchResultsView.defaultProps = {};

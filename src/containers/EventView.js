@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import ContentView from "./ContentView";
-import EventForm from "../components/event/EventForm";
-import {users} from "../constants/DummyData";
-import EventCommentList from "../components/event/EventCommentList";
-import FormLabel from "../components/form/FormLabel";
-import InvitedGuestList from "../components/event/InvitedGuestList";
-import NavigationMenu from "./NavigationMenu";
 import EventService from "../services/EventService";
+import {AuthenticationConsumer} from "./authentication/AuthenticationContext";
+import ExistingEventForm from "../components/event/ExistingEventForm";
 
 export default class EventView
     extends Component {
@@ -14,25 +10,25 @@ export default class EventView
     constructor(props) {
         super(props);
         this.state = {
-            event: {},
-            comments: []
+            event: {}
         };
         this.eventService = EventService.instance;
+        this.updateEvent = this.updateEvent.bind(this);
     }
 
     fetchEventInfoById() {
         const {eventId} = this.props.match.params;
-        Promise.all([
+        if (eventId !== 'new') {
             this.eventService
-                .findEventById(eventId),
-            this.eventService
-                .findAllCommentsForEvent(eventId)])
-            .then(values => {
-                this.setState({
-                    event: values[0],
-                    comments: values[1]
+                .findEventById(eventId)
+                .then(event => {
+                    this.setState({event});
                 });
-            });
+        }
+    }
+
+    updateEvent(eventId) {
+        this.fetchEventInfoById(eventId)
     }
 
     componentDidMount() {
@@ -46,24 +42,30 @@ export default class EventView
     }
 
     render() {
+        const {eventId} = this.props.match.params;
         return (
-                <ContentView>
-                    <div className='d-flex flex-column'>
-                        <div className='form-wrapper'>
-                            <form className='form-container pt-4'>
-                                <EventForm event={this.state.event}/>
-                                <FormLabel label={'Invited Guests'}/>
-                                <InvitedGuestList users={users || this.props.event.invited}/>
-                                <FormLabel label={'Comments'}/>
-                                <EventCommentList comments={this.state.comments}/>
-                            </form>
+            <ContentView>
+                <div className='d-flex flex-column w-100 h-100'
+                     style={{
+                         overflow: 'hidden'
+                     }}>
+                    <ContentView>
+                        <div className='d-flex flex-column'>
+                            <div className='form-wrapper'>
+                                <form className='form-container py-4'>
+                                    <AuthenticationConsumer>
+                                        {({currentUser}) => {
+                                            return <ExistingEventForm event={this.state.event}
+                                                                      updateEvent={this.updateEvent}
+                                                                      currentUser={currentUser}/>
+                                        }}
+                                    </AuthenticationConsumer>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </ContentView>
+                    </ContentView>
+                </div>
+            </ContentView>
         );
     }
 }
-
-EventView.propTypes = {};
-
-EventView.defaultProps = {};
