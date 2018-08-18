@@ -7,6 +7,7 @@ import EventPhotoSelectionList from "./EventPhotoSelectionList";
 import Avatar from "../user/Avatar";
 import EventCommentList from "./EventCommentList";
 import {Redirect} from "react-router-dom";
+import FollowEventButton from "../buttons/FollowEventButton";
 
 export default class ExistingEventForm
     extends Component {
@@ -159,6 +160,7 @@ export default class ExistingEventForm
                     <h5 className='role'>
                         {event.private ? 'Private Event' : 'Public Event'}
                     </h5>
+                    <FollowEventButton event={this.props.event}/>
                 </div>
                 <FormInput label={'Event Name'}
                            value={inputFields.name}
