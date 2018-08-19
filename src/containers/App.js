@@ -36,7 +36,7 @@ export default class App
                     <Route path={'/'}
                            exact
                            render={() => {
-                               return <Redirect to={'/search'}/>
+                               return <Redirect to={'/search/user'}/>
                            }}/>
                     <Route path={'/instagram/access_token'}
                            component={InstagramToken}/>
